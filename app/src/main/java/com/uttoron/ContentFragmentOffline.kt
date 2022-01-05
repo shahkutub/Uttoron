@@ -78,8 +78,6 @@ class ContentFragmentOffline : Fragment(){
             transaction.addToBackStack(null)
             transaction.commit()
         }
-
-
         
         imgUttornContent.setImageURI(Uri.parse("/sdcard/download/uttoron/app_logo_icon"+".png"))
 
