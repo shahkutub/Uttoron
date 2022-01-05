@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:background="#F6F9FF"
-        android:padding="@dimen/_5sdp">
+        android:padding="@dimen/_7sdp">
 
         <ImageView
             android:id="@+id/imgBack"
@@ -32,30 +32,44 @@
                 android:id="@+id/imgUttornContent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:scaleType="fitXY"
-                />
+                android:scaleType="fitXY" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
                 android:gravity="center"
-                android:orientation="vertical">
+                android:orientation="horizontal">
 
-                <TextView
+                <ImageView
+                    android:id="@+id/imgUttornVId"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="UTTORON"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_20sdp"
-                    android:textStyle="bold" />
+                    android:scaleType="fitXY" />
 
-                <TextView
-                    android:id="@+id/tvSloganTop"
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="UTTORON"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_10sdp" />
+                    android:gravity="center|left"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="UTTORON"
+                        android:textColor="#45669C"
+                        android:textSize="@dimen/_23sdp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvSloganTop"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Skill for Better Life"
+                        android:textColor="#B35BFD"
+                        android:textSize="@dimen/_12sdp" />
+                </LinearLayout>
+
             </LinearLayout>
 
         </LinearLayout>
