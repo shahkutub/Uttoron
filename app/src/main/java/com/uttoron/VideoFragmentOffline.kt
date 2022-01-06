@@ -78,15 +78,20 @@ class VideoFragmentOffline : Fragment(){
 
         url = "/sdcard/download/uttoron/"+AppConstant.catName+".mp4"
 
+        var path = "android.resource://" + requireContext().getPackageName() + "/"+R.raw.softskill
+
         if (savedInstanceState != null) {
             mCurrentPosition = savedInstanceState.getInt(PLAYBACK_TIME)
         }
         val controller = MediaController(requireContext())
         controller.setMediaPlayer(videoview)
         videoview.setMediaController(controller)
-        initializePlayer(url)
+        initializePlayer(path)
 
-        videoview.setVideoURI(Uri.parse(url)) //the string of the URL mentioned above
+
+
+
+        videoview.setVideoURI(Uri.parse(path)) //the string of the URL mentioned above
         videoview.requestFocus()
         videoview.start()
     }

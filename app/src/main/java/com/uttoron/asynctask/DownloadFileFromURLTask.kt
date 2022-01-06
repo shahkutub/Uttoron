@@ -209,19 +209,19 @@ class DownloadFileFromURLTask(val mContext: Context, private val outputDir: Stri
 
     }
 
-//    fun deleteDirectory(path: File): Boolean {
-//        if (path.exists()) {
-//            val files = path.listFiles() ?: return true
-//            for (i in files.indices) {
-//                if (files[i].isDirectory) {
-//                    deleteDirectory(files[i])
-//                } else {
-//                    files[i].delete()
-//                }
-//            }
-//        }
-//        return path.delete()
-//    }
+    fun deleteDirectory(path: File): Boolean {
+        if (path.exists()) {
+            val files = path.listFiles() ?: return true
+            for (i in files.indices) {
+                if (files[i].isDirectory) {
+                    deleteDirectory(files[i])
+                } else {
+                    files[i].delete()
+                }
+            }
+        }
+        return path.delete()
+    }
 
     fun deleteFile(file: File): Boolean {
         var deleted: Boolean

@@ -73,25 +73,48 @@ class SplashActivity : AppCompatActivity() {
         setContentView(R.layout.activity_splash)
         context = this
 
+
+
         if (NetInfo.isOnline(applicationContext)){
+            deleteDirectory(File("/sdcard/download/uttoron"))
             getAllData()
         }else{
-            initUi()
+            if (AppConstant.getCatagories(applicationContext).size>0){
+                initUi()
+            }else{
+                Toast.makeText(applicationContext,"No data found.Please check your internet/data connection",Toast.LENGTH_SHORT).show()
+                finish()
+            }
+
         }
 
         imgForword.setOnClickListener {
             if (NetInfo.isOnline(applicationContext)){
-                startActivity(Intent(this@SplashActivity, MainActivity::class.java))
-                finish()
+                if(AppConstant.alldata != null){
+                    startActivity(Intent(this@SplashActivity, MainActivity::class.java))
+                    finish()
+                }else{
+                    Toast.makeText(applicationContext,"No data found.Please check your internet/data connection",Toast.LENGTH_SHORT).show()
+                    finish()
+                }
+
             }else{
-                startActivity(Intent(this@SplashActivity, MainActivity::class.java))
-                finish()
+                if (AppConstant.getCatagories(applicationContext).size>0){
+                    startActivity(Intent(this@SplashActivity, MainActivity::class.java))
+                    finish()
+                }else{
+                    Toast.makeText(applicationContext,"No data found.Please check your internet/data connection",Toast.LENGTH_SHORT).show()
+                    finish()
+                }
+
             }
         }
 
 //        val file = File("")
 //        val deleted: Boolean = file.delete()
    }
+
+
 
     private fun initUi() {
         tvSlogan.visibility = View.VISIBLE
