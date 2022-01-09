@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.uttoron.model.SubCategory
 import com.uttoron.utils.AppConstant
-import kotlinx.android.synthetic.main.home_layout.*
+import kotlinx.android.synthetic.main.home_layout_new_design.*
 import kotlinx.android.synthetic.main.item_other_cat.view.*
 import kotlinx.android.synthetic.main.item_soft_skill.view.*
 import android.graphics.Bitmap
@@ -32,7 +32,7 @@ class HomeFragment : Fragment(){
     private var filename: String = ""
     private var srcUrl: String  = ""
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.home_layout,container,false)
+        return inflater.inflate(R.layout.home_layout_new_design,container,false)
     }
 
 
@@ -48,7 +48,7 @@ class HomeFragment : Fragment(){
                 topCatName = value.name
             }
         }
-        tvTopCatName.text = topCatName
+        //tvTopCatName.text = topCatName
         tvSloganTop.text = AppConstant.alldata[0].general_settings[0].slogan
 
         var topcatCatSubCategoryList  = arrayListOf<SubCategory>()
@@ -67,7 +67,7 @@ class HomeFragment : Fragment(){
             }
         }
 
-        val layoutManager = GridLayoutManager(context, 4)
+        val layoutManager = GridLayoutManager(context, 2)
         recycleSoftSkill!!.setLayoutManager(layoutManager)
         var usersAdapter = TopCatListListAdapter(topcatCatSubCategoryList, requireContext())
         //recyclerDrotoJogajog!!.addItemDecoration(DividerItemDecoration(context, layoutManager.orientation))
@@ -90,7 +90,6 @@ class HomeFragment : Fragment(){
             transaction.addToBackStack(null)
             transaction.commit()
         }
-
         imgGoFor.setOnClickListener {
 
             AppConstant.catName = topCatName

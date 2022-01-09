@@ -44,6 +44,7 @@ import androidx.core.app.ActivityCompat.startIntentSenderForResult
 import android.app.PendingIntent
 import android.graphics.Bitmap
 import android.os.Build
+import android.os.Handler
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.SimpleTarget
@@ -73,53 +74,66 @@ class SplashActivity : AppCompatActivity() {
         setContentView(R.layout.activity_splash)
         context = this
 
+        getAllData()
 
+//        if (NetInfo.isOnline(applicationContext)){
+//            deleteDirectory(File("/sdcard/download/uttoron"))
+//            getAllData()
+//        }else{
+//            if (AppConstant.getCatagories(applicationContext).size>0){
+//                initUi()
+//            }else{
+//                Toast.makeText(applicationContext,"No data found.Please check your internet/data connection",Toast.LENGTH_SHORT).show()
+//                finish()
+//            }
+//
+//        }
 
-        if (NetInfo.isOnline(applicationContext)){
-            deleteDirectory(File("/sdcard/download/uttoron"))
-            getAllData()
-        }else{
-            if (AppConstant.getCatagories(applicationContext).size>0){
-                initUi()
-            }else{
-                Toast.makeText(applicationContext,"No data found.Please check your internet/data connection",Toast.LENGTH_SHORT).show()
-                finish()
-            }
-
-        }
-
-        imgForword.setOnClickListener {
-            if (NetInfo.isOnline(applicationContext)){
-                if(AppConstant.alldata != null){
-                    startActivity(Intent(this@SplashActivity, MainActivity::class.java))
-                    finish()
-                }else{
-                    Toast.makeText(applicationContext,"No data found.Please check your internet/data connection",Toast.LENGTH_SHORT).show()
-                    finish()
-                }
-
-            }else{
-                if (AppConstant.getCatagories(applicationContext).size>0){
-                    startActivity(Intent(this@SplashActivity, MainActivity::class.java))
-                    finish()
-                }else{
-                    Toast.makeText(applicationContext,"No data found.Please check your internet/data connection",Toast.LENGTH_SHORT).show()
-                    finish()
-                }
-
-            }
-        }
+//        imgForword.setOnClickListener {
+//            if (NetInfo.isOnline(applicationContext)){
+//                if(AppConstant.alldata != null){
+//                    startActivity(Intent(this@SplashActivity, MainActivity::class.java))
+//                    finish()
+//                }else{
+//                    Toast.makeText(applicationContext,"No data found.Please check your internet/data connection",Toast.LENGTH_SHORT).show()
+//                    finish()
+//                }
+//
+//            }else{
+//                if (AppConstant.getCatagories(applicationContext).size>0){
+//                    startActivity(Intent(this@SplashActivity, MainActivity::class.java))
+//                    finish()
+//                }else{
+//                    Toast.makeText(applicationContext,"No data found.Please check your internet/data connection",Toast.LENGTH_SHORT).show()
+//                    finish()
+//                }
+//
+//            }
+//        }
 
 //        val file = File("")
 //        val deleted: Boolean = file.delete()
+
+       // initUi()
+
+
    }
 
 
 
     private fun initUi() {
+
+
+
         tvSlogan.visibility = View.VISIBLE
-        imgForword.visibility = View.VISIBLE
+        //imgForword.visibility = View.VISIBLE
         logo_image.visibility = View.VISIBLE
+
+        logo_image.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
 
         val anim = ValueAnimator.ofFloat(1f, 1.5f)
         anim.duration = 1200
@@ -136,21 +150,29 @@ class SplashActivity : AppCompatActivity() {
         imgForword.startAnimation(animMove)
 
 
+//        Handler().postDelayed({
+//            val intent = Intent(this, MainActivity::class.java)
+//            startActivity(intent)
+//            finish()
+//        }, 3000) // 3000 is the delayed time in milliseconds.
 
-        if(NetInfo.isOnline(applicationContext)){
-            tvSlogan.text = AppConstant.alldata[0].general_settings[0].slogan
-            if (checkAndRequestPermissions()){
-                //downloadFile()
-                downloadVid1()
-            }else{
-                checkAndRequestPermissions()
-            }
 
-        }else{
-            if (AppConstant.getGeneralsettings(applicationContext).size > 0){
-                tvSlogan.text = AppConstant.getGeneralsettings(applicationContext)[0].slogan
-            }
-        }
+//        if(NetInfo.isOnline(applicationContext)){
+//            tvSlogan.text = AppConstant.alldata[0].general_settings[0].slogan
+//            if (checkAndRequestPermissions()){
+//                //downloadFile()
+//                downloadVid1()
+//            }else{
+//                checkAndRequestPermissions()
+//            }
+//
+//        }else{
+//            if (AppConstant.getGeneralsettings(applicationContext).size > 0){
+//                tvSlogan.text = AppConstant.getGeneralsettings(applicationContext)[0].slogan
+//            }
+//        }
+
+
 
     }
 
@@ -178,7 +200,7 @@ class SplashActivity : AppCompatActivity() {
 
         userCall?.enqueue(object: Callback<AllDataResponse> {
             override fun onResponse(call: Call<AllDataResponse>, response: Response<AllDataResponse>) {
-
+                hud.dismiss()
                 val  allDataresponse = response.body()
                 Log.e("response",""+allDataresponse.toString())
                 if (allDataresponse != null) {
@@ -192,7 +214,7 @@ class SplashActivity : AppCompatActivity() {
                     AppConstant.getHome4Catagories(context).clear()
                     AppConstant.saveHome4Catagories(applicationContext,AppConstant.home4Cat)
 
-                    hud.dismiss()
+
                     initUi()
 //                    downloadAllImage()
 //                    if (checkAndRequestPermissions()){
