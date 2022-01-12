@@ -98,7 +98,8 @@ class MainActivity : AppCompatActivity()  {
                         loadFragment(HomeFragmentOffline())
                         //Toast.makeText(this, "Please Connect to Internet", Toast.LENGTH_LONG).show();
                     }else{
-                        loadFragment(HomeFragment())
+                        loadFragment(HomeFragmentOffline())
+                        //loadFragment(HomeFragment())
                         //getAllData()
                     }
                     return@setOnNavigationItemSelectedListener true
@@ -123,7 +124,8 @@ class MainActivity : AppCompatActivity()  {
             loadFragment(HomeFragmentOffline())
             //Toast.makeText(this, "Please Connect to Internet", Toast.LENGTH_LONG).show();
         }else{
-            loadFragment(HomeFragment())
+            loadFragment(HomeFragmentOffline())
+            //loadFragment(HomeFragment())
             //getAllData()
         }
 

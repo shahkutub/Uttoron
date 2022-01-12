@@ -22,9 +22,10 @@
 
             <ImageView
                 android:id="@+id/imgUttorn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/_60sdp"
+                android:layout_height="@dimen/_60sdp"
                 android:scaleType="fitXY"
+                android:src="@drawable/app_logo_icon"
                  />
 
             <LinearLayout
@@ -87,7 +88,7 @@
                         android:id="@+id/imgGoFor"
                         android:layout_width="@dimen/_80sdp"
                         android:layout_height="@dimen/_80sdp"
-                        android:src="@drawable/softskill"
+                        android:src="@drawable/soft_skill"
                         />
 <!--                </androidx.cardview.widget.CardView>-->
 
@@ -281,6 +282,7 @@
 
     <RelativeLayout
         android:id="@+id/bottombar"
+        android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/navigationView"

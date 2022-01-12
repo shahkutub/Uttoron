@@ -49,8 +49,12 @@ import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.SimpleTarget
 import com.bumptech.glide.request.transition.Transition
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import com.uttoron.asynctask.DownloadImageFileFromURLTask
+import com.uttoron.model.AllDataResponseItem
 import com.uttoron.model.ImageBmpModel
+import java.io.IOException
 
 
 private const val outputDir = "uttoron"
@@ -74,7 +78,39 @@ class SplashActivity : AppCompatActivity() {
         setContentView(R.layout.activity_splash)
         context = this
 
-        getAllData()
+        val jsonFileString = getJsonDataFromAsset(applicationContext, "all_data.json")
+        Log.i("data", jsonFileString.toString())
+
+        val gson = Gson()
+        val listPersonType = object : TypeToken<List<AllDataResponseItem>>() {}.type
+
+        var alldata: List<AllDataResponseItem> = gson.fromJson(jsonFileString, listPersonType)
+        alldata.forEachIndexed { idx, person -> Log.e("data", "> Item $idx:\n$alldata") }
+
+        AppConstant.getContent(context).clear()
+        AppConstant.getCatagories(context).clear()
+        AppConstant.getGeneralsettings(context).clear()
+        AppConstant.getSubCatagories(context).clear()
+
+        AppConstant.saveCatagories(applicationContext,alldata[0].categories)
+        AppConstant.saveSubCatagories(applicationContext,alldata[0].sub_categories)
+        AppConstant.saveContent(applicationContext,alldata[0].contents)
+        AppConstant.saveGeneralsettings(applicationContext,alldata[0].general_settings)
+
+
+
+        AppConstant.home4Cat.clear()
+        AppConstant.home4Cat = alldata[0].categories as ArrayList<Category>
+        AppConstant.home4Cat.removeAt(0)
+        AppConstant.home4Cat.removeAt(4)
+        AppConstant.getHome4Catagories(context).clear()
+        AppConstant.saveHome4Catagories(applicationContext,AppConstant.home4Cat)
+
+
+
+        initUi()
+
+        //getAllData()
 
 //        if (NetInfo.isOnline(applicationContext)){
 //            deleteDirectory(File("/sdcard/download/uttoron"))
@@ -120,6 +156,16 @@ class SplashActivity : AppCompatActivity() {
    }
 
 
+    fun getJsonDataFromAsset(context: Context, fileName: String): String? {
+        val jsonString: String
+        try {
+            jsonString = context.assets.open(fileName).bufferedReader().use { it.readText() }
+        } catch (ioException: IOException) {
+            ioException.printStackTrace()
+            return null
+        }
+        return jsonString
+    }
 
     private fun initUi() {
 

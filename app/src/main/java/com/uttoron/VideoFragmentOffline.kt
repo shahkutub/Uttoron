@@ -86,15 +86,25 @@ class VideoFragmentOffline : Fragment(){
         val controller = MediaController(requireContext())
         controller.setMediaPlayer(videoview)
         videoview.setMediaController(controller)
-        initializePlayer(path)
 
 
 
 
-        videoview.setVideoURI(Uri.parse(path)) //the string of the URL mentioned above
-        videoview.requestFocus()
-        videoview.start()
+        imgPlay.setOnClickListener {
+
+            imgPlay.setVisibility(VideoView.GONE)
+            buffering_textview.setVisibility(VideoView.VISIBLE)
+
+            initializePlayer(path)
+            videoview.setVideoURI(Uri.parse(path)) //the string of the URL mentioned above
+            videoview.requestFocus()
+            videoview.start()
+
+
+        }
+
     }
+
 
     private fun initializePlayer(url: String) {
         // Show the "Buffering..." message while the video loads.
@@ -118,7 +128,7 @@ class VideoFragmentOffline : Fragment(){
                 }
 
                 // Start playing!
-                videoview.start()
+                //videoview.start()
             })
 
         // Listener for onCompletion() event (runs after media has finished

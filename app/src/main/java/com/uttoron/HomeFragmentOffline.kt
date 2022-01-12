@@ -68,7 +68,7 @@ class HomeFragmentOffline : Fragment(){
             }
         }
 
-        val layoutManager = GridLayoutManager(context, 4)
+        val layoutManager = GridLayoutManager(context, 2)
         recycleSoftSkill!!.setLayoutManager(layoutManager)
         var usersAdapter = TopCatListListAdapter(topcatCatSubCategoryList, requireContext())
         //recyclerDrotoJogajog!!.addItemDecoration(DividerItemDecoration(context, layoutManager.orientation))
@@ -112,10 +112,12 @@ class HomeFragmentOffline : Fragment(){
 //                    imgUttorn.setImageBitmap(resource)
 //                }
 //            })
-        imgUttorn.setImageURI(Uri.parse("/sdcard/download/uttoron/app_logo_icon"+".png"))
+       // imgUttorn.setImageURI(Uri.parse("/sdcard/download/uttoron/app_logo_icon"+".png"))
+        imgUttorn.setImageResource(R.drawable.app_logo_icon)
+        imgQuize.setImageResource(R.drawable.quize)
 
 
-        imgQuize.setImageURI(Uri.parse("/sdcard/download/uttoron/উত্তরণ কুইজ গেইম"+".png"))
+        //imgQuize.setImageURI(Uri.parse("/sdcard/download/uttoron/উত্তরণ কুইজ গেইম"+".png"))
 
 //        Glide.with(requireContext())
 //            .asBitmap()
@@ -150,8 +152,27 @@ class HomeFragmentOffline : Fragment(){
 
             holder.tvCatName.text = list[position].name
 
-            holder.imgTopCat.setImageURI(Uri.parse("/sdcard/download/uttoron/"+list[position].name+".png"))
+           // holder.imgTopCat.setImageURI(Uri.parse("/sdcard/download/uttoron/"+list[position].name+".png"))
 
+            if (list[position].name.equals("যোগাযোগ ব্যবস্থাপনা")){
+                holder.imgTopCat.setImageResource(R.drawable.jogajog)
+            }
+
+            if (list[position].name.equals("সময় ব্যবস্থাপনা")){
+                holder.imgTopCat.setImageResource(R.drawable.somoibebostha)
+            }
+
+            if (list[position].name.equals("সমস্যা সমাধানের দক্ষতা উন্নয়")){
+                holder.imgTopCat.setImageResource(R.drawable.dokkta)
+            }
+
+            if (list[position].name.equals("সঠিক সিদ্ধান্ত গ্রহণ")){
+                holder.imgTopCat.setImageResource(R.drawable.sothiksiddanto)
+            }
+
+            if (list[position].name.equals("সঠিক সিদ্ধান্ত গ্রহণ")){
+                holder.imgTopCat.setImageResource(R.drawable.sothiksiddanto)
+            }
 
 //            Glide.with(requireContext())
 //                .asBitmap()
@@ -232,6 +253,20 @@ class HomeFragmentOffline : Fragment(){
                 transaction.commit()
             }
 
+            if (dataList[position].name.equals("চাকুরীর সাধারণ নিয়ম কানুন")){
+                holder.imgOtehrCat.setImageResource(R.drawable.chari_niom)
+            }
+            if (dataList[position].name.equals("চাকুরীতে উন্নয়নের উপায়")){
+                holder.imgOtehrCat.setImageResource(R.drawable.chakri_unnoun)
+            }
+            if (dataList[position].name.equals("আর্থিক ব্যবস্থাপনা ও পরিকল্পনা")){
+                holder.imgOtehrCat.setImageResource(R.drawable.arthik_bebosthapona)
+            }
+            if (dataList[position].name.equals("স্বাস্থ্য ও সুরক্ষা")){
+                holder.imgOtehrCat.setImageResource(R.drawable.sastho)
+            }
+
+
 //            for ((index, value) in AppConstant.getAllImageBitmap(requireContext()).withIndex()) {
 //                Log.e("bitmap","bitmap: "+value.bitmap)
 //                if (value.name.equals(dataList[position].name)){
@@ -240,7 +275,7 @@ class HomeFragmentOffline : Fragment(){
 //
 //            }
 
-            holder.imgOtehrCat.setImageURI(Uri.parse("/sdcard/download/uttoron/"+dataList[position].name+".png"))
+            //holder.imgOtehrCat.setImageURI(Uri.parse("/sdcard/download/uttoron/"+dataList[position].name+".png"))
 
 //            Glide.with(requireContext())
 //                .asBitmap()
