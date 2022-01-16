@@ -23,8 +23,6 @@ import kotlinx.android.synthetic.main.item_other_cat.view.*
 import kotlinx.android.synthetic.main.video_layout.*
 import kotlinx.android.synthetic.main.video_play_layout.*
 import android.os.Build
-import kotlinx.android.synthetic.main.home_layout.*
-import kotlinx.android.synthetic.main.video_layout.tvSloganTop
 
 
 class VideoFragmentOffline : Fragment(){
@@ -47,10 +45,10 @@ class VideoFragmentOffline : Fragment(){
         super.onActivityCreated(savedInstanceState)
 
 
-        imgUttornVId.setImageURI(Uri.parse("/sdcard/download/uttoron/app_logo_icon"+".png"))
+        //imgUttornVId.setImageURI(Uri.parse("/sdcard/download/uttoron/app_logo_icon"+".png"))
 
         tvCatname.text = AppConstant.catName
-        tvSloganTop.text = AppConstant.getGeneralsettings(requireContext())[0].slogan
+        //tvSloganTop.text = AppConstant.getGeneralsettings(requireContext())[0].slogan
 
 
         val layoutManagerOtherCat = GridLayoutManager(context, 2)
@@ -60,11 +58,11 @@ class VideoFragmentOffline : Fragment(){
         recyclevidCats!!.setAdapter(usersAdapterOtherCat)
 
         imgBack.setOnClickListener {
-
-            val transaction = requireActivity().supportFragmentManager.beginTransaction()
-            transaction.replace(R.id.container, HomeFragmentOffline())
-            transaction.addToBackStack(null)
-            transaction.commit()
+            requireActivity().onBackPressed()
+//            val transaction = requireActivity().supportFragmentManager.beginTransaction()
+//            transaction.replace(R.id.container, HomeFragmentOffline())
+//            transaction.addToBackStack(null)
+//            transaction.commit()
         }
 
         var url = ""
@@ -76,9 +74,30 @@ class VideoFragmentOffline : Fragment(){
 //            }
 //        }
 
-        url = "/sdcard/download/uttoron/"+AppConstant.catName+".mp4"
+       // url = "/sdcard/download/uttoron/"+AppConstant.catName+".mp4"
+        var path = ""
 
-        var path = "android.resource://" + requireContext().getPackageName() + "/"+R.raw.softskill
+        if(AppConstant.catName == "সফটস্কিল"){
+            path = "android.resource://" + requireContext().getPackageName() + "/"+R.raw.softskill
+        }
+
+        if(AppConstant.catName == "চাকুরীর সাধারণ নিয়ম কানুন"){
+            path = "android.resource://" + requireContext().getPackageName() + "/"+R.raw.job_general_role
+        }
+
+        if(AppConstant.catName == "চাকুরীতে উন্নয়নের উপায়"){
+            path = "android.resource://" + requireContext().getPackageName() + "/"+R.raw.job_devlopment
+        }
+
+        if(AppConstant.catName == "আর্থিক ব্যবস্থাপনা ও পরিকল্পনা"){
+            path = "android.resource://" + requireContext().getPackageName() + "/"+R.raw.arthik_bebosthhapona
+        }
+
+        if(AppConstant.catName == "স্বাস্থ্য ও সুরক্ষা"){
+            path = "android.resource://" + requireContext().getPackageName() + "/"+R.raw.health
+        }
+
+
 
         if (savedInstanceState != null) {
             mCurrentPosition = savedInstanceState.getInt(PLAYBACK_TIME)
@@ -159,7 +178,7 @@ class VideoFragmentOffline : Fragment(){
             holder.tvCatNameOther.text = notifications[position].name
 
 
-            holder.imgOtehrCat.setImageURI(Uri.parse("/sdcard/download/uttoron/"+notifications[position].name+".png"))
+            //holder.imgOtehrCat.setImageURI(Uri.parse("/sdcard/download/uttoron/"+notifications[position].name+".png"))
 //            Glide.with(requireContext())
 //                .asBitmap()
 //                .load(notifications[position].icon)

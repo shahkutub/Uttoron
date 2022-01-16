@@ -11,27 +11,30 @@
         android:gravity="center"
         >
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/logo_image"
-            android:layout_width="@dimen/_170sdp"
-            android:layout_height="@dimen/_170sdp"
-            android:src="@drawable/logo"
-            app:civ_border_width="0dp"
-            android:visibility="visible"
-            app:civ_border_color="#FF000000"/>
 
-        <TextView
-            android:id="@+id/tvSlogan"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:layout_marginTop="@dimen/_50sdp"
-            android:textColor="@color/white"
-            android:textStyle="normal"
-            android:visibility="gone"
-            android:textSize="@dimen/_15sdp"
-            />
+        <LinearLayout
+            android:id="@+id/logo_image"
+            android:layout_width="@dimen/_200sdp"
+            android:layout_height="@dimen/_200sdp"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@drawable/circle_bg_white"
+            >
+            <ImageView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_115sdp"
+                android:src="@drawable/app_logo_icon"
+               />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/slogan"
+                />
+        </LinearLayout>
+
 
         <ImageView
             android:id="@+id/imgForword"
@@ -49,13 +52,30 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:layout_marginBottom="@dimen/_10sdp"
+        android:orientation="horizontal"
+        android:layout_marginBottom="@dimen/_30sdp"
         android:layout_alignParentBottom="true"
         >
+
+        <ImageView
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_50sdp"
+            android:background="#fff"
+            android:src="@drawable/chevron" />
+
+        <LinearLayout
+            android:layout_width="@dimen/_1sdp"
+            android:layout_height="match_parent"
+            android:background="#fff"
+            android:layout_marginLeft="@dimen/_30sdp"
+            android:layout_marginRight="@dimen/_30sdp"
+            />
+
         <ImageView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/splash_botom_logo"
+            android:layout_height="@dimen/_50sdp"
+            android:background="#fff"
+            android:src="@drawable/swice_contact"
             />
     </LinearLayout>
 

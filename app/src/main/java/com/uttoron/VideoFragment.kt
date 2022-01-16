@@ -24,7 +24,6 @@ import kotlinx.android.synthetic.main.video_layout.*
 import kotlinx.android.synthetic.main.video_play_layout.*
 import android.os.Build
 import kotlinx.android.synthetic.main.home_layout.*
-import kotlinx.android.synthetic.main.video_layout.tvSloganTop
 
 
 class VideoFragment : Fragment(){

@@ -45,6 +45,7 @@ import android.app.PendingIntent
 import android.graphics.Bitmap
 import android.os.Build
 import android.os.Handler
+import android.os.Looper
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.SimpleTarget
@@ -171,7 +172,7 @@ class SplashActivity : AppCompatActivity() {
 
 
 
-        tvSlogan.visibility = View.VISIBLE
+        //tvSlogan.visibility = View.VISIBLE
         //imgForword.visibility = View.VISIBLE
         logo_image.visibility = View.VISIBLE
 
@@ -192,7 +193,7 @@ class SplashActivity : AppCompatActivity() {
         anim.start()
 
         val animMove = AnimationUtils.loadAnimation(applicationContext, R.anim.move)
-        tvSlogan.startAnimation(animMove)
+        //tvSlogan.startAnimation(animMove)
         imgForword.startAnimation(animMove)
 
 
@@ -218,6 +219,13 @@ class SplashActivity : AppCompatActivity() {
 //            }
 //        }
 
+
+        Handler(Looper.getMainLooper()).postDelayed({
+            /* Create an Intent that will start the Menu-Activity. */
+            val mainIntent = Intent(this, MainActivity::class.java)
+            startActivity(mainIntent)
+            finish()
+        }, 4000)
 
 
     }

@@ -23,7 +23,6 @@ import kotlinx.android.synthetic.main.content_layout.*
 import android.os.Build
 import android.text.Html
 import com.uttoron.utils.NetInfo
-import kotlinx.android.synthetic.main.content_layout.tvSloganTop
 
 
 class ContentFragment : Fragment(){
@@ -40,7 +39,7 @@ class ContentFragment : Fragment(){
 
         tvTitle.text = AppConstant.catName+" > "+AppConstant.subCatName
         if (NetInfo.isOnline(context)){
-            tvSloganTop.text = AppConstant.alldata[0].general_settings[0].slogan
+            ///tvSloganTop.text = AppConstant.alldata[0].general_settings[0].slogan
 
             for ((index, value) in AppConstant.alldata[0].contents.withIndex()) {
                 if (AppConstant.subCatName.equals(value.sub_category_name)){
@@ -53,7 +52,7 @@ class ContentFragment : Fragment(){
             }
 
         }else{
-            tvSloganTop.text = AppConstant.getGeneralsettings(requireContext())[0].slogan
+           // tvSloganTop.text = AppConstant.getGeneralsettings(requireContext())[0].slogan
 
             for ((index, value) in AppConstant.getContent(context).withIndex()) {
 
@@ -86,7 +85,7 @@ class ContentFragment : Fragment(){
             .load(AppConstant.alldata[0].general_settings[0].app_logo_icon)
             .into(object : SimpleTarget<Bitmap?>() {
                 override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap?>?) {
-                    imgUttornContent.setImageBitmap(resource)
+                    //imgUttornContent.setImageBitmap(resource)
                 }
             })
 

@@ -39,9 +39,9 @@ class ContentFragmentOffline : Fragment(){
 
         tvTitle.text = AppConstant.catName+" > "+AppConstant.subCatName
         if (NetInfo.isOnline(context)){
-            tvSloganTop.text = AppConstant.alldata[0].general_settings[0].slogan
+           // tvSloganTop.text = AppConstant.getGeneralsettings(requireContext())[0].slogan
 
-            for ((index, value) in AppConstant.alldata[0].contents.withIndex()) {
+            for ((index, value) in AppConstant.getContent(requireContext()).withIndex()) {
                 if (AppConstant.subCatName.equals(value.sub_category_name)){
                     tvContent.text = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                         Html.fromHtml(value.content, Html.FROM_HTML_MODE_COMPACT)
@@ -52,7 +52,7 @@ class ContentFragmentOffline : Fragment(){
             }
 
         }else{
-            tvSloganTop.text = AppConstant.getGeneralsettings(requireContext())[0].slogan
+            //tvSloganTop.text = AppConstant.getGeneralsettings(requireContext())[0].slogan
 
             for ((index, value) in AppConstant.getContent(context).withIndex()) {
 
@@ -68,18 +68,19 @@ class ContentFragmentOffline : Fragment(){
         }
 
         imgBack.setOnClickListener {
-            val transaction = requireActivity().supportFragmentManager.beginTransaction()
-            if (AppConstant.isHome){
-                    transaction.replace(R.id.container, HomeFragmentOffline())
-            }else{
-                transaction.replace(R.id.container, VideoFragmentOffline())
-            }
-            //transaction.replace(R.id.container, VideoFragment())
-            transaction.addToBackStack(null)
-            transaction.commit()
+            requireActivity().onBackPressed()
+//            val transaction = requireActivity().supportFragmentManager.beginTransaction()
+//            if (AppConstant.isHome){
+//                    transaction.replace(R.id.container, HomeFragmentOffline())
+//            }else{
+//                transaction.replace(R.id.container, VideoFragmentOffline())
+//            }
+//            //transaction.replace(R.id.container, VideoFragment())
+//            transaction.addToBackStack(null)
+//            transaction.commit()
         }
 
-        imgUttornContent.setImageURI(Uri.parse("/sdcard/download/uttoron/app_logo_icon"+".png"))
+        //imgUttornContent.setImageURI(Uri.parse("/sdcard/download/uttoron/app_logo_icon"+".png"))
 
     }
 

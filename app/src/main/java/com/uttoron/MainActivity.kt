@@ -309,13 +309,52 @@ class MainActivity : AppCompatActivity()  {
 
     var pressCount = 0
     override fun onBackPressed() {
-        pressCount = pressCount+1
-        if (pressCount == 1){
-            Toast.makeText(applicationContext,"To exit from app, press again",Toast.LENGTH_SHORT).show()
-        }else if (pressCount == 2){
-            pressCount = 0
+//        pressCount = pressCount+1
+//        if (pressCount == 1){
+//            Toast.makeText(applicationContext,"To exit from app, press again",Toast.LENGTH_SHORT).show()
+//        }else if (pressCount == 2){
+//            pressCount = 0
+//            finish()
+//        }
+
+//        val transaction = supportFragmentManager.beginTransaction()
+//        if (AppConstant.isHome){
+//            transaction.replace(R.id.container, HomeFragmentOffline())
+//            transaction.addToBackStack(null)
+//            transaction.commit()
+//            pressCount = 1
+//        }else{
+//            transaction.replace(R.id.container, VideoFragmentOffline())
+//            transaction.addToBackStack(null)
+//            transaction.commit()
+//            pressCount = 0
+//        }
+//
+//        if(pressCount ==1){
+//            finish()
+//        }
+        //transaction.replace(R.id.container, VideoFragment())
+
+//        val count = supportFragmentManager.backStackEntryCount
+//        if (count == 1) {
+//            super.onBackPressed()
+//            finish()
+//        } else {
+//            supportFragmentManager.popBackStack()
+//        }
+
+
+        val fragments = supportFragmentManager.backStackEntryCount
+        if (fragments == 1) {
             finish()
+        } else {
+            if (fragmentManager.backStackEntryCount > 1) {
+                fragmentManager.popBackStack()
+            } else {
+                super.onBackPressed()
+            }
         }
+
     }
 
 //    // [START saveBitmap]

@@ -39,7 +39,7 @@ class HomeFragmentOffline : Fragment(){
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-
+        //AppConstant.isHome = true
         var topCatId = ""
         var topCatName = ""
 
@@ -50,7 +50,7 @@ class HomeFragmentOffline : Fragment(){
             }
         }
         //tvTopCatName.text = topCatName
-        tvSloganTop.text = AppConstant.getGeneralsettings(requireContext())[0].slogan
+        //tvSloganTop.text = AppConstant.getGeneralsettings(requireContext())[0].slogan
 
         var topcatCatSubCategoryList  = arrayListOf<SubCategory>()
 
@@ -150,29 +150,33 @@ class HomeFragmentOffline : Fragment(){
 
 
 
-            holder.tvCatName.text = list[position].name
+            //holder.tvCatName.text = list[position].name
 
            // holder.imgTopCat.setImageURI(Uri.parse("/sdcard/download/uttoron/"+list[position].name+".png"))
 
-            if (list[position].name.equals("যোগাযোগ ব্যবস্থাপনা")){
+            if (position == 0){
+                holder.tvCatName.text = "যোগাযোগ \n ব্যবস্থাপনা"
                 holder.imgTopCat.setImageResource(R.drawable.jogajog)
             }
 
-            if (list[position].name.equals("সময় ব্যবস্থাপনা")){
+            if (position == 1){
+                holder.tvCatName.text = "সময় \n ব্যবস্থাপনা"
                 holder.imgTopCat.setImageResource(R.drawable.somoibebostha)
             }
 
-            if (list[position].name.equals("সমস্যা সমাধানের দক্ষতা উন্নয়")){
+            if (position == 2){
+                holder.tvCatName.text = "সমস্যা সমাধানের \n দক্ষতা উন্নয়"
                 holder.imgTopCat.setImageResource(R.drawable.dokkta)
             }
 
-            if (list[position].name.equals("সঠিক সিদ্ধান্ত গ্রহণ")){
+            if (position == 3){
+                holder.tvCatName.text = "সঠিক সিদ্ধান্ত \n গ্রহণ"
                 holder.imgTopCat.setImageResource(R.drawable.sothiksiddanto)
             }
 
-            if (list[position].name.equals("সঠিক সিদ্ধান্ত গ্রহণ")){
-                holder.imgTopCat.setImageResource(R.drawable.sothiksiddanto)
-            }
+//            if (list[position].name.equals("সঠিক সিদ্ধান্ত গ্রহণ")){
+//                holder.imgTopCat.setImageResource(R.drawable.sothiksiddanto)
+//            }
 
 //            Glide.with(requireContext())
 //                .asBitmap()

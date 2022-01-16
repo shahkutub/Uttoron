@@ -40,6 +40,8 @@ import static android.content.Context.MODE_PRIVATE;
 // */
 //
 public class AppConstant {
+    @NotNull
+    public static String vidName;
 
 //    public static String clockInOu="";
 //    public static String lat="";

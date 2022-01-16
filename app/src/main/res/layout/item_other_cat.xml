@@ -28,6 +28,7 @@
                 android:layout_width="@dimen/_50sdp"
                 android:layout_height="@dimen/_50sdp"
                 android:scaleType="fitXY"
+                android:src="@drawable/app_logo_icon"
                 />
 
             <TextView
