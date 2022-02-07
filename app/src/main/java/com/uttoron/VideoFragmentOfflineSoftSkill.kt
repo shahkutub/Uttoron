@@ -25,7 +25,7 @@ import kotlinx.android.synthetic.main.video_play_layout.*
 import android.os.Build
 
 
-class VideoFragmentOffline : Fragment(){
+class VideoFragmentOfflineSoftSkill : Fragment(){
 
 
     // Current playback position (in milliseconds).
@@ -78,27 +78,22 @@ class VideoFragmentOffline : Fragment(){
         var path = ""
 
         if(AppConstant.catName == "সফটস্কিল"){
-            imgThumbnil.setImageResource(R.drawable.thumbnail_softskill)
             path = "android.resource://" + requireContext().getPackageName() + "/"+R.raw.softskill
         }
 
         if(AppConstant.catName == "চাকুরীর সাধারণ নিয়ম কানুন"){
-            imgThumbnil.setImageResource(R.drawable.thumbnail_jobrule)
             path = "android.resource://" + requireContext().getPackageName() + "/"+R.raw.job_general_role
         }
 
         if(AppConstant.catName == "চাকুরীতে উন্নয়নের উপায়"){
-            imgThumbnil.setImageResource(R.drawable.thumbnail_jobdevelopment)
             path = "android.resource://" + requireContext().getPackageName() + "/"+R.raw.job_devlopment
         }
 
         if(AppConstant.catName == "আর্থিক ব্যবস্থাপনা ও পরিকল্পনা"){
-            imgThumbnil.setImageResource(R.drawable.thumbnail_arthikbebosthapona)
             path = "android.resource://" + requireContext().getPackageName() + "/"+R.raw.arthik_bebosthhapona
         }
 
         if(AppConstant.catName == "স্বাস্থ্য ও সুরক্ষা"){
-            imgThumbnil.setImageResource(R.drawable.thumbnail_health)
             path = "android.resource://" + requireContext().getPackageName() + "/"+R.raw.health
         }
 
@@ -115,6 +110,7 @@ class VideoFragmentOffline : Fragment(){
 
 
         imgPlay.setOnClickListener {
+
             imgThumbnil.setVisibility(VideoView.GONE)
             imgPlay.setVisibility(VideoView.GONE)
             buffering_textview.setVisibility(VideoView.VISIBLE)
@@ -180,7 +176,7 @@ class VideoFragmentOffline : Fragment(){
 
         override fun getItemCount() = notifications.size
         override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
-            holder.tvCatNameOther.text = notifications[position].name
+            //holder.tvCatNameOther.text = notifications[position].name
 
 
             //holder.imgOtehrCat.setImageURI(Uri.parse("/sdcard/download/uttoron/"+notifications[position].name+".png"))
@@ -192,6 +188,27 @@ class VideoFragmentOffline : Fragment(){
 //                        holder.imgOtehrCat.setImageBitmap(resource)
 //                    }
 //                })
+
+            if (position == 0){
+                holder.tvCatNameOther.text = "যোগাযোগ \n ব্যবস্থাপনা"
+                holder.imgOtehrCat.setImageResource(R.drawable.jogajog)
+            }
+
+            if (position == 1){
+                holder.tvCatNameOther.text = "সময় \n ব্যবস্থাপনা"
+                holder.imgOtehrCat.setImageResource(R.drawable.somoibebostha)
+            }
+
+            if (position == 2){
+                holder.tvCatNameOther.text = "সমস্যা সমাধানের \n দক্ষতা উন্নয়"
+                holder.imgOtehrCat.setImageResource(R.drawable.dokkta)
+            }
+
+            if (position == 3){
+                holder.tvCatNameOther.text = "সঠিক সিদ্ধান্ত \n গ্রহণ"
+                holder.imgOtehrCat.setImageResource(R.drawable.sothiksiddanto)
+            }
+
 
             holder.fullViewCat.setOnClickListener {
                 AppConstant.isHome = false
