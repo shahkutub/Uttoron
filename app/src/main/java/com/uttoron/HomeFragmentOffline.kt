@@ -49,6 +49,8 @@ class HomeFragmentOffline : Fragment(){
                 topCatName = value.name
             }
         }
+
+        tvSoftSkill.text = topCatName
         //tvTopCatName.text = topCatName
         //tvSloganTop.text = AppConstant.getGeneralsettings(requireContext())[0].slogan
 
@@ -165,7 +167,7 @@ class HomeFragmentOffline : Fragment(){
             }
 
             if (position == 2){
-                holder.tvCatName.text = "সমস্যা সমাধানের \n দক্ষতা উন্নয়"
+                holder.tvCatName.text = "সমস্যা সমাধানের \n দক্ষতা উন্নয়ন"
                 holder.imgTopCat.setImageResource(R.drawable.dokkta)
             }
 

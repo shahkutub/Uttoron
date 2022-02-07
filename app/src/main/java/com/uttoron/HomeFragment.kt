@@ -48,6 +48,9 @@ class HomeFragment : Fragment(){
                 topCatName = value.name
             }
         }
+
+        tvSoftSkill.text = topCatName
+
         //tvTopCatName.text = topCatName
         //tvSloganTop.text = AppConstant.alldata[0].general_settings[0].slogan
 
