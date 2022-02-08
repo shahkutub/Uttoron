@@ -269,7 +269,7 @@ class HomeFragmentOffline : Fragment(){
                 holder.imgOtehrCat.setImageResource(R.drawable.arthik_bebosthapona)
             }
             if (dataList[position].name.equals("স্বাস্থ্য ও সুরক্ষা")){
-                holder.imgOtehrCat.setImageResource(R.drawable.sastho)
+                holder.imgOtehrCat.setImageResource(R.drawable.sasthonew)
             }
 
 
