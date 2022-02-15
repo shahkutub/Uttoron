@@ -60,7 +60,6 @@
         <ImageView
             android:layout_width="@dimen/_50sdp"
             android:layout_height="@dimen/_50sdp"
-            android:background="#fff"
             android:src="@drawable/chevron" />
 
         <LinearLayout
@@ -74,7 +73,6 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="@dimen/_50sdp"
-            android:background="#fff"
             android:src="@drawable/swice_contact"
             />
     </LinearLayout>
