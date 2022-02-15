@@ -49,6 +49,8 @@ class HomeFragmentOffline : Fragment(){
                 topCatName = value.name
             }
         }
+
+        tvSoftSkill.text = topCatName
         //tvTopCatName.text = topCatName
         //tvSloganTop.text = AppConstant.getGeneralsettings(requireContext())[0].slogan
 
@@ -87,7 +89,7 @@ class HomeFragmentOffline : Fragment(){
             AppConstant.catID = topCatId
             AppConstant.subCatList = topcatCatSubCategoryList
             val transaction = requireActivity().supportFragmentManager.beginTransaction()
-            transaction.replace(R.id.container, VideoFragmentOffline())
+            transaction.replace(R.id.container, VideoFragmentOfflineSoftSkill())
             transaction.addToBackStack(null)
             transaction.commit()
         }
@@ -165,7 +167,7 @@ class HomeFragmentOffline : Fragment(){
             }
 
             if (position == 2){
-                holder.tvCatName.text = "সমস্যা সমাধানের \n দক্ষতা উন্নয়"
+                holder.tvCatName.text = "সমস্যা সমাধানের \n দক্ষতা উন্নয়ন"
                 holder.imgTopCat.setImageResource(R.drawable.dokkta)
             }
 
@@ -267,7 +269,7 @@ class HomeFragmentOffline : Fragment(){
                 holder.imgOtehrCat.setImageResource(R.drawable.arthik_bebosthapona)
             }
             if (dataList[position].name.equals("স্বাস্থ্য ও সুরক্ষা")){
-                holder.imgOtehrCat.setImageResource(R.drawable.sastho)
+                holder.imgOtehrCat.setImageResource(R.drawable.sasthonew)
             }
 
 

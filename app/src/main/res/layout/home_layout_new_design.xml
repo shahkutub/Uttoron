@@ -28,9 +28,8 @@
                 android:src="@drawable/app_logo_icon" />
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:scaleType="fitXY"
+                android:layout_width="@dimen/_140sdp"
+                android:layout_height="@dimen/_65sdp"
                 android:layout_marginLeft="@dimen/_5sdp"
                 android:layout_marginTop="@dimen/_5sdp"
                 android:src="@drawable/slogan" />
@@ -69,19 +68,33 @@
 <!--                    android:layout_height="wrap_content"-->
 <!--                    android:elevation="@dimen/_5sdp"-->
 <!--                    >-->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/circle_bg_white"
+                    >
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/imgGoFor"
                         android:layout_width="@dimen/_80sdp"
                         android:layout_height="@dimen/_80sdp"
-                        android:src="@drawable/soft_skill"
+                        android:src="@drawable/softskill"
                         android:layout_margin="@dimen/_5sdp"
                         />
+                </LinearLayout>
 <!--                </androidx.cardview.widget.CardView>-->
-
+<!--                <ImageView-->
+<!--                    android:id="@+id/imgGoFor"-->
+<!--                    android:layout_width="@dimen/_83sdp"-->
+<!--                    android:layout_height="@dimen/_83sdp"-->
+<!--                    android:src="@drawable/softskill"-->
+<!--                    android:scaleType="fitXY"-->
+<!--                    android:layout_margin="@dimen/_2sdp"-->
+<!--                    />-->
                 <TextView
+                    android:id="@+id/tvSoftSkill"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="সফট স্কিল"
+                    android:text=""
                     android:gravity="center"
                     android:textStyle="bold"
                     android:textSize="@dimen/_15sdp"
