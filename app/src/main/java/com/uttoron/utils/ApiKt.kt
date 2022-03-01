@@ -1,6 +1,7 @@
 package gov.bd.mpportal.utils
 
 import com.uttoron.model.AllDataResponse
+import com.uttoron.model.TrackResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
@@ -36,9 +37,14 @@ interface ApiKt {
 //        @Part("question") question: RequestBody?
 //    ): Call<SubmitRespne>
 
-        @GET("api/uttoronapi")
+    @GET("api/uttoronapi")
     fun getAllData(
     ): Call<AllDataResponse>
+
+    @GET("api/trackapi")
+    fun getTrackDataData(
+    ): Call<TrackResponse>
+
 
 
 

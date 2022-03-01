@@ -47,8 +47,12 @@ import com.bumptech.glide.load.resource.bitmap.DownsampleStrategy
 import com.bumptech.glide.request.RequestOptions
 import com.downloader.*
 import com.uttoron.asynctask.DownloadFileFromURLTask
+import com.uttoron.asynctask.DownloadImageFileFromURLTask
 import com.uttoron.asynctask.SaveBitmapTask
 import com.uttoron.callback.DownloadListener
+import com.uttoron.model.TrackResponse
+import com.uttoron.utils.AlertMessage
+import com.uttoron.utils.PersistData
 import java.io.*
 import java.lang.Exception
 import java.lang.ref.WeakReference
@@ -68,21 +72,26 @@ private const val REQ_CREATE_WRITE_REQUEST = 5
 private const val REQ_ALL_FILES_ACCESS_PERMISSION = 6
 
 val storagePermission = arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE)
-private const val outputDir = "Android11Permissions"
+private const val outputDir = "uttron"
 
 class MainActivity : AppCompatActivity()  {
 
+    private var trackResponse: TrackResponse? = null
+    private var allDataresponse: AllDataResponse? = null
     var fileN: String? = null
     val MY_PERMISSIONS_REQUEST_WRITE_STORAGE = 123
     var result = false
     var urlString: String? = null
     var downloadDialog: Dialog? = null
-
+    var context:Context? = null
+    private var filename: String = ""
+    private var srcUrl: String  = ""
     @SuppressLint("NewApi")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        context = this
         result = checkPermission()
         navigationView.setOnNavigationItemSelectedListener {
             when(it.itemId){
@@ -122,12 +131,20 @@ class MainActivity : AppCompatActivity()  {
         }
         if (!NetInfo.isOnline(applicationContext)) {
             loadFragment(HomeFragmentOffline())
+            //getAllData()
+
             //Toast.makeText(this, "Please Connect to Internet", Toast.LENGTH_LONG).show();
         }else{
             loadFragment(HomeFragmentOffline())
             //loadFragment(HomeFragment())
             //getAllData()
+            getTrackData()
         }
+
+//        btn_update_fab.setOnClickListener {
+//            getAllData()
+//        }
+
 
 
 
@@ -260,17 +277,17 @@ class MainActivity : AppCompatActivity()  {
 
 
     private fun getAllData() {
-
+        if (!this!!.context?.let { NetInfo.isOnline(it) }!!)
+        {
+            context?.let { AlertMessage.showMessage(it, "Alert!", "No internet connection!") }
+        }
         var hud = KProgressHUD.create(this@MainActivity)
             .setStyle(KProgressHUD.Style.SPIN_INDETERMINATE)
             .setLabel("Please wait")
             .setMaxProgress(100)
         hud!!.show()
 
-//        if (!this!!.context?.let { NetInfo.isOnline(it) }!!)
-//        {
-//            context?.let { AlertMessage.showMessage(it, "Alert!", "No internet connection!") }
-//        }
+
 
         var retrofit = Retrofit.Builder()
             .baseUrl(baseUrl)
@@ -284,20 +301,54 @@ class MainActivity : AppCompatActivity()  {
         userCall?.enqueue(object: Callback<AllDataResponse> {
             override fun onResponse(call: Call<AllDataResponse>, response: Response<AllDataResponse>) {
                 hud.dismiss()
-                val  allDataresponse = response.body()
-                Log.e("response",""+allDataresponse.toString())
-                if (allDataresponse != null) {
+                AppConstant.alldata =response.body()
+                // AppConstant.alldata = null
+                Log.e("AppConstant.alldata","size: "+AppConstant.alldata[0].categories.size)
+                //downloadVid1()
+                    allDataresponse = response.body()
+               // Log.e("response",""+allDataresponse.toString())
+//                if (allDataresponse != null) {
+//                    PersistData.setIntData(context,AppConstant.oldTrackNo, allDataresponse!![0].track_no)
+//                    AppConstant.home4Cat.clear()
+//                    AppConstant.home4Cat = allDataresponse!![0].categories as ArrayList<Category>
+//                    AppConstant.home4Cat.removeAt(0)
+//                    AppConstant.home4Cat.removeAt(4)
+//                    AppConstant.saveHome4Catagories(applicationContext,AppConstant.home4Cat)
+//
+//                }
 
+                PersistData.setIntData(context,AppConstant.currentTrackNumber, trackResponse!![0].track_no)
+                //toast("File is downloaded successfully at $path")
+                if (allDataresponse != null) {
+                    //PersistData.setIntData(context,AppConstant.oldTrackNo, allDataresponse!![0].track_no)
                     AppConstant.home4Cat.clear()
-                    AppConstant.home4Cat = allDataresponse[0].categories as ArrayList<Category>
+                    AppConstant.home4Cat = allDataresponse!![0].categories as ArrayList<Category>
                     AppConstant.home4Cat.removeAt(0)
                     AppConstant.home4Cat.removeAt(4)
-
                     AppConstant.saveHome4Catagories(applicationContext,AppConstant.home4Cat)
 
-                    loadFragment(HomeFragment())
+                    AppConstant.getContent(context).clear()
+                    AppConstant.getCatagories(context).clear()
+                    AppConstant.getGeneralsettings(context).clear()
+                    AppConstant.getSubCatagories(context).clear()
+
+                    //AppConstant.saveCatagories(applicationContext,allDataresponse!![0].categories)
+                    //AppConstant.saveSubCatagories(applicationContext,allDataresponse!![0].sub_categories)
+                    AppConstant.saveContent(applicationContext,allDataresponse!![0].contents)
+                    AppConstant.saveGeneralsettings(applicationContext,allDataresponse!![0].general_settings)
+
+                    //loadFragment(HomeFragmentOffline())
+
+//            AppConstant.home4Cat.clear()
+//            AppConstant.home4Cat = allDataresponse!![0].categories as java.util.ArrayList<Category>
+//            AppConstant.home4Cat.removeAt(0)
+//            AppConstant.home4Cat.removeAt(4)
+//            AppConstant.getHome4Catagories(context).clear()
+//            AppConstant.saveHome4Catagories(applicationContext,AppConstant.home4Cat)
+
 
                 }
+
             }
 
             override fun onFailure(call: Call<AllDataResponse>, t:Throwable) {
@@ -306,6 +357,9 @@ class MainActivity : AppCompatActivity()  {
         })
 
     }
+
+
+
 
     var pressCount = 0
     override fun onBackPressed() {
@@ -388,5 +442,342 @@ class MainActivity : AppCompatActivity()  {
 //        download.execute()
 //    }
     // [END downloadFile]
+
+    private fun getTrackData() {
+
+        var retrofit = Retrofit.Builder()
+            .baseUrl(baseUrl)
+//.client(okHttpClient)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        val api = retrofit.create(ApiKt::class.java)
+        val userCall = api.getTrackDataData()
+
+        userCall?.enqueue(object: Callback<TrackResponse> {
+            override fun onResponse(call: Call<TrackResponse>, response: Response<TrackResponse>) {
+                //hud.dismiss()
+                trackResponse = response.body()
+                if (trackResponse != null) {
+                    Log.e("response",""+trackResponse.toString())
+                    if (trackResponse!![0].track_no > PersistData.getIntData(context,AppConstant.currentTrackNumber)){
+
+                  //      Toast.makeText(context,"Update available",Toast.LENGTH_SHORT).show()
+                        updateDialog()
+
+                    }
+
+                }
+            }
+
+            override fun onFailure(call: Call<TrackResponse>, t:Throwable) {
+                //hud.dismiss()
+            }
+        })
+
+    }
+
+    private fun updateDialog() {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Update available!")
+        builder.setMessage("Do you want to updaste")
+//builder.setPositiveButton("OK", DialogInterface.OnClickListener(function = x))
+
+        builder.setPositiveButton("Yes") { dialog, which ->
+            dialog.dismiss()
+            getAllData()
+        }
+
+        builder.setNegativeButton("No") { dialog, which ->
+            dialog.dismiss()
+
+
+        }
+
+//        builder.setNeutralButton("Maybe") { dialog, which ->
+//            Toast.makeText(applicationContext,
+//                "Maybe", Toast.LENGTH_SHORT).show()
+//        }
+        builder.show()
+    }
+
+
+    private fun downloadVid1() {
+
+
+//        val file: File = File("Download/uttoronvid/সফটস্কিল.mp4")
+//        val deleted = file.delete()
+
+        if (AppConstant.alldata[0].categories[0].video !=  null){
+            srcUrl = AppConstant.alldata[0].categories[0].video
+        }
+        if (AppConstant.alldata[0].categories[0].name !=  null){
+            filename = AppConstant.alldata[0].categories[0].name+".mp4"
+        }
+
+        //deleteFileUsingDisplayName(context!!,AppConstant.alldata[0].categories[0].name)
+
+        val download = DownloadFileFromURLTask(context!!, outputDir,srcUrl,filename, object :
+            DownloadListener {
+            override fun onSuccess(path: String) {
+                //toast("File is downloaded successfully at $path")
+
+                Log.e("path1",path)
+
+                downloadVid2()
+            }
+
+            override fun onFailure(error: String) {
+                downloadVid1()
+            }
+        })
+        download.execute()
+
+
+    }
+
+    private fun downloadVid2() {
+
+        if (AppConstant.alldata[0].categories[1].video !=  null){
+            srcUrl = AppConstant.alldata[0].categories[1].video
+        }
+        if (AppConstant.alldata[0].categories[1].name !=  null){
+            filename = AppConstant.alldata[0].categories[1].name+".mp4"
+        }
+
+        val download = DownloadFileFromURLTask(context!!, outputDir,srcUrl,filename, object :
+            DownloadListener {
+            override fun onSuccess(path: String) {
+                //toast("File is downloaded successfully at $path")
+                downloadVid3()
+            }
+
+            override fun onFailure(error: String) {
+                //toast(error)
+                downloadVid2()
+            }
+        })
+        download.execute()
+
+    }
+
+    private fun downloadVid3() {
+
+        if (AppConstant.alldata[0].categories[2].video !=  null){
+            srcUrl = AppConstant.alldata[0].categories[2].video
+        }
+        if (AppConstant.alldata[0].categories[2].name !=  null){
+            filename = AppConstant.alldata[0].categories[2].name+".mp4"
+        }
+
+        val download = DownloadFileFromURLTask(context!!, outputDir,srcUrl,filename, object :
+            DownloadListener {
+            override fun onSuccess(path: String) {
+                //toast("File is downloaded successfully at $path")
+                downloadVid4()
+            }
+
+            override fun onFailure(error: String) {
+                //toast(error)
+                downloadVid3()
+            }
+        })
+        download.execute()
+
+    }
+
+    private fun downloadVid4() {
+
+        if (AppConstant.alldata[0].categories[3].video !=  null){
+            srcUrl = AppConstant.alldata[0].categories[3].video
+        }
+        if (AppConstant.alldata[0].categories[3].name !=  null){
+            filename = AppConstant.alldata[0].categories[3].name+".mp4"
+        }
+
+        val download = DownloadFileFromURLTask(context!!, outputDir,srcUrl,filename, object :
+            DownloadListener {
+            override fun onSuccess(path: String) {
+                //toast("File is downloaded successfully at $path")
+                downloadVid5()
+            }
+
+            override fun onFailure(error: String) {
+                //toast(error)
+                downloadVid4()
+            }
+        })
+        download.execute()
+
+    }
+
+
+    private fun downloadVid5() {
+
+        if (AppConstant.alldata[0].categories[4].video !=  null){
+            srcUrl = AppConstant.alldata[0].categories[4].video
+        }
+        if (AppConstant.alldata[0].categories[4].name !=  null){
+            filename = AppConstant.alldata[0].categories[4].name+".mp4"
+        }
+
+        val download = DownloadFileFromURLTask(context!!, outputDir,srcUrl,filename, object :
+            DownloadListener {
+            override fun onSuccess(path: String) {
+                //toast("File is downloaded successfully at $path")
+                downloadVid6()
+            }
+
+            override fun onFailure(error: String) {
+                //toast(error)
+                downloadVid5()
+            }
+        })
+        download.execute()
+
+    }
+
+    private fun downloadVid6() {
+
+        if (AppConstant.alldata[0].categories[5].video !=  null){
+            srcUrl = AppConstant.alldata[0].categories[5].video
+        }
+        if (AppConstant.alldata[0].categories[5].name !=  null){
+            filename = AppConstant.alldata[0].categories[5].name+".mp4"
+        }
+
+        val download = DownloadFileFromURLTask(context!!, outputDir,srcUrl,filename, object :
+            DownloadListener {
+            override fun onSuccess(path: String) {
+                //toast("File is downloaded successfully at $path")
+            }
+
+            override fun onFailure(error: String) {
+                //toast(error)
+                //downloadVid6()
+
+            }
+        })
+        download.execute()
+
+        PersistData.setIntData(context,AppConstant.currentTrackNumber, trackResponse!![0].track_no)
+        //toast("File is downloaded successfully at $path")
+        if (allDataresponse != null) {
+            //PersistData.setIntData(context,AppConstant.oldTrackNo, allDataresponse!![0].track_no)
+            AppConstant.home4Cat.clear()
+            AppConstant.home4Cat = allDataresponse!![0].categories as ArrayList<Category>
+            AppConstant.home4Cat.removeAt(0)
+            AppConstant.home4Cat.removeAt(4)
+            AppConstant.saveHome4Catagories(applicationContext,AppConstant.home4Cat)
+
+            AppConstant.getContent(context).clear()
+            AppConstant.getCatagories(context).clear()
+            AppConstant.getGeneralsettings(context).clear()
+            AppConstant.getSubCatagories(context).clear()
+
+            //AppConstant.saveCatagories(applicationContext,allDataresponse!![0].categories)
+            //AppConstant.saveSubCatagories(applicationContext,allDataresponse!![0].sub_categories)
+            AppConstant.saveContent(applicationContext,allDataresponse!![0].contents)
+            AppConstant.saveGeneralsettings(applicationContext,allDataresponse!![0].general_settings)
+
+            //loadFragment(HomeFragmentOffline())
+
+//            AppConstant.home4Cat.clear()
+//            AppConstant.home4Cat = allDataresponse!![0].categories as java.util.ArrayList<Category>
+//            AppConstant.home4Cat.removeAt(0)
+//            AppConstant.home4Cat.removeAt(4)
+//            AppConstant.getHome4Catagories(context).clear()
+//            AppConstant.saveHome4Catagories(applicationContext,AppConstant.home4Cat)
+
+
+        }
+
+        //downloadAllImage()
+    }
+
+    private fun downloadAllImage() {
+
+        val download = DownloadImageFileFromURLTask(context!!, outputDir,AppConstant.alldata[0].general_settings[0].app_logo_icon,"app_logo_icon.png", object :
+            DownloadListener {
+            override fun onSuccess(path: String) {
+                PersistData.setIntData(context,AppConstant.currentTrackNumber, trackResponse!![0].track_no)
+                //toast("File is downloaded successfully at $path")
+                if (allDataresponse != null) {
+                    //PersistData.setIntData(context,AppConstant.oldTrackNo, allDataresponse!![0].track_no)
+                    AppConstant.home4Cat.clear()
+                    AppConstant.home4Cat = allDataresponse!![0].categories as ArrayList<Category>
+                    AppConstant.home4Cat.removeAt(0)
+                    AppConstant.home4Cat.removeAt(4)
+                    AppConstant.saveHome4Catagories(applicationContext,AppConstant.home4Cat)
+
+                    AppConstant.getContent(context).clear()
+                    AppConstant.getCatagories(context).clear()
+                    AppConstant.getGeneralsettings(context).clear()
+                    AppConstant.getSubCatagories(context).clear()
+
+                    AppConstant.saveCatagories(applicationContext,allDataresponse!![0].categories)
+                    AppConstant.saveSubCatagories(applicationContext,allDataresponse!![0].sub_categories)
+                    AppConstant.saveContent(applicationContext,allDataresponse!![0].contents)
+                    AppConstant.saveGeneralsettings(applicationContext,allDataresponse!![0].general_settings)
+
+
+
+                    AppConstant.home4Cat.clear()
+                    AppConstant.home4Cat = allDataresponse!![0].categories as java.util.ArrayList<Category>
+                    AppConstant.home4Cat.removeAt(0)
+                    AppConstant.home4Cat.removeAt(4)
+                    AppConstant.getHome4Catagories(context).clear()
+                    AppConstant.saveHome4Catagories(applicationContext,AppConstant.home4Cat)
+
+
+                }
+            }
+
+            override fun onFailure(error: String) {
+                //toast(error)
+                //downloadVid6()
+            }
+        })
+        download.execute()
+
+        for ((index, value) in AppConstant.alldata[0].categories.withIndex()) {
+            val download = DownloadImageFileFromURLTask(context!!, outputDir,value.icon,value.name+".png", object :
+                DownloadListener {
+                override fun onSuccess(path: String) {
+                    //toast("File is downloaded successfully at $path")
+                }
+
+                override fun onFailure(error: String) {
+                    //toast(error)
+                    //downloadVid6()
+                }
+            })
+            download.execute()
+        }
+
+        for ((index, value) in AppConstant.alldata[0].sub_categories.withIndex()) {
+            val download = DownloadImageFileFromURLTask(context!!, outputDir,value.icon,value.name+".png", object :
+                DownloadListener {
+                override fun onSuccess(path: String) {
+                    //toast("File is downloaded successfully at $path")
+                }
+
+                override fun onFailure(error: String) {
+                    //toast(error)
+                    //downloadVid6()
+                }
+            })
+            download.execute()
+        }
+
+        //downloadAllImage()
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+
+    }
+
 }
 

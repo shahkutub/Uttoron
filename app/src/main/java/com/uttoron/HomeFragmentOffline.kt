@@ -27,6 +27,7 @@ import com.bumptech.glide.request.transition.Transition
 import com.uttoron.asynctask.DownloadFileFromURLTask
 import com.uttoron.callback.DownloadListener
 import com.uttoron.model.Category
+import com.uttoron.utils.PersistData
 
 private const val outputDir = "uttoron"
 class HomeFragmentOffline : Fragment(){
@@ -152,29 +153,36 @@ class HomeFragmentOffline : Fragment(){
 
 
 
-            //holder.tvCatName.text = list[position].name
 
-           // holder.imgTopCat.setImageURI(Uri.parse("/sdcard/download/uttoron/"+list[position].name+".png"))
+           // if(AppConstant.oldTrackNo == PersistData.getIntData(context,AppConstant.currentTrackNumber)){
+                if (position == 0){
+                    holder.tvCatName.text = "যোগাযোগ \n ব্যবস্থাপনা"
+                    holder.imgTopCat.setImageResource(R.drawable.jogajog)
+                }
 
-            if (position == 0){
-                holder.tvCatName.text = "যোগাযোগ \n ব্যবস্থাপনা"
-                holder.imgTopCat.setImageResource(R.drawable.jogajog)
-            }
+                if (position == 1){
+                    holder.tvCatName.text = "সময় \n ব্যবস্থাপনা"
+                    holder.imgTopCat.setImageResource(R.drawable.somoibebostha)
+                }
 
-            if (position == 1){
-                holder.tvCatName.text = "সময় \n ব্যবস্থাপনা"
-                holder.imgTopCat.setImageResource(R.drawable.somoibebostha)
-            }
+                if (position == 2){
+                    holder.tvCatName.text = "সমস্যা সমাধানের \n দক্ষতা উন্নয়ন"
+                    holder.imgTopCat.setImageResource(R.drawable.dokkta)
+                }
 
-            if (position == 2){
-                holder.tvCatName.text = "সমস্যা সমাধানের \n দক্ষতা উন্নয়ন"
-                holder.imgTopCat.setImageResource(R.drawable.dokkta)
-            }
+                if (position == 3){
+                    holder.tvCatName.text = "সঠিক সিদ্ধান্ত \n গ্রহণ"
+                    holder.imgTopCat.setImageResource(R.drawable.sothiksiddanto)
+                }
+           // }
 
-            if (position == 3){
-                holder.tvCatName.text = "সঠিক সিদ্ধান্ত \n গ্রহণ"
-                holder.imgTopCat.setImageResource(R.drawable.sothiksiddanto)
-            }
+//            if(AppConstant.oldTrackNo < PersistData.getIntData(context,AppConstant.currentTrackNumber)){
+//                holder.tvCatName.text = list[position].name
+//
+//                holder.imgTopCat.setImageURI(Uri.parse("/sdcard/download/uttoron/"+list[position].name+".png"))
+//
+//            }
+
 
 //            if (list[position].name.equals("সঠিক সিদ্ধান্ত গ্রহণ")){
 //                holder.imgTopCat.setImageResource(R.drawable.sothiksiddanto)

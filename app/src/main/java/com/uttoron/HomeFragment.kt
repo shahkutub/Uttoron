@@ -105,23 +105,23 @@ class HomeFragment : Fragment(){
         }
 
 
-        Glide.with(requireContext())
-            .asBitmap()
-            .load(AppConstant.alldata[0].general_settings[0].app_logo_icon)
-            .into(object : SimpleTarget<Bitmap?>() {
-                override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap?>?) {
-                    imgUttorn.setImageBitmap(resource)
-                }
-            })
+//        Glide.with(requireContext())
+//            .asBitmap()
+//            .load(AppConstant.alldata[0].general_settings[0].app_logo_icon)
+//            .into(object : SimpleTarget<Bitmap?>() {
+//                override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap?>?) {
+//                    imgUttorn.setImageBitmap(resource)
+//                }
+//            })
 
-        Glide.with(requireContext())
-            .asBitmap()
-            .load("http://uttoron.nanoit.biz/public/backend/upload/category/202201020555উত্তরণ কুইজ গেইম.png")
-            .into(object : SimpleTarget<Bitmap?>() {
-                override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap?>?) {
-                    imgQuize.setImageBitmap(resource)
-                }
-            })
+//        Glide.with(requireContext())
+//            .asBitmap()
+//            .load("http://uttoron.nanoit.biz/public/backend/upload/category/202201020555উত্তরণ কুইজ গেইম.png")
+//            .into(object : SimpleTarget<Bitmap?>() {
+//                override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap?>?) {
+//                    imgQuize.setImageBitmap(resource)
+//                }
+//            })
 
 
 
@@ -131,7 +131,6 @@ class HomeFragment : Fragment(){
         //downloadFile()
 
     }
-
 
     inner class TopCatListListAdapter(var list: ArrayList<SubCategory>, var context: Context) :
         RecyclerView.Adapter<TopCatListListAdapter.UserViewHolder>() {
@@ -145,16 +144,42 @@ class HomeFragment : Fragment(){
 
 
 
-            holder.tvCatName.text = list[position].name
+            //holder.tvCatName.text = list[position].name
 
-            Glide.with(requireContext())
-                .asBitmap()
-                .load(list[position].icon)
-                .into(object : SimpleTarget<Bitmap?>() {
-                    override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap?>?) {
-                        holder.imgTopCat.setImageBitmap(resource)
-                    }
-                })
+            // holder.imgTopCat.setImageURI(Uri.parse("/sdcard/download/uttoron/"+list[position].name+".png"))
+
+            if (position == 0){
+                holder.tvCatName.text = "যোগাযোগ \n ব্যবস্থাপনা"
+                holder.imgTopCat.setImageResource(R.drawable.jogajog)
+            }
+
+            if (position == 1){
+                holder.tvCatName.text = "সময় \n ব্যবস্থাপনা"
+                holder.imgTopCat.setImageResource(R.drawable.somoibebostha)
+            }
+
+            if (position == 2){
+                holder.tvCatName.text = "সমস্যা সমাধানের \n দক্ষতা উন্নয়ন"
+                holder.imgTopCat.setImageResource(R.drawable.dokkta)
+            }
+
+            if (position == 3){
+                holder.tvCatName.text = "সঠিক সিদ্ধান্ত \n গ্রহণ"
+                holder.imgTopCat.setImageResource(R.drawable.sothiksiddanto)
+            }
+
+//            if (list[position].name.equals("সঠিক সিদ্ধান্ত গ্রহণ")){
+//                holder.imgTopCat.setImageResource(R.drawable.sothiksiddanto)
+//            }
+
+//            Glide.with(requireContext())
+//                .asBitmap()
+//                .load(list[position].icon)
+//                .into(object : SimpleTarget<Bitmap?>() {
+//                    override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap?>?) {
+//                        holder.imgTopCat.setImageBitmap(resource)
+//                    }
+//                })
 
             holder.fullTop.setOnClickListener {
 
@@ -164,7 +189,7 @@ class HomeFragment : Fragment(){
                 AppConstant.catName = list[position].category_name
 
                 val transaction = requireActivity().supportFragmentManager.beginTransaction()
-                transaction.replace(R.id.container, ContentFragment())
+                transaction.replace(R.id.container, ContentFragmentOffline())
                 transaction.addToBackStack(null)
                 transaction.commit()
 
@@ -213,7 +238,7 @@ class HomeFragment : Fragment(){
                 AppConstant.catID = dataList[position].id.toString()
 
                 AppConstant.subCatList.clear()
-                for ((index, value) in AppConstant.alldata[0].sub_categories.withIndex()) {
+                for ((index, value) in AppConstant.getSubCatagories(requireContext()).withIndex()) {
                     if(value.category_name.equals(dataList[position].name)){
                         AppConstant.subCatList.add(value)
                     }
@@ -221,19 +246,43 @@ class HomeFragment : Fragment(){
 
                 //AppConstant.subCatList = dataList[position].
                 val transaction = requireActivity().supportFragmentManager.beginTransaction()
-                transaction.replace(R.id.container, VideoFragment())
+                transaction.replace(R.id.container, VideoFragmentOffline())
                 transaction.addToBackStack(null)
                 transaction.commit()
             }
 
-            Glide.with(requireContext())
-                .asBitmap()
-                .load(dataList[position].icon)
-                .into(object : SimpleTarget<Bitmap?>() {
-                    override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap?>?) {
-                        holder.imgOtehrCat.setImageBitmap(resource)
-                    }
-                })
+            if (dataList[position].name.equals("চাকুরীর সাধারণ নিয়ম কানুন")){
+                holder.imgOtehrCat.setImageResource(R.drawable.chari_niom)
+            }
+            if (dataList[position].name.equals("চাকুরীতে উন্নয়নের উপায়")){
+                holder.imgOtehrCat.setImageResource(R.drawable.chakri_unnoun)
+            }
+            if (dataList[position].name.equals("আর্থিক ব্যবস্থাপনা ও পরিকল্পনা")){
+                holder.imgOtehrCat.setImageResource(R.drawable.arthik_bebosthapona)
+            }
+            if (dataList[position].name.equals("স্বাস্থ্য ও সুরক্ষা")){
+                holder.imgOtehrCat.setImageResource(R.drawable.sasthonew)
+            }
+
+
+//            for ((index, value) in AppConstant.getAllImageBitmap(requireContext()).withIndex()) {
+//                Log.e("bitmap","bitmap: "+value.bitmap)
+//                if (value.name.equals(dataList[position].name)){
+//                    holder.imgOtehrCat.setImageBitmap(value.bitmap)
+//                }
+//
+//            }
+
+            //holder.imgOtehrCat.setImageURI(Uri.parse("/sdcard/download/uttoron/"+dataList[position].name+".png"))
+
+//            Glide.with(requireContext())
+//                .asBitmap()
+//                .load("/sdcard/download/uttoron/"+dataList[position].name)
+//                .into(object : SimpleTarget<Bitmap?>() {
+//                    override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap?>?) {
+//                        holder.imgOtehrCat.setImageBitmap(resource)
+//                    }
+//                })
 
 
         }
@@ -246,6 +295,120 @@ class HomeFragment : Fragment(){
 
         }
     }
+
+//    inner class TopCatListListAdapter(var list: ArrayList<SubCategory>, var context: Context) :
+//        RecyclerView.Adapter<TopCatListListAdapter.UserViewHolder>() {
+//
+//        override fun onCreateViewHolder(parent: ViewGroup, p1: Int) = UserViewHolder(
+//            LayoutInflater.from(parent.context).inflate(R.layout.item_soft_skill, parent, false)
+//        )
+//
+//        override fun getItemCount() = list.size
+//        override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
+//
+//
+//
+//            holder.tvCatName.text = list[position].name
+//
+//            Glide.with(requireContext())
+//                .asBitmap()
+//                .load(list[position].icon)
+//                .into(object : SimpleTarget<Bitmap?>() {
+//                    override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap?>?) {
+//                        holder.imgTopCat.setImageBitmap(resource)
+//                    }
+//                })
+//
+//            holder.fullTop.setOnClickListener {
+//
+//                AppConstant.isHome = true
+//
+//                AppConstant.subCatName = list[position].name
+//                AppConstant.catName = list[position].category_name
+//
+//                val transaction = requireActivity().supportFragmentManager.beginTransaction()
+//                transaction.replace(R.id.container, ContentFragment())
+//                transaction.addToBackStack(null)
+//                transaction.commit()
+//
+////                AppConstant.catName = list[position].category_name
+////                AppConstant.catID = list[position].category_id.toString()
+////                AppConstant.subCatList = list
+////                val transaction = requireActivity().supportFragmentManager.beginTransaction()
+////                transaction.replace(R.id.container, VideoFragment())
+////                transaction.addToBackStack(null)
+////                transaction.commit()
+//            }
+//
+//        }
+//
+//        inner class UserViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+//            val tvCatName = view.tvCatName
+//            val imgTopCat = view.imgTopCat
+//            val fullTop = view.fullTop
+//        }
+//    }
+//
+//    inner class OtherCatListAdapter(var dataList: ArrayList<Category>, var context: Context) :
+//        RecyclerView.Adapter<OtherCatListAdapter.UserViewHolder>() {
+//
+//        override fun onCreateViewHolder(parent: ViewGroup, p1: Int) = UserViewHolder(
+//            LayoutInflater.from(parent.context).inflate(R.layout.item_other_cat, parent, false)
+//        )
+//
+//        override fun getItemCount() = dataList.size
+//        override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
+//
+////            if (position == 0){
+////                dataList.removeAt(0)
+////            }
+////
+////            if (position == 4){
+////                dataList.removeAt(4)
+////                //holder.fullViewCat.visibility = View.GONE
+////            }
+//
+//
+//            holder.tvCatNameOther.text = dataList[position].name
+//
+//            holder.fullViewCat.setOnClickListener {
+//                AppConstant.catName = dataList[position].name
+//                AppConstant.catID = dataList[position].id.toString()
+//
+//                AppConstant.subCatList.clear()
+//                for ((index, value) in AppConstant.alldata[0].sub_categories.withIndex()) {
+//                    if(value.category_name.equals(dataList[position].name)){
+//                        AppConstant.subCatList.add(value)
+//                    }
+//                }
+//
+//                //AppConstant.subCatList = dataList[position].
+//                val transaction = requireActivity().supportFragmentManager.beginTransaction()
+//                transaction.replace(R.id.container, VideoFragment())
+//                transaction.addToBackStack(null)
+//                transaction.commit()
+//            }
+//
+////            Glide.with(requireContext())
+////                .asBitmap()
+////                .load(dataList[position].icon)
+////                .into(object : SimpleTarget<Bitmap?>() {
+////                    override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap?>?) {
+////                        holder.imgOtehrCat.setImageBitmap(resource)
+////                    }
+////                })
+//
+//
+//        }
+//
+//
+//        inner class UserViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+//            val tvCatNameOther = view.tvCatNameOther
+//            val imgOtehrCat = view.imgOtehrCat
+//            val fullViewCat = view.fullViewCat
+//
+//        }
+//    }
 
 
     private fun downloadFile() {

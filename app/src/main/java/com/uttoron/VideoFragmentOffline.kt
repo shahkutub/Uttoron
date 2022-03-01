@@ -74,12 +74,15 @@ class VideoFragmentOffline : Fragment(){
 //            }
 //        }
 
-       // url = "/sdcard/download/uttoron/"+AppConstant.catName+".mp4"
+        url = "/sdcard/download/uttoron/"+AppConstant.catName+".mp4"
         var path = ""
 
         if(AppConstant.catName == "সফটস্কিল"){
             imgThumbnil.setImageResource(R.drawable.thumbnail_softskill)
             path = "android.resource://" + requireContext().getPackageName() + "/"+R.raw.softskill
+
+
+
         }
 
         if(AppConstant.catName == "চাকুরীর সাধারণ নিয়ম কানুন"){

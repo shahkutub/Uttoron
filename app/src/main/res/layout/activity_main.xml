@@ -31,4 +31,21 @@
             app:itemTextColor="@color/white"
             app:menu="@menu/bottom_menu"
     />
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/btn_update_fab"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="Update"
+        android:textAlignment="center"
+        tools:ignore="MissingConstraints"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:visibility="gone"
+        android:layout_marginRight="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_70sdp"
+        />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

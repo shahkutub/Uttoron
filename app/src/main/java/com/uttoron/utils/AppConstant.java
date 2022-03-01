@@ -13,6 +13,7 @@ import com.uttoron.model.ImageBmpModel;
 import com.uttoron.model.SubCategory;
 
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -42,6 +43,12 @@ import static android.content.Context.MODE_PRIVATE;
 public class AppConstant {
     @NotNull
     public static String vidName;
+    @Nullable
+    public static  int oldTrackNo;
+
+    @Nullable
+    public static String currentTrackNumber = "currentTrackNumber";
+    public static int atFirstTrackNumber;
 
 //    public static String clockInOu="";
 //    public static String lat="";

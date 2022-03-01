@@ -55,6 +55,7 @@ import com.google.gson.reflect.TypeToken
 import com.uttoron.asynctask.DownloadImageFileFromURLTask
 import com.uttoron.model.AllDataResponseItem
 import com.uttoron.model.ImageBmpModel
+import com.uttoron.utils.PersistData
 import java.io.IOException
 
 
@@ -80,13 +81,20 @@ class SplashActivity : AppCompatActivity() {
         context = this
 
         val jsonFileString = getJsonDataFromAsset(applicationContext, "all_data.json")
-        Log.i("data", jsonFileString.toString())
+        Log.e("data", jsonFileString.toString())
 
         val gson = Gson()
         val listPersonType = object : TypeToken<List<AllDataResponseItem>>() {}.type
-
         var alldata: List<AllDataResponseItem> = gson.fromJson(jsonFileString, listPersonType)
         alldata.forEachIndexed { idx, person -> Log.e("data", "> Item $idx:\n$alldata") }
+
+        AppConstant.oldTrackNo = alldata[0].track_no
+
+            if(PersistData.getIntData(context,AppConstant.currentTrackNumber) == null){
+            PersistData.setIntData(context,AppConstant.currentTrackNumber,alldata[0].track_no)
+        }
+
+
 
         AppConstant.getContent(context).clear()
         AppConstant.getCatagories(context).clear()
