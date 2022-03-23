@@ -22,6 +22,7 @@ import com.bumptech.glide.request.target.SimpleTarget
 import android.R.attr.data
 import android.net.Uri
 import android.util.Log
+import androidx.recyclerview.widget.GridLayoutManager.SpanSizeLookup
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.transition.Transition
 import com.uttoron.asynctask.DownloadFileFromURLTask
@@ -79,11 +80,42 @@ class HomeFragmentOffline : Fragment(){
 
 
 
+        // OtherCatListAdapter
         val layoutManagerOtherCat = GridLayoutManager(context, 2)
+        layoutManagerOtherCat.orientation = LinearLayoutManager.VERTICAL
         recycleCats!!.setLayoutManager(layoutManagerOtherCat)
         var usersAdapterOtherCat = OtherCatListAdapter(AppConstant.getHome4Catagories(requireContext()) as ArrayList<Category>, requireContext())
         //recyclerDrotoJogajog!!.addItemDecoration(DividerItemDecoration(context, layoutManager.orientation))
         recycleCats!!.setAdapter(usersAdapterOtherCat)
+
+
+        //for last odd item full width
+
+        val num = AppConstant.getHome4Catagories(requireContext()).size
+        if (num % 2 == 0){
+            println("$num is even")
+        }else{
+            layoutManagerOtherCat.spanSizeLookup = object : SpanSizeLookup() {
+                override fun getSpanSize(position: Int): Int {
+                    return if (usersAdapterOtherCat != null) {
+                        when (usersAdapterOtherCat.getItemViewType(position)) {
+                            1 -> 1
+                            0 -> 2 //number of columns of the grid
+                            else -> -1
+                        }
+                    } else {
+                        -1
+                    }
+                }
+            }
+        }
+        //if (AppConstant.getHome4Catagories.size = )
+
+
+
+
+
+
 
         relGoVidPage.setOnClickListener {
             AppConstant.catName = topCatName
@@ -91,6 +123,13 @@ class HomeFragmentOffline : Fragment(){
             AppConstant.subCatList = topcatCatSubCategoryList
             val transaction = requireActivity().supportFragmentManager.beginTransaction()
             transaction.replace(R.id.container, VideoFragmentOfflineSoftSkill())
+            transaction.addToBackStack(null)
+            transaction.commit()
+        }
+
+        goQuize.setOnClickListener {
+            val transaction = requireActivity().supportFragmentManager.beginTransaction()
+            transaction.replace(R.id.container, QuizeFragment())
             transaction.addToBackStack(null)
             transaction.commit()
         }
@@ -227,6 +266,7 @@ class HomeFragmentOffline : Fragment(){
         }
     }
 
+
     inner class OtherCatListAdapter(var dataList: ArrayList<Category>, var context: Context) :
         RecyclerView.Adapter<OtherCatListAdapter.UserViewHolder>() {
 
@@ -234,6 +274,9 @@ class HomeFragmentOffline : Fragment(){
             LayoutInflater.from(parent.context).inflate(R.layout.item_other_cat, parent, false)
         )
 
+        override fun getItemViewType(position: Int): Int {
+            return if (position == getItemCount() - 1) 0 else 1 // If the item is last, `itemViewType` will be 0
+        }
         override fun getItemCount() = dataList.size
         override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
 

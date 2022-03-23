@@ -1,0 +1,263 @@
+{
+	"questions": [{
+			"question": "সফটস্কিল কাকে বলে ?",
+			"options": [{
+					"name": "মেশিনের কাজ ভালো মত জানা",
+					"answer_status": false
+				},
+				{
+					"name": "কর্মক্ষেত্রে সফল ভাবে কাজ করার জন্য মানবিক গুণাবলি সমূহ",
+					"answer_status": true
+				},
+				{
+					"name": "ট্রেনিং এর মাধ্যমে প্রাপ্ত কারিগরী দক্ষতা সমূহ",
+					"answer_status": false
+				},
+				{
+					"name": "বন্ধু বানানো",
+					"answer_status": false
+				}
+			]
+		},
+		{
+			"question": "কর্মক্ষেত্রে সফল যোগাযোগ কোনটি ?",
+			"options": [{
+					"name": "বিভিন্ন জনের মোবাইল নাম্বার নিয়ে যোগযোগ করা",
+					"answer_status": false
+				},
+				{
+					"name": "অন্যান্য সহকর্মীদের বন্ধু বানিয়ে খোঁজ খবর নেয়া",
+					"answer_status": false
+				},
+				{
+					"name": "সুপারভাইজারের নির্দেশ মত কাজ সম্পন্ন করা",
+					"answer_status": true
+				},
+				{
+					"name": "সহকর্মীদের সাথে কর্মরত সময়ে আড্ডা দেওয়া",
+					"answer_status": false
+				}
+			]
+		},
+		{
+			"question": "নারী সহকর্মীদের প্রতি আচরণ কেমন হওয়া উচিৎ ?",
+			"options": [{
+					"name": "এড়িয়ে চলা",
+					"answer_status": false
+				},
+				{
+					"name": "কাজে সাহায্য না করা",
+					"answer_status": false
+				},
+				{
+					"name": "পুরুষ এবং নারী সহকর্মীর ভেদাভেদ না করা",
+					"answer_status": true
+				},
+				{
+					"name": "কাজ না বুঝিয়ে দেওয়া",
+					"answer_status": false
+				}
+			]
+		},
+		{
+			"question": "ওভারটাইম কি ?",
+			"options": [{
+					"name": "নির্ধারিত সময়ের অতিরিক্ত কাজ করে আয় করা",
+					"answer_status": true
+				},
+				{
+					"name": "সময়মতো কাজ শেষ না করে পরে করা",
+					"answer_status": false
+				},
+				{
+					"name": "কাজ শেষে আড্ডা দিয়ে সময় বাড়ানো",
+					"answer_status": false
+				},
+				{
+					"name": "একই কাজ বেশি সময় ধরে করা",
+					"answer_status": false
+				}
+			]
+		},
+		{
+			"question": "কারো প্রতি অভিযোগ থাকলে কি করা উচিৎ ?",
+			"options": [{
+					"name": "মারামারি করা",
+					"answer_status": false
+				},
+				{
+					"name": "হুমকি ও ভয়ভীতি প্রদর্শন",
+					"answer_status": false
+				},
+				{
+					"name": "কর্মক্ষেত্রের নিয়ম অনুযায়ী সুপারভাইজারকে জানানো",
+					"answer_status": true
+				},
+				{
+					"name": "অন্যান্য সহকর্মীর কাছে অভিযোগ করা",
+					"answer_status": false
+				}
+			]
+		},
+		{
+			"question": "ছুটি লাগলে কি করা উচিৎ ?",
+			"options": [{
+					"name": "কাউকে না জানিয়ে চলে যাওয়া",
+					"answer_status": false
+				},
+				{
+					"name": "সহকর্মীকে জানিয়ে যাওয়া",
+					"answer_status": false
+				},
+				{
+					"name": "সুপারভাইজরের কাছে আবেদন করে অনুমতি নেয়া",
+					"answer_status": true
+				},
+				{
+					"name": "ইচ্ছা মত কাজে না আসা",
+					"answer_status": false
+				}
+			]
+		},
+		{
+			"question": "কোনটি ব্যক্তিগত সুরক্ষার মধ্যে পরে না ?",
+			"options": [{
+					"name": "এপ্রোন পরা",
+					"answer_status": false
+				},
+				{
+					"name": "হেলমেট খুলে রেখে কাজ করা",
+					"answer_status": true
+				},
+				{
+					"name": "বুট, গ্লভস ও সেইফটি গ্লাস পরা",
+					"answer_status": false
+				},
+				{
+					"name": "উপরের কোনটাই না",
+					"answer_status": false
+				}
+			]
+		},
+		{
+			"question": "ব্যাংকে একাউন্ট খোলার জন্য কোনটির প্রয়োজন নেই ?",
+			"options": [{
+					"name": "মোবাইল নাম্বার",
+					"answer_status": false
+				},
+				{
+					"name": "ঠিকানা",
+					"answer_status": false
+				},
+				{
+					"name": "জাতীয় পরিচয়পত্র",
+					"answer_status": false
+				},
+				{
+					"name": "শিক্ষাগত যোগ্যতার প্রমান",
+					"answer_status": true
+				}
+			]
+		},
+		{
+			"question": "হঠাৎ আগুন লাগলে করণীয় কি ?",
+			"options": [{
+					"name": "চিৎকার করে দৌড় দেয়া",
+					"answer_status": false
+				},
+				{
+					"name": "জরুরী বর্হিগমন পথ ব্যবহার করে বাইরে যাওয়া",
+					"answer_status": true
+				},
+				{
+					"name": "বিভিন্নজনকে ফোনে জানিয়ে দেয়া",
+					"answer_status": false
+				},
+				{
+					"name": "গুজব রটানো",
+					"answer_status": false
+				}
+			]
+		},
+		{
+			"question": "ভূমিকম্প হলে করণীয় কি ?",
+			"options": [{
+					"name": "দ্রæত লিফট দিয়ে নিচে নামা",
+					"answer_status": false
+				},
+				{
+					"name": "তাড়াতাড়ি করে বাইরে যাওয়া",
+					"answer_status": false
+				},
+				{
+					"name": "টেবিল বা শক্ত কিছুর নিচে আশ্রয় নেয়া",
+					"answer_status": true
+				},
+				{
+					"name": "এক জায়গায় দাঁড়িয়ে থাকা",
+					"answer_status": false
+				}
+			]
+		},
+		{
+			"question": "চাকুরীতে উন্নতি বা পদোন্নতি হয় কিভাবে ?",
+			"options": [{
+					"name": "সুপারভাইজারের নির্দেশ মত কাজ করা",
+					"answer_status": false
+				},
+				{
+					"name": "কর্মক্ষেত্রে সকল নিয়ম মেনে কাজ করা",
+					"answer_status": false
+				},
+				{
+					"name": "প্রয়োজনীয় সফট স্কিল গুলো রপ্ত করা",
+					"answer_status": false
+				},
+				{
+					"name": "উপরের সবগুলি",
+					"answer_status": true
+				}
+			]
+		},
+		{
+			"question": "কর্মক্ষেত্রে একজন ভাল কর্মীর কি করা উচিৎ ?",
+			"options": [{
+					"name": "সময় মত কাজে আসা",
+					"answer_status": false
+				},
+				{
+					"name": "দায়িত্ব বুঝে নিয়ে কাজ করা",
+					"answer_status": false
+				},
+				{
+					"name": "কর্মক্ষেত্রের নিয়ম কানুন মেনে চলা",
+					"answer_status": false
+				},
+				{
+					"name": "উপরের সবগুলি",
+					"answer_status": true
+				}
+			]
+		},
+		{
+			"question": "চাকুরী ছাড়ার কি কি নিয়ম মেনে চলতে হয় ?",
+			"options": [{
+					"name": "আগে থেকে সুপারভাইজার কে জানানো",
+					"answer_status": false
+				},
+				{
+					"name": "নিয়ম অনুযায়ী রিজাইন দেওয়া",
+					"answer_status": false
+				},
+				{
+					"name": "দায়িত্বপ্রাপ্ত কাজ বুঝিয়ে দেওয়া",
+					"answer_status": false
+				},
+				{
+					"name": "উপরের সবগুলি",
+					"answer_status": true
+				}
+			]
+		}
+	]
+}

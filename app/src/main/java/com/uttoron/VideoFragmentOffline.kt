@@ -23,6 +23,7 @@ import kotlinx.android.synthetic.main.item_other_cat.view.*
 import kotlinx.android.synthetic.main.video_layout.*
 import kotlinx.android.synthetic.main.video_play_layout.*
 import android.os.Build
+import androidx.recyclerview.widget.LinearLayoutManager
 
 
 class VideoFragmentOffline : Fragment(){
@@ -52,10 +53,33 @@ class VideoFragmentOffline : Fragment(){
 
 
         val layoutManagerOtherCat = GridLayoutManager(context, 2)
+        layoutManagerOtherCat.orientation = LinearLayoutManager.VERTICAL
         recyclevidCats!!.setLayoutManager(layoutManagerOtherCat)
         var usersAdapterOtherCat = OtherCatListAdapter(AppConstant.subCatList, requireContext())
         //recyclerDrotoJogajog!!.addItemDecoration(DividerItemDecoration(context, layoutManager.orientation))
         recyclevidCats!!.setAdapter(usersAdapterOtherCat)
+
+        //for last odd item full width
+
+        val num = AppConstant.subCatList.size
+        if (num % 2 == 0){
+            println("$num is even")
+        }else{
+            layoutManagerOtherCat.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
+                override fun getSpanSize(position: Int): Int {
+                    return if (usersAdapterOtherCat != null) {
+                        when (usersAdapterOtherCat.getItemViewType(position)) {
+                            1 -> 1
+                            0 -> 2 //number of columns of the grid
+                            else -> -1
+                        }
+                    } else {
+                        -1
+                    }
+                }
+            }
+        }
+
 
         imgBack.setOnClickListener {
             requireActivity().onBackPressed()
@@ -180,6 +204,9 @@ class VideoFragmentOffline : Fragment(){
         override fun onCreateViewHolder(parent: ViewGroup, p1: Int) = UserViewHolder(
             LayoutInflater.from(parent.context).inflate(R.layout.item_other_cat, parent, false)
         )
+        override fun getItemViewType(position: Int): Int {
+            return if (position == getItemCount() - 1) 0 else 1 // If the item is last, `itemViewType` will be 0
+        }
 
         override fun getItemCount() = notifications.size
         override fun onBindViewHolder(holder: UserViewHolder, position: Int) {

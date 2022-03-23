@@ -288,6 +288,7 @@
         android:layout_alignParentBottom="true"
         >
         <RelativeLayout
+            android:id="@+id/goQuize"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/home_grdient_bg"
