@@ -63,7 +63,7 @@ private const val outputDir = "uttoron"
 class SplashActivity : AppCompatActivity() {
     private var filename: String = ""
     private var srcUrl: String  = ""
-
+    private var handler: Handler? = null
     /**
      * Duration of wait
      */
@@ -185,9 +185,11 @@ class SplashActivity : AppCompatActivity() {
         logo_image.visibility = View.VISIBLE
 
         logo_image.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-            finish()
+//            handler?.removeCallbacksAndMessages(null)
+//
+//            val intent = Intent(this, MainActivity::class.java)
+//            startActivity(intent)
+//            finish()
         }
 
         val anim = ValueAnimator.ofFloat(1f, 1.5f)
@@ -233,7 +235,7 @@ class SplashActivity : AppCompatActivity() {
             val mainIntent = Intent(this, MainActivity::class.java)
             startActivity(mainIntent)
             finish()
-        }, 4000)
+        }, 3000)
 
 
     }

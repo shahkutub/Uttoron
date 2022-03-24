@@ -5,12 +5,16 @@
         android:id="@+id/navigation_home"
         android:icon="@drawable/ic_action_home"
         android:title="home"/>
-    <item
-            android:id="@+id/navigation_fav"
-            android:icon="@drawable/ic_action_favorites"
-            android:title="favorites"/>
-    <item
-            android:id="@+id/navigation_settings"
-            android:icon="@drawable/ic_action_settings"
-            android:title="settings"/>
+<!--    <item-->
+<!--            android:id="@+id/navigation_fav"-->
+<!--            android:icon="@drawable/ic_action_favorites"-->
+<!--            android:title="favorites"/>-->
+
+<!--    <item-->
+<!--        android:id="@+id/navigation_fav"-->
+<!--        android:title="favorites"/>-->
+<!--    <item-->
+<!--            android:id="@+id/navigation_settings"-->
+<!--            android:icon="@drawable/ic_action_settings"-->
+<!--            android:title="settings"/>-->
 </menu>

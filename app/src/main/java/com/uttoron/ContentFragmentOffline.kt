@@ -37,7 +37,7 @@ class ContentFragmentOffline : Fragment(){
         super.onActivityCreated(savedInstanceState)
 
 
-        tvTitle.text = AppConstant.catName+" > "+AppConstant.subCatName
+        tvTitle.text = AppConstant.subCatName
         if (NetInfo.isOnline(context)){
            // tvSloganTop.text = AppConstant.getGeneralsettings(requireContext())[0].slogan
 

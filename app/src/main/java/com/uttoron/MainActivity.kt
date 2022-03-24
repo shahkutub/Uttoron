@@ -95,14 +95,14 @@ class MainActivity : AppCompatActivity()  {
         result = checkPermission()
         navigationView.setOnNavigationItemSelectedListener {
             when(it.itemId){
-                R.id.navigation_fav-> {
-                    title=resources.getString(R.string.favorites)
-                    loadFragment(FavoriteFragment())
-                    return@setOnNavigationItemSelectedListener true
-                }
+//                R.id.navigation_fav-> {
+//                    title=resources.getString(R.string.favorites)
+//                    loadFragment(FavoriteFragment())
+//                    return@setOnNavigationItemSelectedListener true
+//                }
 
                 R.id.navigation_home-> {
-                    title=resources.getString(R.string.home)
+                    //title=resources.getString(R.string.home)
                     if (!NetInfo.isOnline(applicationContext)) {
                         loadFragment(HomeFragmentOffline())
                         //Toast.makeText(this, "Please Connect to Internet", Toast.LENGTH_LONG).show();
@@ -114,11 +114,11 @@ class MainActivity : AppCompatActivity()  {
                     return@setOnNavigationItemSelectedListener true
                 }
 
-                R.id.navigation_settings-> {
-                    title=resources.getString(R.string.settings)
-                    loadFragment(SettingsFragment())
-                    return@setOnNavigationItemSelectedListener true
-                }
+//                R.id.navigation_settings-> {
+//                    title=resources.getString(R.string.settings)
+//                    loadFragment(SettingsFragment())
+//                    return@setOnNavigationItemSelectedListener true
+//                }
 
             }
             false

@@ -70,6 +70,7 @@
                 android:gravity="center"
                 android:text="উত্তরণ কুইজ"
                 android:textColor="#5E5148"
+                android:textStyle="bold"
                 android:textSize="@dimen/_15sdp" />
 
             <LinearLayout
@@ -97,7 +98,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text=""
-                        android:textColor="#5E5148"
+                        android:textColor="#941D2A"
                         android:textStyle="bold"
                         android:textSize="@dimen/_15sdp" />
 

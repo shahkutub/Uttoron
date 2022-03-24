@@ -1,6 +1,8 @@
 package com.uttoron
 
 import android.content.Context
+import android.graphics.Color
+import android.graphics.Typeface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +15,7 @@ import android.widget.*
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.uttoron.model.QuizeResponse
+import com.uttoron.utils.AlertMessage
 import com.uttoron.utils.AppConstant
 import kotlinx.android.synthetic.main.quiz_result.*
 import java.io.IOException
@@ -23,6 +26,7 @@ class QuizeFragment : Fragment(){
     private var totalAnsCount = 0
     private var rightAnsCount = 0
     var forwardCount = 0
+    var isChecked = false
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.quize_layout,container,false)
     }
@@ -46,30 +50,39 @@ class QuizeFragment : Fragment(){
 
 
         imgBtnQuesForward.setOnClickListener {
-            forwardCount++
-            Log.e("forwardCound","forwardCound: "+forwardCount)
-            //var quescount = forwardCound +1
-            if(forwardCount < alldata!!.questions.size ){
-                tvQuestionName.text = alldata!!.questions[forwardCount].question
 
-                radioGroup.removeAllViews()
-                alldata!!.questions[forwardCount].options.forEachIndexed { index, element ->
-                    val rdbtn = RadioButton(requireContext())
-                    rdbtn.id = View.generateViewId()
-                    rdbtn.text = element.name
-                    //rdbtn.setOnClickListener(requireActivity())
-                    radioGroup.addView(rdbtn)
+            if(isChecked){
+                forwardCount++
+                Log.e("forwardCound","forwardCound: "+forwardCount)
+                //var quescount = forwardCound +1
+                if(forwardCount < alldata!!.questions.size ){
+                    tvQuestionName.text = alldata!!.questions[forwardCount].question
+
+                    radioGroup.removeAllViews()
+                    alldata!!.questions[forwardCount].options.forEachIndexed { index, element ->
+                        val rdbtn = RadioButton(requireContext())
+                        rdbtn.id = View.generateViewId()
+                        rdbtn.text = element.name
+                        rdbtn.setTextColor(Color.BLACK)
+                        rdbtn.setTypeface(null, Typeface.BOLD)
+                        //rdbtn.setOnClickListener(requireActivity())
+                        radioGroup.addView(rdbtn)
+                    }
                 }
-            }
 
-            var quescount = forwardCount +1
-            if(quescount == alldata!!.questions.size){
-                imgBtnQuesForward.visibility = View.GONE
-            }
+                var quescount = forwardCount +1
+                if(quescount == alldata!!.questions.size){
+                    imgBtnQuesForward.visibility = View.GONE
+                }
 
-            textViewAlertMsg.visibility = View.GONE
-            textViewRightAns.visibility = View.GONE
-            textViewRightAns.text = ""
+                textViewAlertMsg.visibility = View.GONE
+                textViewRightAns.visibility = View.GONE
+                textViewRightAns.text = ""
+                isChecked = false
+            }else{
+                AlertMessage.showMessage(requireContext(),"সতর্কতা","পরবর্তী প্রশ্নে যেতে এই প্রশ্নের উত্তর দিন।")
+
+            }
 
         }
 
@@ -91,6 +104,7 @@ class QuizeFragment : Fragment(){
 
                 }
 
+                isChecked = true
                 alldata!!.questions[forwardCount].isAnswered = true
                 Log.e("forwardCound","forwardCound: "+forwardCount)
 
@@ -128,6 +142,8 @@ class QuizeFragment : Fragment(){
 
 
         buttonEnd.setOnClickListener {
+            isChecked = false
+            forwardCount = 0
             totalAnsCount = 0
             rightAnsCount = 0
 
@@ -146,6 +162,7 @@ class QuizeFragment : Fragment(){
             if(totalAnsCount >0){
                 quizView.visibility = View.GONE
                 linResult.visibility = View.VISIBLE
+                imgBtnQuesForward.visibility = View.VISIBLE
                 tvResult1.text = "আপনি মোট প্রশ্নের উত্তর দিয়েছেন "+AppConstant.getBngnumber(totalAnsCount.toString())+" টি"
                 tvResult2.text = "সঠিক উত্তর দিয়েছেন "+AppConstant.getBngnumber(rightAnsCount.toString())+" টি"
                 var vulCount = totalAnsCount - rightAnsCount
@@ -161,10 +178,12 @@ class QuizeFragment : Fragment(){
         }
 
         btnDashBoard.setOnClickListener {
-            quizView.visibility = View.VISIBLE
-            linResult.visibility = View.GONE
+//            quizView.visibility = View.VISIBLE
+//            linResult.visibility = View.GONE
+//
+//            initQuiz()
 
-            initQuiz()
+            requireActivity().onBackPressed()
         }
         var pressCount = 0
         imgBack.setOnClickListener {
@@ -220,13 +239,15 @@ class QuizeFragment : Fragment(){
         //var alldata: QuizeResponse = gson.fromJson(jsonFileString, listPersonType)
         alldata = gson.fromJson(jsonFileString, listPersonType)
 
-        tvQuestionName.text = alldata!!.questions[0].question
+        tvQuestionName.text = "প্রশ্নঃ "+alldata!!.questions[0].question
 
         radioGroup.removeAllViews()
         alldata!!.questions[0].options.forEachIndexed { index, element ->
             val rdbtn = RadioButton(requireContext())
             rdbtn.id = View.generateViewId()
             rdbtn.text = element.name
+            rdbtn.setTextColor(Color.BLACK)
+            rdbtn.setTypeface(null, Typeface.BOLD)
             //rdbtn.setOnClickListener(requireActivity())
             radioGroup.addView(rdbtn)
         }
