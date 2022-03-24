@@ -111,14 +111,14 @@ class MainActivity : AppCompatActivity()  {
                         //loadFragment(HomeFragment())
                         //getAllData()
                     }
-                    return@setOnNavigationItemSelectedListener true
+                    return@setOnNavigationItemSelectedListener false
                 }
 
-//                R.id.navigation_settings-> {
-//                    title=resources.getString(R.string.settings)
-//                    loadFragment(SettingsFragment())
-//                    return@setOnNavigationItemSelectedListener true
-//                }
+                R.id.navigation_settings-> {
+                    title=resources.getString(R.string.settings)
+                    loadFragment(InfoFragment())
+                    return@setOnNavigationItemSelectedListener false
+                }
 
             }
             false

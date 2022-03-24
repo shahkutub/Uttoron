@@ -20,6 +20,7 @@ import android.graphics.Bitmap
 import com.bumptech.glide.request.target.SimpleTarget
 
 import android.R.attr.data
+import android.icu.text.IDNA
 import android.net.Uri
 import android.util.Log
 import androidx.recyclerview.widget.GridLayoutManager.SpanSizeLookup
@@ -115,7 +116,12 @@ class HomeFragmentOffline : Fragment(){
 
 
 
-
+        topbar.setOnClickListener {
+            val transaction = requireActivity().supportFragmentManager.beginTransaction()
+            transaction.replace(R.id.container, InfoFragment())
+            transaction.addToBackStack(null)
+            transaction.commit()
+        }
 
         relGoVidPage.setOnClickListener {
             AppConstant.catName = topCatName
@@ -195,24 +201,28 @@ class HomeFragmentOffline : Fragment(){
 
            // if(AppConstant.oldTrackNo == PersistData.getIntData(context,AppConstant.currentTrackNumber)){
                 if (position == 0){
-                    holder.tvCatName.text = "যোগাযোগ \n ব্যবস্থাপনা"
+                    holder.tvCatName.text = "কর্মক্ষেত্রে \n যোগাযোগ"
                     holder.imgTopCat.setImageResource(R.drawable.jogajog)
                 }
 
-                if (position == 1){
-                    holder.tvCatName.text = "সময় \n ব্যবস্থাপনা"
-                    holder.imgTopCat.setImageResource(R.drawable.somoibebostha)
-                }
 
-                if (position == 2){
-                    holder.tvCatName.text = "সমস্যা সমাধানের \n দক্ষতা উন্নয়ন"
+
+                if (position == 1){
+                    holder.tvCatName.text = "সমস্যা সমাধানের \n উপায়"
                     holder.imgTopCat.setImageResource(R.drawable.dokkta)
                 }
 
-                if (position == 3){
-                    holder.tvCatName.text = "সঠিক সিদ্ধান্ত \n গ্রহণ"
-                    holder.imgTopCat.setImageResource(R.drawable.sothiksiddanto)
-                }
+            if (position == 2){
+                holder.tvCatName.text = "সঠিক সিদ্ধান্ত \n গ্রহণ"
+                holder.imgTopCat.setImageResource(R.drawable.sothiksiddanto)
+            }
+
+            if (position == 3){
+                holder.tvCatName.text = "সময় \n ব্যবস্থাপনা"
+                holder.imgTopCat.setImageResource(R.drawable.somoibebostha)
+            }
+
+
            // }
 
 //            if(AppConstant.oldTrackNo < PersistData.getIntData(context,AppConstant.currentTrackNumber)){
@@ -242,7 +252,7 @@ class HomeFragmentOffline : Fragment(){
 
                 AppConstant.subCatName = list[position].name
                 AppConstant.catName = list[position].category_name
-
+                //AppConstant.subCatName = list[position].category_name
                 val transaction = requireActivity().supportFragmentManager.beginTransaction()
                 transaction.replace(R.id.container, ContentFragmentOffline())
                 transaction.addToBackStack(null)

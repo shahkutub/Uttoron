@@ -107,8 +107,6 @@ class VideoFragmentOfflineSoftSkill : Fragment(){
         videoview.setMediaController(controller)
 
 
-
-
         imgPlay.setOnClickListener {
 
             imgThumbnil.setVisibility(VideoView.GONE)
@@ -190,25 +188,26 @@ class VideoFragmentOfflineSoftSkill : Fragment(){
 //                })
 
             if (position == 0){
-                holder.tvCatNameOther.text = "যোগাযোগ \n ব্যবস্থাপনা"
+                holder.tvCatNameOther.text = "কর্মক্ষেত্রে \n যোগাযোগ"
                 holder.imgOtehrCat.setImageResource(R.drawable.jogajog)
             }
 
-            if (position == 1){
-                holder.tvCatNameOther.text = "সময় \n ব্যবস্থাপনা"
-                holder.imgOtehrCat.setImageResource(R.drawable.somoibebostha)
-            }
 
-            if (position == 2){
-                holder.tvCatNameOther.text = "সমস্যা সমাধানের \n দক্ষতা উন্নয়"
+
+            if (position == 1){
+                holder.tvCatNameOther.text = "সমস্যা সমাধানের \n উপায়"
                 holder.imgOtehrCat.setImageResource(R.drawable.dokkta)
             }
 
-            if (position == 3){
+            if (position == 2){
                 holder.tvCatNameOther.text = "সঠিক সিদ্ধান্ত \n গ্রহণ"
                 holder.imgOtehrCat.setImageResource(R.drawable.sothiksiddanto)
             }
 
+            if (position == 3){
+                holder.tvCatNameOther.text = "সময় \n ব্যবস্থাপনা"
+                holder.imgOtehrCat.setImageResource(R.drawable.somoibebostha)
+            }
 
             holder.fullViewCat.setOnClickListener {
                 AppConstant.isHome = false

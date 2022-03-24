@@ -223,6 +223,8 @@ class VideoFragmentOffline : Fragment(){
 //                    }
 //                })
 
+            holder.imgOtehrCat.visibility =View.GONE
+
             holder.fullViewCat.setOnClickListener {
                 AppConstant.isHome = false
 

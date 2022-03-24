@@ -30,14 +30,14 @@
 
             <ImageView
                 android:id="@+id/imgUttorn"
-                android:layout_width="@dimen/_45sdp"
-                android:layout_height="@dimen/_65sdp"
+                android:layout_width="@dimen/_35sdp"
+                android:layout_height="@dimen/_55sdp"
                 android:scaleType="fitXY"
                 android:src="@drawable/app_logo_icon" />
 
             <ImageView
-                android:layout_width="@dimen/_140sdp"
-                android:layout_height="@dimen/_65sdp"
+                android:layout_width="@dimen/_130sdp"
+                android:layout_height="@dimen/_55sdp"
                 android:layout_marginLeft="@dimen/_5sdp"
                 android:layout_marginTop="@dimen/_5sdp"
                 android:src="@drawable/slogan" />
@@ -64,7 +64,8 @@
             android:textSize="@dimen/_15sdp"
             android:textStyle="bold"
             android:layout_marginTop="@dimen/_20sdp"
-
+            android:padding="@dimen/_7sdp"
+            android:background="@drawable/cat_grdient_bg"
             />
 
 
@@ -76,6 +77,13 @@
             android:text="..................................................................................................................................................."
             android:textColor="@color/cardview_shadow_start_color"
             android:textSize="@dimen/_9sdp" />
+
+
+        <include
+            android:id="@+id/vidView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            layout="@layout/video_play_layout"/>
 
 
         <TextView
