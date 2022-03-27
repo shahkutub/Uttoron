@@ -30,6 +30,9 @@ import com.uttoron.asynctask.DownloadFileFromURLTask
 import com.uttoron.callback.DownloadListener
 import com.uttoron.model.Category
 import com.uttoron.utils.PersistData
+import kotlinx.android.synthetic.main.content_layout.*
+import kotlinx.android.synthetic.main.home_layout_new_design.imgUttorn
+import kotlinx.android.synthetic.main.home_layout_new_design.topbar
 
 private const val outputDir = "uttoron"
 class HomeFragmentOffline : Fragment(){
@@ -73,6 +76,15 @@ class HomeFragmentOffline : Fragment(){
             }
         }
 
+        topcatCatSubCategoryList.sortBy { it.sort_order }
+
+
+        topcatCatSubCategoryList.forEachIndexed { index, subCategory ->
+            Log.e("sort_order","sort_order: "+subCategory.sort_order)
+            Log.e("sort_order","sort_order: "+subCategory.name)
+        }
+
+
         val layoutManager = GridLayoutManager(context, 2)
         recycleSoftSkill!!.setLayoutManager(layoutManager)
         var usersAdapter = TopCatListListAdapter(topcatCatSubCategoryList, requireContext())
@@ -80,6 +92,13 @@ class HomeFragmentOffline : Fragment(){
         recycleSoftSkill!!.setAdapter(usersAdapter)
 
 
+
+        AppConstant.getHome4Catagories(requireContext()).sortBy { it.sort_order }
+
+        AppConstant.getHome4Catagories(requireContext()).forEachIndexed { index, subCategory ->
+            Log.e("sort_order","sort_order: "+subCategory.sort_order)
+            Log.e("sort_order","sort_order: "+subCategory.name)
+        }
 
         // OtherCatListAdapter
         val layoutManagerOtherCat = GridLayoutManager(context, 2)
@@ -115,12 +134,11 @@ class HomeFragmentOffline : Fragment(){
 
 
 
-
         topbar.setOnClickListener {
-            val transaction = requireActivity().supportFragmentManager.beginTransaction()
-            transaction.replace(R.id.container, InfoFragment())
-            transaction.addToBackStack(null)
-            transaction.commit()
+//            val transaction = requireActivity().supportFragmentManager.beginTransaction()
+//            transaction.replace(R.id.container, InfoFragment())
+//            transaction.addToBackStack(null)
+//            transaction.commit()
         }
 
         relGoVidPage.setOnClickListener {
@@ -200,24 +218,22 @@ class HomeFragmentOffline : Fragment(){
 
 
            // if(AppConstant.oldTrackNo == PersistData.getIntData(context,AppConstant.currentTrackNumber)){
-                if (position == 0){
+                if (list[position].name.equals("কর্মক্ষেত্রে যোগাযোগ")){
                     holder.tvCatName.text = "কর্মক্ষেত্রে \n যোগাযোগ"
                     holder.imgTopCat.setImageResource(R.drawable.jogajog)
                 }
 
-
-
-                if (position == 1){
+                if (list[position].name.equals("সমস্যা সমাধানের উপায়")){
                     holder.tvCatName.text = "সমস্যা সমাধানের \n উপায়"
                     holder.imgTopCat.setImageResource(R.drawable.dokkta)
                 }
 
-            if (position == 2){
+            if (list[position].name.equals("সঠিক সিদ্ধান্ত গ্রহণ")){
                 holder.tvCatName.text = "সঠিক সিদ্ধান্ত \n গ্রহণ"
                 holder.imgTopCat.setImageResource(R.drawable.sothiksiddanto)
             }
 
-            if (position == 3){
+            if (list[position].name.equals("সময় ব্যবস্থাপনা")){
                 holder.tvCatName.text = "সময় \n ব্যবস্থাপনা"
                 holder.imgTopCat.setImageResource(R.drawable.somoibebostha)
             }

@@ -44,11 +44,16 @@ public class AppConstant {
     @NotNull
     public static String vidName;
     @Nullable
-    public static  int oldTrackNo;
+    public static  String installTimeTrackNo = "installTimeTrackNo";
 
     @Nullable
     public static String currentTrackNumber = "currentTrackNumber";
     public static int atFirstTrackNumber;
+    @Nullable
+    public static  String about_uttron = "";
+    @Nullable
+    public static  String infoPagename = "";
+    public static  String infoContent = "";
 
 //    public static String clockInOu="";
 //    public static String lat="";
@@ -666,6 +671,7 @@ public  static final String  getEngnumber(String number){
     @NotNull
     public static ArrayList<Category> home4Cat = new ArrayList<>();
     @NotNull
-    public static String subCatName;
+    public static String subCatName = "";
+    public static String subCatId = "";
     public static boolean isHome = false;
 }

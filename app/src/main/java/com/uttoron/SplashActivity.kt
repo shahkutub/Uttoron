@@ -88,32 +88,38 @@ class SplashActivity : AppCompatActivity() {
         var alldata: List<AllDataResponseItem> = gson.fromJson(jsonFileString, listPersonType)
         alldata.forEachIndexed { idx, person -> Log.e("data", "> Item $idx:\n$alldata") }
 
-        AppConstant.oldTrackNo = alldata[0].track_no
+        //if (PersistData.getIntData(context,AppConstant.currentTrackNumber)> )
+        //PersistData.setIntData(context,AppConstant.installTimeTrackNo,alldata[0].track_no)
 
-            if(PersistData.getIntData(context,AppConstant.currentTrackNumber) == null){
+        //PersistData.setIntData(context,AppConstant.currentTrackNumber,alldata[0].track_no)
+
+        Log.e("currentTrackNumber", "> "+PersistData.getIntData(context,AppConstant.currentTrackNumber))
+
+        if(PersistData.getIntData(context,AppConstant.currentTrackNumber) == -1){
             PersistData.setIntData(context,AppConstant.currentTrackNumber,alldata[0].track_no)
+
+            AppConstant.getContent(context).clear()
+            AppConstant.getCatagories(context).clear()
+            AppConstant.getGeneralsettings(context).clear()
+            AppConstant.getSubCatagories(context).clear()
+
+            AppConstant.saveCatagories(applicationContext,alldata[0].categories)
+            AppConstant.saveSubCatagories(applicationContext,alldata[0].sub_categories)
+            AppConstant.saveContent(applicationContext,alldata[0].contents)
+            AppConstant.saveGeneralsettings(applicationContext,alldata[0].general_settings)
+
+
+
+            AppConstant.home4Cat.clear()
+            AppConstant.home4Cat = alldata[0].categories as ArrayList<Category>
+            AppConstant.home4Cat.removeAt(0)
+            AppConstant.home4Cat.removeAt(4)
+            AppConstant.getHome4Catagories(context).clear()
+            AppConstant.saveHome4Catagories(applicationContext,AppConstant.home4Cat)
+
+
         }
 
-
-
-        AppConstant.getContent(context).clear()
-        AppConstant.getCatagories(context).clear()
-        AppConstant.getGeneralsettings(context).clear()
-        AppConstant.getSubCatagories(context).clear()
-
-        AppConstant.saveCatagories(applicationContext,alldata[0].categories)
-        AppConstant.saveSubCatagories(applicationContext,alldata[0].sub_categories)
-        AppConstant.saveContent(applicationContext,alldata[0].contents)
-        AppConstant.saveGeneralsettings(applicationContext,alldata[0].general_settings)
-
-
-
-        AppConstant.home4Cat.clear()
-        AppConstant.home4Cat = alldata[0].categories as ArrayList<Category>
-        AppConstant.home4Cat.removeAt(0)
-        AppConstant.home4Cat.removeAt(4)
-        AppConstant.getHome4Catagories(context).clear()
-        AppConstant.saveHome4Catagories(applicationContext,AppConstant.home4Cat)
 
 
 

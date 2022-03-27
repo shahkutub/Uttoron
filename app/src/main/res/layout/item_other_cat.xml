@@ -36,7 +36,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_5sdp"
                 android:gravity="center"
-                android:text="Contact\nmanagement"
+                android:text=""
+                android:textSize="@dimen/_15sdp"
                 android:textColor="@color/black"
                 />
         </LinearLayout>

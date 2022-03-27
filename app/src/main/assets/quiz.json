@@ -1,6 +1,6 @@
 {
 	"questions": [{
-			"question": "সফটস্কিল কাকে বলে ?",
+			"question": "কর্মক্ষেত্রে সফটস্কিল কাকে বলে ?",
 			"options": [{
 					"name": "মেশিনের কাজ ভালো মত জানা",
 					"answer_status": false

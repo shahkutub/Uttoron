@@ -50,7 +50,16 @@ class VideoFragmentOffline : Fragment(){
 
         tvCatname.text = AppConstant.catName
         //tvSloganTop.text = AppConstant.getGeneralsettings(requireContext())[0].slogan
+        tvCatname.setOnClickListener {
+            AppConstant.isHome = false
 
+            AppConstant.subCatName = AppConstant.catName
+
+            val transaction = requireActivity().supportFragmentManager.beginTransaction()
+            transaction.replace(R.id.container, ContentFragmentOffline())
+            transaction.addToBackStack(null)
+            transaction.commit()
+        }
 
         val layoutManagerOtherCat = GridLayoutManager(context, 2)
         layoutManagerOtherCat.orientation = LinearLayoutManager.VERTICAL
@@ -223,12 +232,21 @@ class VideoFragmentOffline : Fragment(){
 //                    }
 //                })
 
+
+//            if(notifications.size > 4){
+//                val params = holder.fullViewCat!!.layoutParams
+//                params.height = R.dimen._80sdp
+//                holder.fullViewCat!!.layoutParams = params
+//                //holder.fullViewCat.height =
+//            }
+
             holder.imgOtehrCat.visibility =View.GONE
 
             holder.fullViewCat.setOnClickListener {
                 AppConstant.isHome = false
 
                 AppConstant.subCatName = notifications[position].name
+                AppConstant.subCatId = notifications[position].id.toString()
 
                 val transaction = requireActivity().supportFragmentManager.beginTransaction()
                 transaction.replace(R.id.container, ContentFragmentOffline())

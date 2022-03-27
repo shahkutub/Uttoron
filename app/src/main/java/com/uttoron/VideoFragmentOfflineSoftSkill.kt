@@ -50,6 +50,16 @@ class VideoFragmentOfflineSoftSkill : Fragment(){
         tvCatname.text = AppConstant.catName
         //tvSloganTop.text = AppConstant.getGeneralsettings(requireContext())[0].slogan
 
+        tvCatname.setOnClickListener {
+            AppConstant.isHome = false
+
+            AppConstant.subCatName = AppConstant.catName
+
+            val transaction = requireActivity().supportFragmentManager.beginTransaction()
+            transaction.replace(R.id.container, ContentFragmentOffline())
+            transaction.addToBackStack(null)
+            transaction.commit()
+        }
 
         val layoutManagerOtherCat = GridLayoutManager(context, 2)
         recyclevidCats!!.setLayoutManager(layoutManagerOtherCat)
@@ -165,14 +175,14 @@ class VideoFragmentOfflineSoftSkill : Fragment(){
     }
 
 
-    inner class OtherCatListAdapter(var notifications: ArrayList<SubCategory>, var context: Context) :
+    inner class OtherCatListAdapter(var list: ArrayList<SubCategory>, var context: Context) :
         RecyclerView.Adapter<OtherCatListAdapter.UserViewHolder>() {
 
         override fun onCreateViewHolder(parent: ViewGroup, p1: Int) = UserViewHolder(
             LayoutInflater.from(parent.context).inflate(R.layout.item_other_cat, parent, false)
         )
 
-        override fun getItemCount() = notifications.size
+        override fun getItemCount() = list.size
         override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
             //holder.tvCatNameOther.text = notifications[position].name
 
@@ -187,32 +197,36 @@ class VideoFragmentOfflineSoftSkill : Fragment(){
 //                    }
 //                })
 
-            if (position == 0){
+
+
+
+
+            if (list[position].name.equals("কর্মক্ষেত্রে যোগাযোগ")){
                 holder.tvCatNameOther.text = "কর্মক্ষেত্রে \n যোগাযোগ"
                 holder.imgOtehrCat.setImageResource(R.drawable.jogajog)
             }
 
-
-
-            if (position == 1){
+            if (list[position].name.equals("সমস্যা সমাধানের উপায়")){
                 holder.tvCatNameOther.text = "সমস্যা সমাধানের \n উপায়"
                 holder.imgOtehrCat.setImageResource(R.drawable.dokkta)
             }
 
-            if (position == 2){
+            if (list[position].name.equals("সঠিক সিদ্ধান্ত গ্রহণ")){
                 holder.tvCatNameOther.text = "সঠিক সিদ্ধান্ত \n গ্রহণ"
                 holder.imgOtehrCat.setImageResource(R.drawable.sothiksiddanto)
             }
 
-            if (position == 3){
+            if (list[position].name.equals("সময় ব্যবস্থাপনা")){
                 holder.tvCatNameOther.text = "সময় \n ব্যবস্থাপনা"
                 holder.imgOtehrCat.setImageResource(R.drawable.somoibebostha)
             }
 
+
+
             holder.fullViewCat.setOnClickListener {
                 AppConstant.isHome = false
 
-                AppConstant.subCatName = notifications[position].name
+                AppConstant.subCatName = list[position].name
 
                 val transaction = requireActivity().supportFragmentManager.beginTransaction()
                 transaction.replace(R.id.container, ContentFragmentOffline())

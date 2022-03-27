@@ -70,7 +70,9 @@
                 android:gravity="center"
                 android:text="উত্তরণ কুইজ"
                 android:textColor="#5E5148"
+                android:background="@drawable/cat_grdient_bg"
                 android:textStyle="bold"
+                android:padding="@dimen/_7sdp"
                 android:textSize="@dimen/_15sdp" />
 
             <LinearLayout
@@ -78,6 +80,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/_10sdp"
+                android:padding="@dimen/_7sdp"
                 android:background="@drawable/tv_bg"
                 android:orientation="vertical">
 
@@ -100,13 +103,13 @@
                         android:text=""
                         android:textColor="#941D2A"
                         android:textStyle="bold"
+                        android:layout_marginBottom="@dimen/_7sdp"
                         android:textSize="@dimen/_15sdp" />
 
                     <RadioGroup
                         android:id="@+id/radioGroup"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingStart="25dp"
                         android:visibility="visible"></RadioGroup>
 
                     <EditText
@@ -142,7 +145,7 @@
                         android:layout_height="@dimen/_30sdp"
                         android:layout_centerInParent="true"
                         android:background="@drawable/round_blue_bg"
-                        android:text="উত্তর"
+                        android:text="সঠিক উত্তর"
                         android:textAllCaps="false"
                         android:textColor="@color/white"
                         android:visibility="visible" />
@@ -155,7 +158,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginRight="@dimen/_3sdp"
                         android:background="@drawable/round_green_bg"
-                        android:text="পরবর্তী"
+                        android:text="পরবর্তী প্রশ্ন"
                         android:textAllCaps="false"
                         android:textColor="@color/white"
                         android:visibility="visible" />
@@ -201,8 +204,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/_30sdp"
                 android:background="@drawable/round_red_bg"
-                android:text="কুইজ সমাপ্ত"
+                android:text="কুইজ সমাপ্ত করুন"
                 android:textAllCaps="false"
+                android:paddingLeft="@dimen/_5sdp"
+                android:paddingRight="@dimen/_5sdp"
                 android:textColor="@color/white"
                 android:visibility="visible" />
 

@@ -22,8 +22,10 @@ import com.uttoron.utils.AppConstant
 import kotlinx.android.synthetic.main.content_layout.*
 import android.os.Build
 import android.text.Html
+import android.text.TextUtils
 import android.view.MenuItem
 import com.uttoron.utils.NetInfo
+import com.uttoron.utils.PersistData
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_layout.navigationView
 
@@ -40,8 +42,33 @@ class InfoFragment : Fragment(){
         super.onActivityCreated(savedInstanceState)
 
 
-        tvTitle.text = "উত্তরণ সম্পর্কে জানুন"
+        if (!TextUtils.isEmpty(AppConstant.infoPagename)){
+            tvTitle.text = AppConstant.infoPagename.toString()
+        }
+
        // imgBack.visibility = View.GONE
+        vidView.visibility = View.GONE
+
+        //if (AppConstant.)
+
+        AppConstant.getContent(context).forEachIndexed { index, content ->
+
+                if (content.category_name.equals("সফটস্কিল")){
+                    if (content.sub_category_id ==null){
+                        if (content.content !=null){
+                            tvContent.text = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                                Html.fromHtml(content.content, Html.FROM_HTML_MODE_COMPACT)
+                            } else {
+                                Html.fromHtml(content.content)
+                            }
+                        }
+                    }
+
+                }
+
+        }
+
+
 
         imgBack.setOnClickListener {
             //return@setOnNavigationItemSelectedListener true

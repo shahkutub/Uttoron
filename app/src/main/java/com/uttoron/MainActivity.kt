@@ -46,10 +46,13 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.bitmap.DownsampleStrategy
 import com.bumptech.glide.request.RequestOptions
 import com.downloader.*
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import com.uttoron.asynctask.DownloadFileFromURLTask
 import com.uttoron.asynctask.DownloadImageFileFromURLTask
 import com.uttoron.asynctask.SaveBitmapTask
 import com.uttoron.callback.DownloadListener
+import com.uttoron.model.AllDataResponseItem
 import com.uttoron.model.TrackResponse
 import com.uttoron.utils.AlertMessage
 import com.uttoron.utils.PersistData
@@ -92,7 +95,12 @@ class MainActivity : AppCompatActivity()  {
         setContentView(R.layout.activity_main)
 
         context = this
-        result = checkPermission()
+
+
+
+
+
+        // result = checkPermission()
         navigationView.setOnNavigationItemSelectedListener {
             when(it.itemId){
 //                R.id.navigation_fav-> {
@@ -116,7 +124,15 @@ class MainActivity : AppCompatActivity()  {
 
                 R.id.navigation_settings-> {
                     title=resources.getString(R.string.settings)
-                    loadFragment(InfoFragment())
+
+                    AppConstant.getContent(context).forEachIndexed { index, content ->
+                            if (content.sub_category_id == null){
+                                if (content.content !=null){
+                                    loadFragment(InfoFragment())
+                                }
+                            }
+                    }
+
                     return@setOnNavigationItemSelectedListener false
                 }
 
@@ -216,6 +232,17 @@ class MainActivity : AppCompatActivity()  {
         }
     }
 
+
+    fun getJsonDataFromAsset(context: Context, fileName: String): String? {
+        val jsonString: String
+        try {
+            jsonString = context.assets.open(fileName).bufferedReader().use { it.readText() }
+        } catch (ioException: IOException) {
+            ioException.printStackTrace()
+            return null
+        }
+        return jsonString
+    }
 
     fun checkAgain() {
         if (ActivityCompat.shouldShowRequestPermissionRationale(
@@ -320,32 +347,26 @@ class MainActivity : AppCompatActivity()  {
                 PersistData.setIntData(context,AppConstant.currentTrackNumber, trackResponse!![0].track_no)
                 //toast("File is downloaded successfully at $path")
                 if (allDataresponse != null) {
-                    //PersistData.setIntData(context,AppConstant.oldTrackNo, allDataresponse!![0].track_no)
-                    AppConstant.home4Cat.clear()
-                    AppConstant.home4Cat = allDataresponse!![0].categories as ArrayList<Category>
-                    AppConstant.home4Cat.removeAt(0)
-                    AppConstant.home4Cat.removeAt(4)
-                    AppConstant.saveHome4Catagories(applicationContext,AppConstant.home4Cat)
-
                     AppConstant.getContent(context).clear()
                     AppConstant.getCatagories(context).clear()
                     AppConstant.getGeneralsettings(context).clear()
                     AppConstant.getSubCatagories(context).clear()
 
-                    //AppConstant.saveCatagories(applicationContext,allDataresponse!![0].categories)
-                    //AppConstant.saveSubCatagories(applicationContext,allDataresponse!![0].sub_categories)
+                    AppConstant.saveCatagories(applicationContext, allDataresponse!![0].categories)
+                    AppConstant.saveSubCatagories(applicationContext, allDataresponse!![0].sub_categories)
                     AppConstant.saveContent(applicationContext,allDataresponse!![0].contents)
                     AppConstant.saveGeneralsettings(applicationContext,allDataresponse!![0].general_settings)
 
-                    //loadFragment(HomeFragmentOffline())
 
-//            AppConstant.home4Cat.clear()
-//            AppConstant.home4Cat = allDataresponse!![0].categories as java.util.ArrayList<Category>
-//            AppConstant.home4Cat.removeAt(0)
-//            AppConstant.home4Cat.removeAt(4)
-//            AppConstant.getHome4Catagories(context).clear()
-//            AppConstant.saveHome4Catagories(applicationContext,AppConstant.home4Cat)
 
+                    AppConstant.home4Cat.clear()
+                    AppConstant.home4Cat = allDataresponse!![0].categories as java.util.ArrayList<Category>
+                    AppConstant.home4Cat.removeAt(0)
+                    AppConstant.home4Cat.removeAt(4)
+                    AppConstant.getHome4Catagories(context).clear()
+                    AppConstant.saveHome4Catagories(applicationContext,AppConstant.home4Cat)
+
+                    loadFragment(HomeFragmentOffline())
 
                 }
 
@@ -464,6 +485,7 @@ class MainActivity : AppCompatActivity()  {
 
                   //      Toast.makeText(context,"Update available",Toast.LENGTH_SHORT).show()
                         updateDialog()
+                        PersistData.setIntData(context,AppConstant.currentTrackNumber, trackResponse!![0].track_no)
 
                     }
 
@@ -480,7 +502,7 @@ class MainActivity : AppCompatActivity()  {
     private fun updateDialog() {
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Update available!")
-        builder.setMessage("Do you want to updaste")
+        builder.setMessage("Do you want to update")
 //builder.setPositiveButton("OK", DialogInterface.OnClickListener(function = x))
 
         builder.setPositiveButton("Yes") { dialog, which ->

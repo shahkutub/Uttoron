@@ -43,27 +43,11 @@ class ContentFragmentOffline : Fragment(){
 
 
         tvTitle.text = AppConstant.subCatName
-        if (NetInfo.isOnline(context)){
-           // tvSloganTop.text = AppConstant.getGeneralsettings(requireContext())[0].slogan
 
-            for ((index, value) in AppConstant.getContent(requireContext()).withIndex()) {
-                if (AppConstant.subCatName.equals(value.sub_category_name)){
-                    if (value.content != null){
-                        tvContent.text = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                            Html.fromHtml(value.content, Html.FROM_HTML_MODE_COMPACT)
-                        } else {
-                            Html.fromHtml(value.content)
-                        }
-                    }
-                }
-            }
+        for ((index, value) in AppConstant.getContent(context).withIndex()) {
 
-        }else{
-            //tvSloganTop.text = AppConstant.getGeneralsettings(requireContext())[0].slogan
-
-            for ((index, value) in AppConstant.getContent(context).withIndex()) {
-
-                if (AppConstant.subCatName.equals(value.sub_category_name)){
+            if (value.sub_category_id != null){
+                if (AppConstant.subCatId.equals(value.sub_category_id.toString())){
                     tvContent.text = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                         Html.fromHtml(value.content, Html.FROM_HTML_MODE_COMPACT)
                     } else {
@@ -71,8 +55,9 @@ class ContentFragmentOffline : Fragment(){
                     }
                 }
             }
-
         }
+
+
 
         imgBack.setOnClickListener {
             requireActivity().onBackPressed()
@@ -105,14 +90,15 @@ class ContentFragmentOffline : Fragment(){
         videoview.setMediaController(controller)
 
 
+        var safetyVidPath = "android.resource://" + requireContext().getPackageName() + "/"+R.raw.safetyvid
         imgPlay.setOnClickListener {
 
             imgThumbnil.setVisibility(VideoView.GONE)
             imgPlay.setVisibility(VideoView.GONE)
             buffering_textview.setVisibility(VideoView.VISIBLE)
 
-            initializePlayer("")
-            videoview.setVideoURI(Uri.parse("")) //the string of the URL mentioned above
+            initializePlayer(safetyVidPath)
+            videoview.setVideoURI(Uri.parse(safetyVidPath)) //the string of the URL mentioned above
             videoview.requestFocus()
             videoview.start()
 

@@ -1,5 +1,6 @@
 package com.uttoron
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Color
 import android.graphics.Typeface
@@ -19,6 +20,15 @@ import com.uttoron.utils.AlertMessage
 import com.uttoron.utils.AppConstant
 import kotlinx.android.synthetic.main.quiz_result.*
 import java.io.IOException
+import android.content.res.ColorStateList
+import android.graphics.BlendMode
+import android.graphics.Color.red
+import android.graphics.PorterDuff
+import android.os.Build
+import androidx.appcompat.widget.AppCompatRadioButton
+import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.getColor
+import com.google.android.material.radiobutton.MaterialRadioButton
 
 
 class QuizeFragment : Fragment(){
@@ -42,13 +52,18 @@ class QuizeFragment : Fragment(){
         }
         return jsonString
     }
+    @SuppressLint("RestrictedApi", "ResourceType")
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
 
         initQuiz()
 
-
+        val myColorStateList = ColorStateList(
+            arrayOf(intArrayOf(resources.getColor(R.color.purple_700))), intArrayOf(
+                resources.getColor(R.color.purple_700)
+            )
+        )
         imgBtnQuesForward.setOnClickListener {
 
             if(isChecked){
@@ -56,15 +71,20 @@ class QuizeFragment : Fragment(){
                 Log.e("forwardCound","forwardCound: "+forwardCount)
                 //var quescount = forwardCound +1
                 if(forwardCount < alldata!!.questions.size ){
-                    tvQuestionName.text = alldata!!.questions[forwardCount].question
+                    tvQuestionName.text = "প্রশ্নঃ "+alldata!!.questions[forwardCount].question
 
                     radioGroup.removeAllViews()
                     alldata!!.questions[forwardCount].options.forEachIndexed { index, element ->
-                        val rdbtn = RadioButton(requireContext())
+                        val rdbtn = AppCompatRadioButton(requireContext())
                         rdbtn.id = View.generateViewId()
                         rdbtn.text = element.name
                         rdbtn.setTextColor(Color.BLACK)
                         rdbtn.setTypeface(null, Typeface.BOLD)
+                        rdbtn.setSupportButtonTintList(
+                                ContextCompat.getColorStateList(requireActivity(),
+                                    R.drawable.single_choice_state_list))
+                        //radioColor(rdbtn)
+                        //rdbtn.setCircleColor(Color.parseColor("#FFBA00")) rdbtn.buttonTintList=ColorStateList.valueOf(getColor(requireContext(),R.color.purple_500))
                         //rdbtn.setOnClickListener(requireActivity())
                         radioGroup.addView(rdbtn)
                     }
@@ -86,6 +106,31 @@ class QuizeFragment : Fragment(){
 
         }
 
+
+
+        fun RadioButton.setCircleColor(color: Int){
+            val colorStateList = ColorStateList(
+                arrayOf(
+                    intArrayOf(-android.R.attr.state_checked), // unchecked
+                    intArrayOf(android.R.attr.state_checked) // checked
+                ), intArrayOf(
+                    Color.GRAY, // unchecked color
+                    color // checked color
+                )
+            )
+
+            // finally, set the radio button's button tint list
+            buttonTintList = colorStateList
+
+            // optionally set the button tint mode or tint blend mode
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                buttonTintBlendMode = BlendMode.SRC_IN
+            }else{
+                buttonTintMode = PorterDuff.Mode.SRC_IN
+            }
+
+            invalidate() //could not be necessary
+        }
 
         radioGroup.setOnCheckedChangeListener(
             RadioGroup.OnCheckedChangeListener { group, checkedId ->
@@ -229,6 +274,23 @@ class QuizeFragment : Fragment(){
 
     }
 
+    private fun radioColor(rdbtn: RadioButton) {
+        if (Build.VERSION.SDK_INT >= 21) {
+            val colorStateList = ColorStateList(
+                arrayOf(
+                    intArrayOf(-android.R.attr.state_enabled),
+                    intArrayOf(android.R.attr.state_enabled)
+                ), intArrayOf(
+                    Color.BLACK,  // disabled
+                    Color.BLUE // enabled
+                )
+            )
+            rdbtn.setButtonTintList(colorStateList) // set the color tint list
+            rdbtn.invalidate() // Could not be necessary
+        }
+    }
+
+    @SuppressLint("RestrictedApi", "ResourceType")
     private fun initQuiz() {
         //alldata!!.questions.cle
         val jsonFileString = getJsonDataFromAsset(requireContext(), "quiz.json")
@@ -243,11 +305,14 @@ class QuizeFragment : Fragment(){
 
         radioGroup.removeAllViews()
         alldata!!.questions[0].options.forEachIndexed { index, element ->
-            val rdbtn = RadioButton(requireContext())
+            val rdbtn = AppCompatRadioButton(requireContext())
             rdbtn.id = View.generateViewId()
             rdbtn.text = element.name
             rdbtn.setTextColor(Color.BLACK)
             rdbtn.setTypeface(null, Typeface.BOLD)
+            rdbtn.setSupportButtonTintList(
+                ContextCompat.getColorStateList(requireActivity(),
+                    R.drawable.single_choice_state_list))
             //rdbtn.setOnClickListener(requireActivity())
             radioGroup.addView(rdbtn)
         }

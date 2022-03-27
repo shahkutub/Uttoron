@@ -1,281 +1,526 @@
-[{
-  "id": 1,
-  "track_no": 95,
-  "created_at": null,
-  "updated_at": "2022-03-24T08:00:22.000000Z",
-  "general_settings": [{
-    "id": 2,
-    "app_logo_icon": "http:\/\/uttoron.nanoit.biz\/public\/backend\/upload\/general_setting\/202201030942Uttoron_Logo_8.png",
-    "icon_2": "http:\/\/uttoron.nanoit.biz\/public\/backend\/upload\/general_setting\/202202071058uttoron_5.png",
-    "icon_3": "http:\/\/uttoron.nanoit.biz\/public\/backend\/upload\/general_setting\/202201160442chevron_1.png",
-    "icon_4": "http:\/\/uttoron.nanoit.biz\/public\/backend\/upload\/general_setting\/202201160416swisscontact_1.png",
-    "created_at": "2021-12-15T11:00:19.000000Z",
-    "updated_at": "2022-02-07T10:58:26.000000Z"
-  }],
-  "categories": [{
+[
+  {
     "id": 1,
-    "name": "\u09b8\u09ab\u099f\u09b8\u09cd\u0995\u09bf\u09b2",
-    "icon": "http:\/\/uttoron.nanoit.biz\/public\/backend\/upload\/category\/202202071155softskills_5.png",
-    "thumbnail": "http:\/\/uttoron.nanoit.biz\/public\/backend\/upload\/category\/202201160619\u09b8\u09ab\u099f\u09b8\u09cd\u0995\u09bf\u09b2_2.PNG",
-    "video": "http:\/\/uttoron.nanoit.biz\/public\/backend\/upload\/videos\/Dz0FM83tUYfS8oRmcZPsmQbuVd4pH4gtx2cHLsU2.mp4",
-    "sort_order": 1,
-    "created_at": "2021-12-19T04:59:36.000000Z",
-    "updated_at": "2022-02-07T11:55:22.000000Z"
-  }, {
-    "id": 4,
-    "name": "\u099a\u09be\u0995\u09c1\u09b0\u09c0\u09b0 \u09b8\u09be\u09a7\u09be\u09b0\u09a3 \u09a8\u09bf\u09df\u09ae \u0995\u09be\u09a8\u09c1\u09a8",
-    "icon": "http:\/\/uttoron.nanoit.biz\/public\/backend\/upload\/category\/202201020553\u099a\u09be\u0995\u09c1\u09b0\u09c0\u09b0 \u09b8\u09be\u09a7\u09be\u09b0\u09a3 \u09a8\u09bf\u09df\u09ae \u0995\u09be\u09a8\u09c1\u09a8.png",
-    "thumbnail": "http:\/\/uttoron.nanoit.biz\/public\/backend\/upload\/category\/202201160619\u099a\u09be\u0995\u09c1\u09b0\u09c0\u09b0 \u09b8\u09be\u09a7\u09be\u09b0\u09a3 \u09a8\u09bf\u09df\u09ae \u0995\u09be\u09a8\u09c1\u09a8_2.PNG",
-    "video": "http:\/\/uttoron.nanoit.biz\/public\/backend\/upload\/videos\/g3B5hfb4qsoALkxQvphifO0j8rJfTBy2tOY9F0fl.mp4",
-    "sort_order": 2,
-    "created_at": "2021-12-22T22:48:43.000000Z",
-    "updated_at": "2022-01-16T17:19:25.000000Z"
-  }, {
-    "id": 5,
-    "name": "\u099a\u09be\u0995\u09c1\u09b0\u09c0\u09a4\u09c7 \u0989\u09a8\u09cd\u09a8\u09df\u09a8\u09c7\u09b0 \u0989\u09aa\u09be\u09df",
-    "icon": "http:\/\/uttoron.nanoit.biz\/public\/backend\/upload\/category\/202201020554\u099a\u09be\u0995\u09c1\u09b0\u09c0\u09a4\u09c7 \u0989\u09a8\u09cd\u09a8\u09df\u09a8\u09c7\u09b0 \u0989\u09aa\u09be\u09df.png",
-    "thumbnail": "http:\/\/uttoron.nanoit.biz\/public\/backend\/upload\/category\/202201160619\u099a\u09be\u0995\u09c1\u09b0\u09c0\u09a4\u09c7 \u0989\u09a8\u09cd\u09a8\u09df\u09a8\u09c7\u09b0 \u0989\u09aa\u09be\u09df_2.PNG",
-    "video": "http:\/\/uttoron.nanoit.biz\/public\/backend\/upload\/videos\/26O0Ayuv0ocpv3Lxvo3w40h3yskJIaCgcefO6rRy.mp4",
-    "sort_order": 3,
-    "created_at": "2021-12-22T22:48:55.000000Z",
-    "updated_at": "2022-01-16T17:19:36.000000Z"
-  }, {
-    "id": 6,
-    "name": "\u0986\u09b0\u09cd\u09a5\u09bf\u0995 \u09ac\u09cd\u09af\u09ac\u09b8\u09cd\u09a5\u09be\u09aa\u09a8\u09be \u0993 \u09aa\u09b0\u09bf\u0995\u09b2\u09cd\u09aa\u09a8\u09be",
-    "icon": "http:\/\/uttoron.nanoit.biz\/public\/backend\/upload\/category\/202201020554\u0986\u09b0\u09cd\u09a5\u09bf\u0995 \u09ac\u09cd\u09af\u09ac\u09b8\u09cd\u09a5\u09be\u09aa\u09a8\u09be \u0993 \u09aa\u09b0\u09bf\u0995\u09b2\u09cd\u09aa\u09a8\u09be.png",
-    "thumbnail": "http:\/\/uttoron.nanoit.biz\/public\/backend\/upload\/category\/202201160619\u0986\u09b0\u09cd\u09a5\u09bf\u0995 \u09ac\u09cd\u09af\u09ac\u09b8\u09cd\u09a5\u09be\u09aa\u09a8\u09be_2.PNG",
-    "video": "http:\/\/uttoron.nanoit.biz\/public\/backend\/upload\/videos\/F0v3ASgLjZY7IJ4bwr9RU0Ij0YOTL1jcR2SGdPYo.mp4",
-    "sort_order": 4,
-    "created_at": "2021-12-22T22:49:09.000000Z",
-    "updated_at": "2022-01-16T17:19:56.000000Z"
-  }, {
-    "id": 7,
-    "name": "\u09b8\u09cd\u09ac\u09be\u09b8\u09cd\u09a5\u09cd\u09af \u0993 \u09b8\u09c1\u09b0\u0995\u09cd\u09b7\u09be",
-    "icon": "http:\/\/uttoron.nanoit.biz\/public\/backend\/upload\/category\/202202071236\u09b8\u09cd\u09ac\u09be\u09b8\u09cd\u09a5\u09cd\u09af \u0993 \u09b8\u09c1\u09b0\u0995\u09cd\u09b7\u09be.png",
-    "thumbnail": "http:\/\/uttoron.nanoit.biz\/public\/backend\/upload\/category\/202201160620\u09b8\u09cd\u09ac\u09be\u09b8\u09cd\u09a5\u09cd\u09af \u0993 \u09b8\u09c1\u09b0\u0995\u09cd\u09b7\u09be_2.PNG",
-    "video": "http:\/\/uttoron.nanoit.biz\/public\/backend\/upload\/videos\/IE6XuFkM6LZ08awrk8d8G39HjqrxitwqEmTX0sx0.mp4",
-    "sort_order": 5,
-    "created_at": "2021-12-22T22:49:21.000000Z",
-    "updated_at": "2022-02-07T12:36:26.000000Z"
-  }, {
-    "id": 8,
-    "name": "\u0989\u09a4\u09cd\u09a4\u09b0\u09a3 \u0995\u09c1\u0987\u099c \u0997\u09c7\u0987\u09ae",
-    "icon": "http:\/\/uttoron.nanoit.biz\/public\/backend\/upload\/category\/202201020555\u0989\u09a4\u09cd\u09a4\u09b0\u09a3 \u0995\u09c1\u0987\u099c \u0997\u09c7\u0987\u09ae.png",
-    "thumbnail": "http:\/\/uttoron.nanoit.biz\/public\/backend\/upload\/category",
-    "video": "http:\/\/uttoron.nanoit.biz\/public\/backend\/upload",
-    "sort_order": 6,
-    "created_at": "2022-01-02T16:55:38.000000Z",
-    "updated_at": "2022-01-02T16:55:38.000000Z"
-  }],
-  "sub_categories": [{
-    "id": 2,
-    "category_id": 1,
-    "category_name": "\u09b8\u09ab\u099f\u09b8\u09cd\u0995\u09bf\u09b2",
-    "name": "\u0995\u09b0\u09cd\u09ae\u0995\u09cd\u09b7\u09c7\u09a4\u09cd\u09b0\u09c7 \u09af\u09cb\u0997\u09be\u09af\u09cb\u0997",
-    "icon": "http:\/\/uttoron.nanoit.biz\/public\/backend\/upload\/sub_category\/202201020556\u09af\u09cb\u0997\u09be\u09af\u09cb\u0997 \u09ac\u09cd\u09af\u09ac\u09b8\u09cd\u09a5\u09be\u09aa\u09a8\u09be.png",
-    "sort_order": 11,
-    "created_at": "2021-12-19T05:41:48.000000Z",
-    "updated_at": "2022-03-24T06:14:25.000000Z"
-  }, {
-    "id": 12,
-    "category_id": 1,
-    "category_name": "\u09b8\u09ab\u099f\u09b8\u09cd\u0995\u09bf\u09b2",
-    "name": "\u09b8\u09ae\u09b8\u09cd\u09af\u09be \u09b8\u09ae\u09be\u09a7\u09be\u09a8\u09c7\u09b0 \u0989\u09aa\u09be\u09df",
-    "icon": "http:\/\/uttoron.nanoit.biz\/public\/backend\/upload\/sub_category\/202201020557\u09b8\u09ae\u09b8\u09cd\u09af\u09be \u09b8\u09ae\u09be\u09a7\u09be\u09a8\u09c7\u09b0 \u09a6\u0995\u09cd\u09b7\u09a4\u09be \u0989\u09a8\u09cd\u09a8\u09df\u09a8.png",
-    "sort_order": 13,
-    "created_at": "2021-12-22T23:14:28.000000Z",
-    "updated_at": "2022-03-24T06:14:57.000000Z"
-  }, {
-    "id": 14,
-    "category_id": 1,
-    "category_name": "\u09b8\u09ab\u099f\u09b8\u09cd\u0995\u09bf\u09b2",
-    "name": "\u09b8\u09a0\u09bf\u0995 \u09b8\u09bf\u09a6\u09cd\u09a7\u09be\u09a8\u09cd\u09a4 \u0997\u09cd\u09b0\u09b9\u09a3",
-    "icon": "http:\/\/uttoron.nanoit.biz\/public\/backend\/upload\/sub_category\/202201020558\u09b8\u09a0\u09bf\u0995 \u09b8\u09bf\u09a6\u09cd\u09a7\u09be\u09a8\u09cd\u09a4 \u0997\u09cd\u09b0\u09b9\u09a3.png",
-    "sort_order": 14,
-    "created_at": "2021-12-22T23:15:25.000000Z",
-    "updated_at": "2022-01-02T16:58:31.000000Z"
-  }, {
-    "id": 11,
-    "category_id": 1,
-    "category_name": "\u09b8\u09ab\u099f\u09b8\u09cd\u0995\u09bf\u09b2",
-    "name": "\u09b8\u09ae\u09df \u09ac\u09cd\u09af\u09ac\u09b8\u09cd\u09a5\u09be\u09aa\u09a8\u09be",
-    "icon": "http:\/\/uttoron.nanoit.biz\/public\/backend\/upload\/sub_category\/202201020556\u09b8\u09ae\u09df \u09ac\u09cd\u09af\u09ac\u09b8\u09cd\u09a5\u09be\u09aa\u09a8\u09be.png",
-    "sort_order": 12,
-    "created_at": "2021-12-22T23:14:11.000000Z",
-    "updated_at": "2022-01-02T16:56:40.000000Z"
-  }, {
-    "id": 18,
-    "category_id": 4,
-    "category_name": "\u099a\u09be\u0995\u09c1\u09b0\u09c0\u09b0 \u09b8\u09be\u09a7\u09be\u09b0\u09a3 \u09a8\u09bf\u09df\u09ae \u0995\u09be\u09a8\u09c1\u09a8",
-    "name": "\u09ac\u09a8\u09cd\u09a7 \u0993 \u099b\u09c1\u099f\u09bf",
-    "icon": "http:\/\/uttoron.nanoit.biz\/public\/backend\/upload\/sub_category",
-    "sort_order": 25,
-    "created_at": "2021-12-22T23:20:15.000000Z",
-    "updated_at": "2022-03-24T07:31:30.000000Z"
-  }, {
-    "id": 13,
-    "category_id": 4,
-    "category_name": "\u099a\u09be\u0995\u09c1\u09b0\u09c0\u09b0 \u09b8\u09be\u09a7\u09be\u09b0\u09a3 \u09a8\u09bf\u09df\u09ae \u0995\u09be\u09a8\u09c1\u09a8",
-    "name": "\u09ac\u09c7\u09a4\u09a8-\u09ad\u09be\u09a4\u09be \u0993 \u0993\u09ad\u09be\u09b0\u099f\u09be\u0987\u09ae",
-    "icon": "http:\/\/uttoron.nanoit.biz\/public\/backend\/upload\/sub_category",
-    "sort_order": 26,
-    "created_at": "2021-12-22T23:14:49.000000Z",
-    "updated_at": "2022-03-24T07:57:03.000000Z"
-  }, {
-    "id": 17,
-    "category_id": 4,
-    "category_name": "\u099a\u09be\u0995\u09c1\u09b0\u09c0\u09b0 \u09b8\u09be\u09a7\u09be\u09b0\u09a3 \u09a8\u09bf\u09df\u09ae \u0995\u09be\u09a8\u09c1\u09a8",
-    "name": "\u0985\u09a8\u09cd\u09af\u09be\u09a8\u09cd\u09af \u09b8\u09c1\u09af\u09cb\u0997 \u09b8\u09c1\u09ac\u09bf\u09a7\u09be",
-    "icon": "http:\/\/uttoron.nanoit.biz\/public\/backend\/upload\/sub_category",
-    "sort_order": 27,
-    "created_at": "2021-12-22T23:17:00.000000Z",
-    "updated_at": "2022-03-24T07:57:18.000000Z"
-  }, {
-    "id": 19,
-    "category_id": 4,
-    "category_name": "\u099a\u09be\u0995\u09c1\u09b0\u09c0\u09b0 \u09b8\u09be\u09a7\u09be\u09b0\u09a3 \u09a8\u09bf\u09df\u09ae \u0995\u09be\u09a8\u09c1\u09a8",
-    "name": "\u0995\u09cd\u09b7\u09a4\u09bf\u09aa\u09c2\u09b0\u09a3 \u09b8\u0982\u0995\u09cd\u09b0\u09be\u09a8\u09cd\u09a4 \u09a8\u09bf\u09df\u09ae",
-    "icon": "http:\/\/uttoron.nanoit.biz\/public\/backend\/upload\/sub_category",
-    "sort_order": 24,
-    "created_at": "2022-02-07T08:00:02.000000Z",
-    "updated_at": "2022-02-07T08:00:02.000000Z"
-  }, {
-    "id": 21,
-    "category_id": 4,
-    "category_name": "\u099a\u09be\u0995\u09c1\u09b0\u09c0\u09b0 \u09b8\u09be\u09a7\u09be\u09b0\u09a3 \u09a8\u09bf\u09df\u09ae \u0995\u09be\u09a8\u09c1\u09a8",
-    "name": "\u09b8\u09be\u09a7\u09be\u09b0\u09a3 \u09ac\u09bf\u09b7\u09df\u09b8\u09ae\u09c2\u09b9",
-    "icon": "http:\/\/uttoron.nanoit.biz\/public\/backend\/upload\/sub_category",
-    "sort_order": 23,
-    "created_at": "2022-02-07T08:01:03.000000Z",
-    "updated_at": "2022-03-24T07:32:16.000000Z"
-  }, {
-    "id": 22,
-    "category_id": 4,
-    "category_name": "\u099a\u09be\u0995\u09c1\u09b0\u09c0\u09b0 \u09b8\u09be\u09a7\u09be\u09b0\u09a3 \u09a8\u09bf\u09df\u09ae \u0995\u09be\u09a8\u09c1\u09a8",
-    "name": "\u099a\u09be\u0995\u09c1\u09b0\u09c0 \u09aa\u09b0\u09bf\u09ac\u09b0\u09cd\u09a4\u09a8\u09c7\u09b0 \u09b8\u09be\u09a7\u09be\u09b0\u09a3 \u09ac\u09bf\u09a7\u09bf",
-    "icon": "http:\/\/uttoron.nanoit.biz\/public\/backend\/upload\/sub_category",
-    "sort_order": 22,
-    "created_at": "2022-02-07T08:02:11.000000Z",
-    "updated_at": "2022-03-24T07:32:40.000000Z"
-  }, {
-    "id": 20,
-    "category_id": 4,
-    "category_name": "\u099a\u09be\u0995\u09c1\u09b0\u09c0\u09b0 \u09b8\u09be\u09a7\u09be\u09b0\u09a3 \u09a8\u09bf\u09df\u09ae \u0995\u09be\u09a8\u09c1\u09a8",
-    "name": "\u099a\u09be\u0995\u09c1\u09b0\u09c0\u09a4\u09c7 \u09aa\u09a6\u09cb\u09a8\u09cd\u09a8\u09a4\u09bf\u09b0 \u0989\u09aa\u09be\u09df",
-    "icon": "http:\/\/uttoron.nanoit.biz\/public\/backend\/upload\/sub_category",
-    "sort_order": 21,
-    "created_at": "2022-02-07T08:00:24.000000Z",
-    "updated_at": "2022-03-24T07:32:56.000000Z"
-  }, {
-    "id": 15,
-    "category_id": 5,
-    "category_name": "\u099a\u09be\u0995\u09c1\u09b0\u09c0\u09a4\u09c7 \u0989\u09a8\u09cd\u09a8\u09df\u09a8\u09c7\u09b0 \u0989\u09aa\u09be\u09df",
-    "name": "\u098f\u0995 \u099c\u09a8 \u09ad\u09be\u09b2\u09cb \u0995\u09b0\u09cd\u09ae\u09c0 \u09af\u09be \u0995\u09b0\u09c7",
-    "icon": "http:\/\/uttoron.nanoit.biz\/public\/backend\/upload\/sub_category",
-    "sort_order": 31,
-    "created_at": "2021-12-22T23:16:02.000000Z",
-    "updated_at": "2021-12-22T23:16:02.000000Z"
-  }, {
-    "id": 16,
-    "category_id": 5,
-    "category_name": "\u099a\u09be\u0995\u09c1\u09b0\u09c0\u09a4\u09c7 \u0989\u09a8\u09cd\u09a8\u09df\u09a8\u09c7\u09b0 \u0989\u09aa\u09be\u09df",
-    "name": "\u098f\u0995\u099c\u09a8 \u09ad\u09be\u09b2\u09cb \u0995\u09b0\u09cd\u09ae\u09c0 \u09af\u09be \u0995\u09b0\u09c7 \u09a8\u09be",
-    "icon": "http:\/\/uttoron.nanoit.biz\/public\/backend\/upload\/sub_category",
-    "sort_order": 32,
-    "created_at": "2021-12-22T23:16:34.000000Z",
-    "updated_at": "2021-12-22T23:16:34.000000Z"
-  }, {
-    "id": 23,
-    "category_id": 5,
-    "category_name": "\u099a\u09be\u0995\u09c1\u09b0\u09c0\u09a4\u09c7 \u0989\u09a8\u09cd\u09a8\u09df\u09a8\u09c7\u09b0 \u0989\u09aa\u09be\u09df",
-    "name": "\u0995\u09b0\u09cd\u09ae\u09c0\u09b0 \u0985\u09a7\u09bf\u0995\u09be\u09b0",
-    "icon": "http:\/\/uttoron.nanoit.biz\/public\/backend\/upload\/sub_category",
-    "sort_order": 33,
-    "created_at": "2022-02-07T08:03:21.000000Z",
-    "updated_at": "2022-02-07T08:03:21.000000Z"
-  }, {
-    "id": 24,
-    "category_id": 6,
-    "category_name": "\u0986\u09b0\u09cd\u09a5\u09bf\u0995 \u09ac\u09cd\u09af\u09ac\u09b8\u09cd\u09a5\u09be\u09aa\u09a8\u09be \u0993 \u09aa\u09b0\u09bf\u0995\u09b2\u09cd\u09aa\u09a8\u09be",
-    "name": "\u09ac\u09cd\u09af\u0995\u09cd\u09a4\u09bf\u0997\u09a4 \u0986\u09b0\u09cd\u09a5\u09bf\u0995 \u09aa\u09b0\u09bf\u0995\u09b2\u09cd\u09aa\u09a8\u09be",
-    "icon": "http:\/\/uttoron.nanoit.biz\/public\/backend\/upload\/sub_category",
-    "sort_order": 41,
-    "created_at": "2022-02-07T08:04:24.000000Z",
-    "updated_at": "2022-03-24T07:35:06.000000Z"
-  }, {
-    "id": 25,
-    "category_id": 6,
-    "category_name": "\u0986\u09b0\u09cd\u09a5\u09bf\u0995 \u09ac\u09cd\u09af\u09ac\u09b8\u09cd\u09a5\u09be\u09aa\u09a8\u09be \u0993 \u09aa\u09b0\u09bf\u0995\u09b2\u09cd\u09aa\u09a8\u09be",
-    "name": "\u09b8\u099e\u09cd\u099a\u09df\u09c7\u09b0 \u0989\u09aa\u09be\u09df",
-    "icon": "http:\/\/uttoron.nanoit.biz\/public\/backend\/upload\/sub_category",
-    "sort_order": 42,
-    "created_at": "2022-02-07T08:04:44.000000Z",
-    "updated_at": "2022-03-24T07:35:37.000000Z"
-  }, {
-    "id": 26,
-    "category_id": 6,
-    "category_name": "\u0986\u09b0\u09cd\u09a5\u09bf\u0995 \u09ac\u09cd\u09af\u09ac\u09b8\u09cd\u09a5\u09be\u09aa\u09a8\u09be \u0993 \u09aa\u09b0\u09bf\u0995\u09b2\u09cd\u09aa\u09a8\u09be",
-    "name": "\u09ac\u09cd\u09af\u09be\u0982\u0995\u09bf\u0982 \u09b2\u09c7\u09a8\u09a6\u09c7\u09a8\u09c7\u09b0 \u09a8\u09bf\u09df\u09ae \u09a8\u09c0\u09a4\u09bf",
-    "icon": "http:\/\/uttoron.nanoit.biz\/public\/backend\/upload\/sub_category",
-    "sort_order": 43,
-    "created_at": "2022-02-07T08:05:48.000000Z",
-    "updated_at": "2022-03-24T07:35:56.000000Z"
-  }, {
-    "id": 29,
-    "category_id": 6,
-    "category_name": "\u0986\u09b0\u09cd\u09a5\u09bf\u0995 \u09ac\u09cd\u09af\u09ac\u09b8\u09cd\u09a5\u09be\u09aa\u09a8\u09be \u0993 \u09aa\u09b0\u09bf\u0995\u09b2\u09cd\u09aa\u09a8\u09be",
-    "name": "\u09b8\u09a4\u09b0\u09cd\u0995\u09a4\u09be",
-    "icon": "http:\/\/uttoron.nanoit.biz\/public\/backend\/upload\/sub_category",
-    "sort_order": 44,
-    "created_at": "2022-03-24T07:36:24.000000Z",
-    "updated_at": "2022-03-24T07:36:24.000000Z"
-  }, {
-    "id": 27,
-    "category_id": 7,
-    "category_name": "\u09b8\u09cd\u09ac\u09be\u09b8\u09cd\u09a5\u09cd\u09af \u0993 \u09b8\u09c1\u09b0\u0995\u09cd\u09b7\u09be",
-    "name": "\u0995\u09b0\u09cd\u09ae\u0995\u09cd\u09b7\u09c7\u09a4\u09cd\u09b0\u09c7 \u09b8\u09c1\u09b0\u0995\u09cd\u09b7\u09bf\u09a4 \u09a5\u09be\u0995\u09be\u09b0 \u0989\u09aa\u09be\u09df",
-    "icon": "http:\/\/uttoron.nanoit.biz\/public\/backend\/upload\/sub_category",
-    "sort_order": 51,
-    "created_at": "2022-02-07T08:06:09.000000Z",
-    "updated_at": "2022-02-07T08:06:09.000000Z"
-  }, {
-    "id": 28,
-    "category_id": 7,
-    "category_name": "\u09b8\u09cd\u09ac\u09be\u09b8\u09cd\u09a5\u09cd\u09af \u0993 \u09b8\u09c1\u09b0\u0995\u09cd\u09b7\u09be",
-    "name": "\u0995\u09b0\u09cd\u09ae\u0995\u09cd\u09b7\u09c7\u09a4\u09cd\u09b0\u09c7 \u09b8\u09cd\u09ac\u09be\u09b8\u09cd\u09a5\u09cd\u09af\u09ac\u09bf\u09a7\u09bf",
-    "icon": "http:\/\/uttoron.nanoit.biz\/public\/backend\/upload\/sub_category",
-    "sort_order": 52,
-    "created_at": "2022-02-07T08:06:44.000000Z",
-    "updated_at": "2022-02-07T08:06:44.000000Z"
-  }, {
-    "id": 30,
-    "category_id": 7,
-    "category_name": "\u09b8\u09cd\u09ac\u09be\u09b8\u09cd\u09a5\u09cd\u09af \u0993 \u09b8\u09c1\u09b0\u0995\u09cd\u09b7\u09be",
-    "name": "\u09b8\u09c7\u0987\u09ab\u099f\u09bf \u09ad\u09bf\u09a1\u09bf\u0993",
-    "icon": "http:\/\/uttoron.nanoit.biz\/public\/backend\/upload\/sub_category",
-    "sort_order": 53,
-    "created_at": "2022-03-24T07:39:14.000000Z",
-    "updated_at": "2022-03-24T07:39:14.000000Z"
-  }],
-  "contents": [{
-    "id": 2,
-    "category_id": 1,
-    "category_name": "\u09b8\u09ab\u099f\u09b8\u09cd\u0995\u09bf\u09b2",
-    "sub_category_id": 2,
-    "sub_category_name": "\u0995\u09b0\u09cd\u09ae\u0995\u09cd\u09b7\u09c7\u09a4\u09cd\u09b0\u09c7 \u09af\u09cb\u0997\u09be\u09af\u09cb\u0997",
-    "content": "<p>\u0995\u09b0\u09cd\u09ae\u0995\u09cd\u09b7\u09c7\u09a4\u09cd\u09b0\u09c7\u09b0 \u09af\u09cb\u0997\u09be\u09af\u09cb\u0997\u09c7\u09b0 \u09a8\u09bf\u09af\u09bc\u09ae-\u0995\u09be\u09a8\u09c1\u09a8 \u09b8\u09ae\u09cd\u09aa\u09b0\u09cd\u0995\u09bf\u09a4 \u09a4\u09a5\u09cd\u09af \u09a6\u09cd\u09b0\u09c1\u09a4 \u09aa\u09be\u09ac\u09b2\u09bf\u09b6 \u0995\u09b0\u09be \u09b9\u09ac\u09c7<\/p>",
-    "video": "http:\/\/uttoron.nanoit.biz\/public\/backend\/upload\/videos\/3NDBU5jmeUCmNXsx8j62bLL9FPpzeqSJp0AbO8y5.mp4",
-    "created_at": "2021-12-19T07:20:41.000000Z",
-    "updated_at": "2022-03-24T07:50:42.000000Z"
-  }, {
-    "id": 3,
-    "category_id": 7,
-    "category_name": "\u09b8\u09cd\u09ac\u09be\u09b8\u09cd\u09a5\u09cd\u09af \u0993 \u09b8\u09c1\u09b0\u0995\u09cd\u09b7\u09be",
-    "sub_category_id": 30,
-    "sub_category_name": "\u09b8\u09c7\u0987\u09ab\u099f\u09bf \u09ad\u09bf\u09a1\u09bf\u0993",
-    "content": null,
-    "video": "http:\/\/uttoron.nanoit.biz\/public\/backend\/upload",
-    "created_at": "2022-03-24T08:00:22.000000Z",
-    "updated_at": "2022-03-24T08:00:22.000000Z"
-  }]
-}]
+    "track_no": 131,
+    "created_at": null,
+    "updated_at": "2022-03-27T06:19:31.000000Z",
+    "general_settings": [
+      {
+        "id": 2,
+        "app_logo_icon": "http://uttoron.nanoit.biz/public/backend/upload/general_setting/202201030942Uttoron_Logo_8.png",
+        "icon_2": "http://uttoron.nanoit.biz/public/backend/upload/general_setting/202202071058uttoron_5.png",
+        "icon_3": "http://uttoron.nanoit.biz/public/backend/upload/general_setting/202201160442chevron_1.png",
+        "icon_4": "http://uttoron.nanoit.biz/public/backend/upload/general_setting/202201160416swisscontact_1.png",
+        "created_at": "2021-12-15T11:00:19.000000Z",
+        "updated_at": "2022-02-07T10:58:26.000000Z"
+      }
+    ],
+    "categories": [
+      {
+        "id": 1,
+        "name": "সফটস্কিল",
+        "icon": "http://uttoron.nanoit.biz/public/backend/upload/category/202202071155softskills_5.png",
+        "thumbnail": "http://uttoron.nanoit.biz/public/backend/upload/category/20220327053114.png",
+        "video": "http://uttoron.nanoit.biz/public/backend/upload/videos/Dz0FM83tUYfS8oRmcZPsmQbuVd4pH4gtx2cHLsU2.mp4",
+        "sort_order": 1,
+        "created_at": "2021-12-19T04:59:36.000000Z",
+        "updated_at": "2022-03-27T05:31:08.000000Z"
+      },
+      {
+        "id": 4,
+        "name": "চাকুরীর সাধারণ নিয়ম কানুন",
+        "icon": "http://uttoron.nanoit.biz/public/backend/upload/category/202201020553চাকুরীর সাধারণ নিয়ম কানুন.png",
+        "thumbnail": "http://uttoron.nanoit.biz/public/backend/upload/category/20220327053124.PNG",
+        "video": "http://uttoron.nanoit.biz/public/backend/upload/videos/g3B5hfb4qsoALkxQvphifO0j8rJfTBy2tOY9F0fl.mp4",
+        "sort_order": 2,
+        "created_at": "2021-12-22T22:48:43.000000Z",
+        "updated_at": "2022-03-27T05:31:18.000000Z"
+      },
+      {
+        "id": 5,
+        "name": "চাকুরীতে উন্নয়নের উপায়",
+        "icon": "http://uttoron.nanoit.biz/public/backend/upload/category/202201020554চাকুরীতে উন্নয়নের উপায়.png",
+        "thumbnail": "http://uttoron.nanoit.biz/public/backend/upload/category/20220327053134.PNG",
+        "video": "http://uttoron.nanoit.biz/public/backend/upload/videos/26O0Ayuv0ocpv3Lxvo3w40h3yskJIaCgcefO6rRy.mp4",
+        "sort_order": 3,
+        "created_at": "2021-12-22T22:48:55.000000Z",
+        "updated_at": "2022-03-27T05:31:29.000000Z"
+      },
+      {
+        "id": 6,
+        "name": "আর্থিক ব্যবস্থাপনা ও পরিকল্পনা",
+        "icon": "http://uttoron.nanoit.biz/public/backend/upload/category/202201020554আর্থিক ব্যবস্থাপনা ও পরিকল্পনা.png",
+        "thumbnail": "http://uttoron.nanoit.biz/public/backend/upload/category/20220327053244.PNG",
+        "video": "http://uttoron.nanoit.biz/public/backend/upload/videos/F0v3ASgLjZY7IJ4bwr9RU0Ij0YOTL1jcR2SGdPYo.mp4",
+        "sort_order": 4,
+        "created_at": "2021-12-22T22:49:09.000000Z",
+        "updated_at": "2022-03-27T05:32:16.000000Z"
+      },
+      {
+        "id": 7,
+        "name": "স্বাস্থ্য ও সুরক্ষা",
+        "icon": "http://uttoron.nanoit.biz/public/backend/upload/category/202202071236স্বাস্থ্য ও সুরক্ষা.png",
+        "thumbnail": "http://uttoron.nanoit.biz/public/backend/upload/category/20220327053254.PNG",
+        "video": "http://uttoron.nanoit.biz/public/backend/upload/videos/IE6XuFkM6LZ08awrk8d8G39HjqrxitwqEmTX0sx0.mp4",
+        "sort_order": 5,
+        "created_at": "2021-12-22T22:49:21.000000Z",
+        "updated_at": "2022-03-27T05:32:28.000000Z"
+      },
+      {
+        "id": 8,
+        "name": "উত্তরণ কুইজ গেইম",
+        "icon": "http://uttoron.nanoit.biz/public/backend/upload/category/202201020555উত্তরণ কুইজ গেইম.png",
+        "thumbnail": "http://uttoron.nanoit.biz/public/backend/upload/category",
+        "video": "http://uttoron.nanoit.biz/public/backend/upload",
+        "sort_order": 6,
+        "created_at": "2022-01-02T16:55:38.000000Z",
+        "updated_at": "2022-01-02T16:55:38.000000Z"
+      }
+    ],
+    "sub_categories": [
+      {
+        "id": 2,
+        "category_id": 1,
+        "category_name": "সফটস্কিল",
+        "name": "কর্মক্ষেত্রে যোগাযোগ",
+        "icon": "http://uttoron.nanoit.biz/public/backend/upload/sub_category/202201020556যোগাযোগ ব্যবস্থাপনা.png",
+        "sort_order": 11,
+        "created_at": "2021-12-19T05:41:48.000000Z",
+        "updated_at": "2022-03-24T06:14:25.000000Z"
+      },
+      {
+        "id": 12,
+        "category_id": 1,
+        "category_name": "সফটস্কিল",
+        "name": "সমস্যা সমাধানের উপায়",
+        "icon": "http://uttoron.nanoit.biz/public/backend/upload/sub_category/202201020557সমস্যা সমাধানের দক্ষতা উন্নয়ন.png",
+        "sort_order": 13,
+        "created_at": "2021-12-22T23:14:28.000000Z",
+        "updated_at": "2022-03-24T06:14:57.000000Z"
+      },
+      {
+        "id": 14,
+        "category_id": 1,
+        "category_name": "সফটস্কিল",
+        "name": "সঠিক সিদ্ধান্ত গ্রহণ",
+        "icon": "http://uttoron.nanoit.biz/public/backend/upload/sub_category/202201020558সঠিক সিদ্ধান্ত গ্রহণ.png",
+        "sort_order": 14,
+        "created_at": "2021-12-22T23:15:25.000000Z",
+        "updated_at": "2022-01-02T16:58:31.000000Z"
+      },
+      {
+        "id": 11,
+        "category_id": 1,
+        "category_name": "সফটস্কিল",
+        "name": "সময় ব্যবস্থাপনা",
+        "icon": "http://uttoron.nanoit.biz/public/backend/upload/sub_category/202201020556সময় ব্যবস্থাপনা.png",
+        "sort_order": 12,
+        "created_at": "2021-12-22T23:14:11.000000Z",
+        "updated_at": "2022-01-02T16:56:40.000000Z"
+      },
+      {
+        "id": 18,
+        "category_id": 4,
+        "category_name": "চাকুরীর সাধারণ নিয়ম কানুন",
+        "name": "বন্ধ ও ছুটি",
+        "icon": "http://uttoron.nanoit.biz/public/backend/upload/sub_category",
+        "sort_order": 25,
+        "created_at": "2021-12-22T23:20:15.000000Z",
+        "updated_at": "2022-03-24T07:31:30.000000Z"
+      },
+      {
+        "id": 13,
+        "category_id": 4,
+        "category_name": "চাকুরীর সাধারণ নিয়ম কানুন",
+        "name": "বেতন-ভাতা ও ওভারটাইম",
+        "icon": "http://uttoron.nanoit.biz/public/backend/upload/sub_category",
+        "sort_order": 26,
+        "created_at": "2021-12-22T23:14:49.000000Z",
+        "updated_at": "2022-03-24T07:57:03.000000Z"
+      },
+      {
+        "id": 17,
+        "category_id": 4,
+        "category_name": "চাকুরীর সাধারণ নিয়ম কানুন",
+        "name": "অন্যান্য সুযোগ সুবিধা",
+        "icon": "http://uttoron.nanoit.biz/public/backend/upload/sub_category",
+        "sort_order": 27,
+        "created_at": "2021-12-22T23:17:00.000000Z",
+        "updated_at": "2022-03-24T07:57:18.000000Z"
+      },
+      {
+        "id": 19,
+        "category_id": 4,
+        "category_name": "চাকুরীর সাধারণ নিয়ম কানুন",
+        "name": "ক্ষতিপূরণ সংক্রান্ত নিয়ম",
+        "icon": "http://uttoron.nanoit.biz/public/backend/upload/sub_category",
+        "sort_order": 24,
+        "created_at": "2022-02-07T08:00:02.000000Z",
+        "updated_at": "2022-02-07T08:00:02.000000Z"
+      },
+      {
+        "id": 21,
+        "category_id": 4,
+        "category_name": "চাকুরীর সাধারণ নিয়ম কানুন",
+        "name": "সাধারণ বিষয়সমূহ",
+        "icon": "http://uttoron.nanoit.biz/public/backend/upload/sub_category",
+        "sort_order": 23,
+        "created_at": "2022-02-07T08:01:03.000000Z",
+        "updated_at": "2022-03-24T07:32:16.000000Z"
+      },
+      {
+        "id": 22,
+        "category_id": 4,
+        "category_name": "চাকুরীর সাধারণ নিয়ম কানুন",
+        "name": "চাকুরী পরিবর্তনের সাধারণ বিধি",
+        "icon": "http://uttoron.nanoit.biz/public/backend/upload/sub_category",
+        "sort_order": 22,
+        "created_at": "2022-02-07T08:02:11.000000Z",
+        "updated_at": "2022-03-24T07:32:40.000000Z"
+      },
+      {
+        "id": 20,
+        "category_id": 4,
+        "category_name": "চাকুরীর সাধারণ নিয়ম কানুন",
+        "name": "চাকুরীতে পদোন্নতির উপায়",
+        "icon": "http://uttoron.nanoit.biz/public/backend/upload/sub_category",
+        "sort_order": 21,
+        "created_at": "2022-02-07T08:00:24.000000Z",
+        "updated_at": "2022-03-24T07:32:56.000000Z"
+      },
+      {
+        "id": 15,
+        "category_id": 5,
+        "category_name": "চাকুরীতে উন্নয়নের উপায়",
+        "name": "এক জন ভালো কর্মী যা করে",
+        "icon": "http://uttoron.nanoit.biz/public/backend/upload/sub_category",
+        "sort_order": 31,
+        "created_at": "2021-12-22T23:16:02.000000Z",
+        "updated_at": "2021-12-22T23:16:02.000000Z"
+      },
+      {
+        "id": 16,
+        "category_id": 5,
+        "category_name": "চাকুরীতে উন্নয়নের উপায়",
+        "name": "একজন ভালো কর্মী যা করে না",
+        "icon": "http://uttoron.nanoit.biz/public/backend/upload/sub_category",
+        "sort_order": 32,
+        "created_at": "2021-12-22T23:16:34.000000Z",
+        "updated_at": "2021-12-22T23:16:34.000000Z"
+      },
+      {
+        "id": 23,
+        "category_id": 5,
+        "category_name": "চাকুরীতে উন্নয়নের উপায়",
+        "name": "কর্মীর অধিকার",
+        "icon": "http://uttoron.nanoit.biz/public/backend/upload/sub_category",
+        "sort_order": 33,
+        "created_at": "2022-02-07T08:03:21.000000Z",
+        "updated_at": "2022-02-07T08:03:21.000000Z"
+      },
+      {
+        "id": 24,
+        "category_id": 6,
+        "category_name": "আর্থিক ব্যবস্থাপনা ও পরিকল্পনা",
+        "name": "ব্যক্তিগত আর্থিক পরিকল্পনা",
+        "icon": "http://uttoron.nanoit.biz/public/backend/upload/sub_category",
+        "sort_order": 41,
+        "created_at": "2022-02-07T08:04:24.000000Z",
+        "updated_at": "2022-03-24T07:35:06.000000Z"
+      },
+      {
+        "id": 25,
+        "category_id": 6,
+        "category_name": "আর্থিক ব্যবস্থাপনা ও পরিকল্পনা",
+        "name": "সঞ্চয়ের উপায়",
+        "icon": "http://uttoron.nanoit.biz/public/backend/upload/sub_category",
+        "sort_order": 42,
+        "created_at": "2022-02-07T08:04:44.000000Z",
+        "updated_at": "2022-03-24T07:35:37.000000Z"
+      },
+      {
+        "id": 26,
+        "category_id": 6,
+        "category_name": "আর্থিক ব্যবস্থাপনা ও পরিকল্পনা",
+        "name": "ব্যাংকিং লেনদেনের নিয়ম নীতি",
+        "icon": "http://uttoron.nanoit.biz/public/backend/upload/sub_category",
+        "sort_order": 43,
+        "created_at": "2022-02-07T08:05:48.000000Z",
+        "updated_at": "2022-03-24T07:35:56.000000Z"
+      },
+      {
+        "id": 29,
+        "category_id": 6,
+        "category_name": "আর্থিক ব্যবস্থাপনা ও পরিকল্পনা",
+        "name": "সতর্কতা",
+        "icon": "http://uttoron.nanoit.biz/public/backend/upload/sub_category",
+        "sort_order": 44,
+        "created_at": "2022-03-24T07:36:24.000000Z",
+        "updated_at": "2022-03-24T07:36:24.000000Z"
+      },
+      {
+        "id": 27,
+        "category_id": 7,
+        "category_name": "স্বাস্থ্য ও সুরক্ষা",
+        "name": "কর্মক্ষেত্রে সুরক্ষিত থাকার উপায়",
+        "icon": "http://uttoron.nanoit.biz/public/backend/upload/sub_category",
+        "sort_order": 51,
+        "created_at": "2022-02-07T08:06:09.000000Z",
+        "updated_at": "2022-02-07T08:06:09.000000Z"
+      },
+      {
+        "id": 28,
+        "category_id": 7,
+        "category_name": "স্বাস্থ্য ও সুরক্ষা",
+        "name": "কর্মক্ষেত্রে স্বাস্থ্যবিধি",
+        "icon": "http://uttoron.nanoit.biz/public/backend/upload/sub_category",
+        "sort_order": 52,
+        "created_at": "2022-02-07T08:06:44.000000Z",
+        "updated_at": "2022-02-07T08:06:44.000000Z"
+      },
+      {
+        "id": 30,
+        "category_id": 7,
+        "category_name": "স্বাস্থ্য ও সুরক্ষা",
+        "name": "সেইফটি ভিডিও",
+        "icon": "http://uttoron.nanoit.biz/public/backend/upload/sub_category",
+        "sort_order": 53,
+        "created_at": "2022-03-24T07:39:14.000000Z",
+        "updated_at": "2022-03-24T07:39:14.000000Z"
+      }
+    ],
+    "contents": [
+      {
+        "id": 2,
+        "category_id": 1,
+        "category_name": "সফটস্কিল",
+        "sub_category_id": 2,
+        "sub_category_name": "কর্মক্ষেত্রে যোগাযোগ",
+        "content": "<p>কর্মক্ষেত্রের যোগাযোগের নিয়ম-কানুন সম্পর্কিত তথ্য দ্রুত পাবলিশ করা হবে</p>",
+        "video": "http://uttoron.nanoit.biz/public/backend/upload/videos/3NDBU5jmeUCmNXsx8j62bLL9FPpzeqSJp0AbO8y5.mp4",
+        "created_at": "2021-12-19T07:20:41.000000Z",
+        "updated_at": "2022-03-24T07:50:42.000000Z"
+      },
+      {
+        "id": 8,
+        "category_id": 1,
+        "category_name": "সফটস্কিল",
+        "sub_category_id": 11,
+        "sub_category_name": "সময় ব্যবস্থাপনা",
+        "content": "<p>সময় ব্যবস্থাপনা সম্পর্কিত তথ্য দ্রুত পাবলিশ করা হবে</p>",
+        "video": "http://uttoron.nanoit.biz/public/backend/upload",
+        "created_at": "2022-03-27T06:13:06.000000Z",
+        "updated_at": "2022-03-27T06:13:06.000000Z"
+      },
+      {
+        "id": 9,
+        "category_id": 1,
+        "category_name": "সফটস্কিল",
+        "sub_category_id": 12,
+        "sub_category_name": "সমস্যা সমাধানের উপায়",
+        "content": "<p>সমস্যা সমাধানের উপায় সম্পর্কিত তথ্য দ্রুত পাবলিশ করা হবে</p>",
+        "video": "http://uttoron.nanoit.biz/public/backend/upload",
+        "created_at": "2022-03-27T06:13:16.000000Z",
+        "updated_at": "2022-03-27T06:13:16.000000Z"
+      },
+      {
+        "id": 11,
+        "category_id": 1,
+        "category_name": "সফটস্কিল",
+        "sub_category_id": 14,
+        "sub_category_name": "সঠিক সিদ্ধান্ত গ্রহণ",
+        "content": "<p>সঠিক সিদ্ধান্ত গ্রহণ সম্পর্কিত তথ্য দ্রুত পাবলিশ করা হবে</p>",
+        "video": "http://uttoron.nanoit.biz/public/backend/upload",
+        "created_at": "2022-03-27T06:15:01.000000Z",
+        "updated_at": "2022-03-27T06:15:01.000000Z"
+      },
+      {
+        "id": 10,
+        "category_id": 4,
+        "category_name": "চাকুরীর সাধারণ নিয়ম কানুন",
+        "sub_category_id": 20,
+        "sub_category_name": "চাকুরীতে পদোন্নতির উপায়",
+        "content": "<p>সঠিক সিদ্ধান্ত গ্রহণ সম্পর্কিত তথ্য দ্রুত পাবলিশ করা হবে</p>",
+        "video": "http://uttoron.nanoit.biz/public/backend/upload",
+        "created_at": "2022-03-27T06:13:44.000000Z",
+        "updated_at": "2022-03-27T06:13:44.000000Z"
+      },
+      {
+        "id": 12,
+        "category_id": 4,
+        "category_name": "চাকুরীর সাধারণ নিয়ম কানুন",
+        "sub_category_id": 22,
+        "sub_category_name": "চাকুরী পরিবর্তনের সাধারণ বিধি",
+        "content": "<p>চাকুরী পরিবর্তনের সাধারণ বিধি সম্পর্কিত তথ্য দ্রুত পাবলিশ করা হবে</p>",
+        "video": "http://uttoron.nanoit.biz/public/backend/upload",
+        "created_at": "2022-03-27T06:16:02.000000Z",
+        "updated_at": "2022-03-27T06:16:02.000000Z"
+      },
+      {
+        "id": 13,
+        "category_id": 4,
+        "category_name": "চাকুরীর সাধারণ নিয়ম কানুন",
+        "sub_category_id": 21,
+        "sub_category_name": "সাধারণ বিষয়সমূহ",
+        "content": "<p>সাধারণ বিষয়সমূহ সম্পর্কিত তথ্য দ্রুত পাবলিশ করা হবে</p>",
+        "video": "http://uttoron.nanoit.biz/public/backend/upload",
+        "created_at": "2022-03-27T06:16:14.000000Z",
+        "updated_at": "2022-03-27T06:16:14.000000Z"
+      },
+      {
+        "id": 14,
+        "category_id": 4,
+        "category_name": "চাকুরীর সাধারণ নিয়ম কানুন",
+        "sub_category_id": 19,
+        "sub_category_name": "ক্ষতিপূরণ সংক্রান্ত নিয়ম",
+        "content": "<p>ক্ষতিপূরণ সংক্রান্ত নিয়ম সম্পর্কিত তথ্য দ্রুত পাবলিশ করা হবে</p>",
+        "video": "http://uttoron.nanoit.biz/public/backend/upload",
+        "created_at": "2022-03-27T06:16:26.000000Z",
+        "updated_at": "2022-03-27T06:16:26.000000Z"
+      },
+      {
+        "id": 15,
+        "category_id": 4,
+        "category_name": "চাকুরীর সাধারণ নিয়ম কানুন",
+        "sub_category_id": 18,
+        "sub_category_name": "বন্ধ ও ছুটি",
+        "content": "<p>বন্ধ ও ছুটি সম্পর্কিত তথ্য দ্রুত পাবলিশ করা হবে</p>",
+        "video": "http://uttoron.nanoit.biz/public/backend/upload",
+        "created_at": "2022-03-27T06:16:38.000000Z",
+        "updated_at": "2022-03-27T06:16:38.000000Z"
+      },
+      {
+        "id": 16,
+        "category_id": 4,
+        "category_name": "চাকুরীর সাধারণ নিয়ম কানুন",
+        "sub_category_id": 13,
+        "sub_category_name": "বেতন-ভাতা ও ওভারটাইম",
+        "content": "<p>বেতন-ভাতা ও ওভারটাইম সম্পর্কিত তথ্য দ্রুত পাবলিশ করা হবে</p>",
+        "video": "http://uttoron.nanoit.biz/public/backend/upload",
+        "created_at": "2022-03-27T06:16:50.000000Z",
+        "updated_at": "2022-03-27T06:16:50.000000Z"
+      },
+      {
+        "id": 17,
+        "category_id": 4,
+        "category_name": "চাকুরীর সাধারণ নিয়ম কানুন",
+        "sub_category_id": 17,
+        "sub_category_name": "অন্যান্য সুযোগ সুবিধা",
+        "content": "<p>অন্যান্য সুযোগ সুবিধা সম্পর্কিত তথ্য দ্রুত পাবলিশ করা হবে</p>",
+        "video": "http://uttoron.nanoit.biz/public/backend/upload",
+        "created_at": "2022-03-27T06:16:59.000000Z",
+        "updated_at": "2022-03-27T06:16:59.000000Z"
+      },
+      {
+        "id": 18,
+        "category_id": 5,
+        "category_name": "চাকুরীতে উন্নয়নের উপায়",
+        "sub_category_id": 15,
+        "sub_category_name": "এক জন ভালো কর্মী যা করে",
+        "content": "<p>এক জন ভালো কর্মী যা করে সম্পর্কিত তথ্য দ্রুত পাবলিশ করা হবে</p>",
+        "video": "http://uttoron.nanoit.biz/public/backend/upload",
+        "created_at": "2022-03-27T06:17:10.000000Z",
+        "updated_at": "2022-03-27T06:17:10.000000Z"
+      },
+      {
+        "id": 19,
+        "category_id": 5,
+        "category_name": "চাকুরীতে উন্নয়নের উপায়",
+        "sub_category_id": 16,
+        "sub_category_name": "একজন ভালো কর্মী যা করে না",
+        "content": "<p>একজন ভালো কর্মী যা করে না সম্পর্কিত তথ্য দ্রুত পাবলিশ করা হবে</p>",
+        "video": "http://uttoron.nanoit.biz/public/backend/upload",
+        "created_at": "2022-03-27T06:17:24.000000Z",
+        "updated_at": "2022-03-27T06:17:24.000000Z"
+      },
+      {
+        "id": 20,
+        "category_id": 5,
+        "category_name": "চাকুরীতে উন্নয়নের উপায়",
+        "sub_category_id": 23,
+        "sub_category_name": "কর্মীর অধিকার",
+        "content": "<p>কর্মীর অধিকার সম্পর্কিত তথ্য দ্রুত পাবলিশ করা হবে</p>",
+        "video": "http://uttoron.nanoit.biz/public/backend/upload",
+        "created_at": "2022-03-27T06:17:36.000000Z",
+        "updated_at": "2022-03-27T06:17:36.000000Z"
+      },
+      {
+        "id": 21,
+        "category_id": 6,
+        "category_name": "আর্থিক ব্যবস্থাপনা ও পরিকল্পনা",
+        "sub_category_id": 24,
+        "sub_category_name": "ব্যক্তিগত আর্থিক পরিকল্পনা",
+        "content": "<p>ব্যক্তিগত আর্থিক পরিকল্পনা সম্পর্কিত তথ্য দ্রুত পাবলিশ করা হবে</p>",
+        "video": "http://uttoron.nanoit.biz/public/backend/upload",
+        "created_at": "2022-03-27T06:17:52.000000Z",
+        "updated_at": "2022-03-27T06:17:52.000000Z"
+      },
+      {
+        "id": 22,
+        "category_id": 6,
+        "category_name": "আর্থিক ব্যবস্থাপনা ও পরিকল্পনা",
+        "sub_category_id": 25,
+        "sub_category_name": "সঞ্চয়ের উপায়",
+        "content": "<p>সঞ্চয়ের উপায় সম্পর্কিত তথ্য দ্রুত পাবলিশ করা হবে</p>",
+        "video": "http://uttoron.nanoit.biz/public/backend/upload",
+        "created_at": "2022-03-27T06:18:03.000000Z",
+        "updated_at": "2022-03-27T06:18:03.000000Z"
+      },
+      {
+        "id": 23,
+        "category_id": 6,
+        "category_name": "আর্থিক ব্যবস্থাপনা ও পরিকল্পনা",
+        "sub_category_id": 26,
+        "sub_category_name": "ব্যাংকিং লেনদেনের নিয়ম নীতি",
+        "content": "<p>ব্যাংকিং লেনদেনের নিয়ম নীতি সম্পর্কিত তথ্য দ্রুত পাবলিশ করা হবে</p>",
+        "video": "http://uttoron.nanoit.biz/public/backend/upload",
+        "created_at": "2022-03-27T06:18:16.000000Z",
+        "updated_at": "2022-03-27T06:18:16.000000Z"
+      },
+      {
+        "id": 24,
+        "category_id": 6,
+        "category_name": "আর্থিক ব্যবস্থাপনা ও পরিকল্পনা",
+        "sub_category_id": 29,
+        "sub_category_name": "সতর্কতা",
+        "content": "<p>সতর্কতা সম্পর্কিত তথ্য দ্রুত পাবলিশ করা হবে</p>",
+        "video": "http://uttoron.nanoit.biz/public/backend/upload",
+        "created_at": "2022-03-27T06:18:24.000000Z",
+        "updated_at": "2022-03-27T06:18:24.000000Z"
+      },
+      {
+        "id": 25,
+        "category_id": 7,
+        "category_name": "স্বাস্থ্য ও সুরক্ষা",
+        "sub_category_id": 27,
+        "sub_category_name": "কর্মক্ষেত্রে সুরক্ষিত থাকার উপায়",
+        "content": "<p>কর্মক্ষেত্রে সুরক্ষিত থাকার উপায় সম্পর্কিত তথ্য দ্রুত পাবলিশ করা হবে</p>",
+        "video": "http://uttoron.nanoit.biz/public/backend/upload",
+        "created_at": "2022-03-27T06:18:37.000000Z",
+        "updated_at": "2022-03-27T06:18:37.000000Z"
+      },
+      {
+        "id": 26,
+        "category_id": 7,
+        "category_name": "স্বাস্থ্য ও সুরক্ষা",
+        "sub_category_id": 28,
+        "sub_category_name": "কর্মক্ষেত্রে স্বাস্থ্যবিধি",
+        "content": "<p>কর্মক্ষেত্রে স্বাস্থ্যবিধি সম্পর্কিত তথ্য দ্রুত পাবলিশ করা হবে</p>",
+        "video": "http://uttoron.nanoit.biz/public/backend/upload",
+        "created_at": "2022-03-27T06:18:48.000000Z",
+        "updated_at": "2022-03-27T06:18:48.000000Z"
+      },
+      {
+        "id": 3,
+        "category_id": 7,
+        "category_name": "স্বাস্থ্য ও সুরক্ষা",
+        "sub_category_id": 30,
+        "sub_category_name": "সেইফটি ভিডিও",
+        "content": "<p>সেইফটি ভিডিও সম্পর্কিত তথ্য দ্রুত পাবলিশ করা হবে</p>",
+        "video": "http://uttoron.nanoit.biz/public/backend/upload/videos/hFqQkCJeNQRy9WD1LR3onX97KdCcCBdSWZ71ILuY.mp4",
+        "created_at": "2022-03-24T08:00:22.000000Z",
+        "updated_at": "2022-03-27T06:19:31.000000Z"
+      }
+    ]
+  }
+]
