@@ -40,6 +40,7 @@ data class GeneralSetting(
     val created_at: String,
     val id: Int,
     val slogan: String,
+    val about_uttoron: String,
     val updated_at: String
 )
 

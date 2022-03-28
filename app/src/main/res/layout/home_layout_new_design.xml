@@ -284,9 +284,9 @@
         android:id="@+id/linBottom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:layout_alignParentBottom="true"
-        >
+        android:orientation="vertical">
+
         <RelativeLayout
             android:id="@+id/goQuize"
             android:layout_width="match_parent"
@@ -318,7 +318,8 @@
                 android:layout_marginLeft="@dimen/_20sdp"
                 android:layout_toRightOf="@+id/linIcon"
                 android:text="উত্তরণ কুইজ গেইম"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:textSize="@dimen/_15sdp" />
 
             <ImageView
                 android:layout_width="@dimen/_25sdp"
@@ -328,15 +329,15 @@
                 android:src="@drawable/ic_outline_arrow_forward_ios_24" />
         </RelativeLayout>
 
-        <com.google.android.material.bottomnavigation.BottomNavigationView android:id="@+id/navigationView"
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/navigationView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="0dp"
             android:layout_marginStart="0dp"
+            android:layout_marginEnd="0dp"
             android:background="?android:attr/windowBackground"
             app:itemBackground="@color/white"
-            app:menu="@menu/bottom_menu"
-            />
+            app:menu="@menu/bottom_menu" />
 
     </LinearLayout>
 

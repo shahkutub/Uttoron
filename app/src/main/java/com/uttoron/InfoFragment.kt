@@ -42,34 +42,22 @@ class InfoFragment : Fragment(){
         super.onActivityCreated(savedInstanceState)
 
 
-        if (!TextUtils.isEmpty(AppConstant.infoPagename)){
-            tvTitle.text = AppConstant.infoPagename.toString()
-        }
+        //if (!TextUtils.isEmpty(AppConstant.infoPagename)){
+            tvTitle.text = "উত্তরণ সম্পর্কে জানুন"
+        //}
 
        // imgBack.visibility = View.GONE
         vidView.visibility = View.GONE
 
         //if (AppConstant.)
 
-        AppConstant.getContent(context).forEachIndexed { index, content ->
-
-                if (content.category_name.equals("সফটস্কিল")){
-                    if (content.sub_category_id ==null){
-                        if (content.content !=null){
-                            tvContent.text = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                                Html.fromHtml(content.content, Html.FROM_HTML_MODE_COMPACT)
-                            } else {
-                                Html.fromHtml(content.content)
-                            }
-                        }
-                    }
-
-                }
-
+        tvContent.text = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            Html.fromHtml(AppConstant.getGeneralsettings(requireContext())[0].about_uttoron, Html.FROM_HTML_MODE_COMPACT)
+        } else {
+            Html.fromHtml(AppConstant.getGeneralsettings(requireContext())[0].about_uttoron)
         }
 
-
-
+        imgBack.visibility = View.GONE
         imgBack.setOnClickListener {
             //return@setOnNavigationItemSelectedListener true
            //requireActivity().navigationView.getMenu().getItem(0).setChecked(true)

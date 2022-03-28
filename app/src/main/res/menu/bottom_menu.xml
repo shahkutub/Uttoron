@@ -3,7 +3,7 @@
 
     <item
         android:id="@+id/navigation_home"
-        android:icon="@drawable/ic_action_home"
+        android:icon="@drawable/home"
         android:title="home"/>
 <!--    <item-->
 <!--            android:id="@+id/navigation_fav"-->
@@ -15,6 +15,6 @@
 <!--        android:title="favorites"/>-->
     <item
             android:id="@+id/navigation_settings"
-            android:icon="@drawable/ic_baseline_info_24"
+            android:icon="@drawable/uttoron_bottom_logo"
             android:title="settings"/>
 </menu>

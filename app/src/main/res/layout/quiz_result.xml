@@ -10,12 +10,13 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_10sdp"
         android:gravity="center"
         android:text="উত্তরণ কুইজ"
         android:textColor="#5E5148"
-        android:layout_gravity="top"
-        android:layout_margin="@dimen/_10sdp"
+        android:background="@drawable/cat_grdient_bg"
         android:textStyle="bold"
+        android:padding="@dimen/_7sdp"
         android:textSize="@dimen/_15sdp" />
 
 
@@ -38,7 +39,7 @@
                 android:id="@+id/tvResult1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#461AB7"
+                android:textColor="#000"
                 android:textStyle="bold"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:textSize="@dimen/_15sdp"
@@ -67,7 +68,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#941D2A"
+                android:textColor="#000"
                 android:textStyle="bold"
                 android:gravity="center"
                 android:layout_marginTop="@dimen/_15sdp"
@@ -85,7 +86,7 @@
             android:textStyle="bold"
             android:layout_marginTop="@dimen/_10sdp"
             android:text="ড্যাশবোর্ডে ফেরত যেতে নিচের বাটন ক্লিক করুন"
-            android:textSize="@dimen/_10sdp"
+            android:textSize="@dimen/_12sdp"
             />
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnDashBoard"

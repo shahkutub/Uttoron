@@ -264,23 +264,26 @@ class HomeFragmentOffline : Fragment(){
 
             holder.fullTop.setOnClickListener {
 
-                AppConstant.isHome = true
+                AppConstant.isHome = false
 
                 AppConstant.subCatName = list[position].name
-                AppConstant.catName = list[position].category_name
-                //AppConstant.subCatName = list[position].category_name
-                val transaction = requireActivity().supportFragmentManager.beginTransaction()
-                transaction.replace(R.id.container, ContentFragmentOffline())
-                transaction.addToBackStack(null)
-                transaction.commit()
+                AppConstant.subCatId = list[position].id.toString()
 
-//                AppConstant.catName = list[position].category_name
-//                AppConstant.catID = list[position].category_id.toString()
-//                AppConstant.subCatList = list
-//                val transaction = requireActivity().supportFragmentManager.beginTransaction()
-//                transaction.replace(R.id.container, VideoFragment())
-//                transaction.addToBackStack(null)
-//                transaction.commit()
+                AppConstant.getContent(requireContext()).forEachIndexed { index, content ->
+                    if (content.content != null){
+
+                        if (content.sub_category_id != null ){
+                            if (content.sub_category_id == list[position].id){
+                                AppConstant.content = content.content
+                                val transaction = requireActivity().supportFragmentManager.beginTransaction()
+                                transaction.replace(R.id.container, ContentFragmentOffline())
+                                transaction.addToBackStack(null)
+                                transaction.commit()
+                            }
+                        }
+
+                    }
+                }
             }
 
         }

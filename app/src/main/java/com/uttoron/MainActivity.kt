@@ -119,21 +119,15 @@ class MainActivity : AppCompatActivity()  {
                         //loadFragment(HomeFragment())
                         //getAllData()
                     }
-                    return@setOnNavigationItemSelectedListener false
+                    return@setOnNavigationItemSelectedListener true
                 }
 
                 R.id.navigation_settings-> {
                     title=resources.getString(R.string.settings)
 
-                    AppConstant.getContent(context).forEachIndexed { index, content ->
-                            if (content.sub_category_id == null){
-                                if (content.content !=null){
-                                    loadFragment(InfoFragment())
-                                }
-                            }
-                    }
+                    loadFragment(InfoFragment())
 
-                    return@setOnNavigationItemSelectedListener false
+                    return@setOnNavigationItemSelectedListener true
                 }
 
             }

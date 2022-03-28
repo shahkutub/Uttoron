@@ -69,33 +69,66 @@ class VideoFragmentOffline : Fragment(){
 
         }
 
-        val layoutManagerOtherCat = GridLayoutManager(context, 2)
-        layoutManagerOtherCat.orientation = LinearLayoutManager.VERTICAL
-        recyclevidCats!!.setLayoutManager(layoutManagerOtherCat)
-        var usersAdapterOtherCat = OtherCatListAdapter(AppConstant.subCatList, requireContext())
-        //recyclerDrotoJogajog!!.addItemDecoration(DividerItemDecoration(context, layoutManager.orientation))
-        recyclevidCats!!.setAdapter(usersAdapterOtherCat)
+        if(AppConstant.catName == "চাকুরীর সাধারণ নিয়ম কানুন"){
+            val layoutManagerOtherCat = GridLayoutManager(context, 2)
+            layoutManagerOtherCat.orientation = LinearLayoutManager.VERTICAL
+            recyclevidCats!!.setLayoutManager(layoutManagerOtherCat)
+            var usersAdapterOtherCat = OtherCatListAdapterJobRule(AppConstant.subCatList, requireContext())
+            //recyclerDrotoJogajog!!.addItemDecoration(DividerItemDecoration(context, layoutManager.orientation))
+            recyclevidCats!!.setAdapter(usersAdapterOtherCat)
 
-        //for last odd item full width
-
-        val num = AppConstant.subCatList.size
-        if (num % 2 == 0){
-            println("$num is even")
-        }else{
-            layoutManagerOtherCat.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
-                override fun getSpanSize(position: Int): Int {
-                    return if (usersAdapterOtherCat != null) {
-                        when (usersAdapterOtherCat.getItemViewType(position)) {
-                            1 -> 1
-                            0 -> 2 //number of columns of the grid
-                            else -> -1
+            val num = AppConstant.subCatList.size
+            if (num % 2 == 0){
+                println("$num is even")
+            }else{
+                layoutManagerOtherCat.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
+                    override fun getSpanSize(position: Int): Int {
+                        return if (usersAdapterOtherCat != null) {
+                            when (usersAdapterOtherCat.getItemViewType(position)) {
+                                1 -> 1
+                                0 -> 2 //number of columns of the grid
+                                else -> -1
+                            }
+                        } else {
+                            -1
                         }
-                    } else {
-                        -1
+                    }
+                }
+            }
+
+        }else{
+            val layoutManagerOtherCat = GridLayoutManager(context, 2)
+            layoutManagerOtherCat.orientation = LinearLayoutManager.VERTICAL
+            recyclevidCats!!.setLayoutManager(layoutManagerOtherCat)
+            var usersAdapterOtherCat = OtherCatListAdapter(AppConstant.subCatList, requireContext())
+            //recyclerDrotoJogajog!!.addItemDecoration(DividerItemDecoration(context, layoutManager.orientation))
+            recyclevidCats!!.setAdapter(usersAdapterOtherCat)
+
+            val num = AppConstant.subCatList.size
+            if (num % 2 == 0){
+                println("$num is even")
+            }else{
+                layoutManagerOtherCat.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
+                    override fun getSpanSize(position: Int): Int {
+                        return if (usersAdapterOtherCat != null) {
+                            when (usersAdapterOtherCat.getItemViewType(position)) {
+                                1 -> 1
+                                0 -> 2 //number of columns of the grid
+                                else -> -1
+                            }
+                        } else {
+                            -1
+                        }
                     }
                 }
             }
         }
+
+
+
+        //for last odd item full width
+
+
 
 
         imgBack.setOnClickListener {
@@ -213,11 +246,12 @@ class VideoFragmentOffline : Fragment(){
     }
 
 
-    inner class OtherCatListAdapter(var notifications: ArrayList<SubCategory>, var context: Context) :
-        RecyclerView.Adapter<OtherCatListAdapter.UserViewHolder>() {
+    inner class OtherCatListAdapterJobRule(var notifications: ArrayList<SubCategory>, var context: Context) :
+        RecyclerView.Adapter<OtherCatListAdapterJobRule.UserViewHolder>() {
 
         override fun onCreateViewHolder(parent: ViewGroup, p1: Int) = UserViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.item_other_cat, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.item_other_cat_subcat, parent, false)
+
         )
         override fun getItemViewType(position: Int): Int {
             return if (position == getItemCount() - 1) 0 else 1 // If the item is last, `itemViewType` will be 0
@@ -239,12 +273,76 @@ class VideoFragmentOffline : Fragment(){
 //                })
 
 
-//            if(notifications.size > 4){
-//                val params = holder.fullViewCat!!.layoutParams
-//                params.height = R.dimen._80sdp
-//                holder.fullViewCat!!.layoutParams = params
-//                //holder.fullViewCat.height =
-//            }
+
+
+            holder.imgOtehrCat.visibility =View.GONE
+
+            holder.fullViewCat.setOnClickListener {
+                AppConstant.isHome = false
+
+                AppConstant.subCatName = notifications[position].name
+                AppConstant.subCatId = notifications[position].id.toString()
+
+                AppConstant.getContent(requireContext()).forEachIndexed { index, content ->
+                    if (content.content != null){
+
+                        if (content.sub_category_id != null ){
+                            if (content.sub_category_id == notifications[position].id){
+                                AppConstant.content = content.content
+                                val transaction = requireActivity().supportFragmentManager.beginTransaction()
+                                transaction.replace(R.id.container, ContentFragmentOffline())
+                                transaction.addToBackStack(null)
+                                transaction.commit()
+                            }
+                        }
+
+                    }
+                }
+
+//                val transaction = requireActivity().supportFragmentManager.beginTransaction()
+//                transaction.replace(R.id.container, ContentFragmentOffline())
+//                transaction.addToBackStack(null)
+//                transaction.commit()
+            }
+        }
+
+
+        inner class UserViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+            val tvCatNameOther = view.tvCatNameOther
+            val imgOtehrCat = view.imgOtehrCat
+            val fullViewCat = view.fullViewCat
+
+        }
+    }
+
+    inner class OtherCatListAdapter(var notifications: ArrayList<SubCategory>, var context: Context) :
+        RecyclerView.Adapter<OtherCatListAdapter.UserViewHolder>() {
+
+        override fun onCreateViewHolder(parent: ViewGroup, p1: Int) = UserViewHolder(
+            LayoutInflater.from(parent.context).inflate(R.layout.item_other_cat, parent, false)
+
+        )
+        override fun getItemViewType(position: Int): Int {
+            return if (position == getItemCount() - 1) 0 else 1 // If the item is last, `itemViewType` will be 0
+        }
+
+        override fun getItemCount() = notifications.size
+        override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
+            holder.tvCatNameOther.text = notifications[position].name
+
+
+            //holder.imgOtehrCat.setImageURI(Uri.parse("/sdcard/download/uttoron/"+notifications[position].name+".png"))
+//            Glide.with(requireContext())
+//                .asBitmap()
+//                .load(notifications[position].icon)
+//                .into(object : SimpleTarget<Bitmap?>() {
+//                    override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap?>?) {
+//                        holder.imgOtehrCat.setImageBitmap(resource)
+//                    }
+//                })
+
+
+
 
             holder.imgOtehrCat.visibility =View.GONE
 
