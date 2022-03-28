@@ -23,6 +23,7 @@ import kotlinx.android.synthetic.main.item_other_cat.view.*
 import kotlinx.android.synthetic.main.video_layout.*
 import kotlinx.android.synthetic.main.video_play_layout.*
 import android.os.Build
+import android.util.Log
 
 
 class VideoFragmentOfflineSoftSkill : Fragment(){
@@ -55,10 +56,20 @@ class VideoFragmentOfflineSoftSkill : Fragment(){
 
             AppConstant.subCatName = AppConstant.catName
 
-            val transaction = requireActivity().supportFragmentManager.beginTransaction()
-            transaction.replace(R.id.container, ContentFragmentOffline())
-            transaction.addToBackStack(null)
-            transaction.commit()
+            AppConstant.getContent(requireContext()).forEachIndexed { index, content ->
+                Log.e("category_name",""+content.category_name)
+                Log.e("sub_category_id",""+content.sub_category_id)
+                Log.e("content",""+content.content)
+                if (content.content != null){
+                    if (content.sub_category_id == 0 && content.category_name.equals(AppConstant.catName)){
+                        AppConstant.content = content.content
+                        val transaction = requireActivity().supportFragmentManager.beginTransaction()
+                        transaction.replace(R.id.container, ContentFragmentOffline())
+                        transaction.addToBackStack(null)
+                        transaction.commit()
+                    }
+                }
+            }
         }
 
         val layoutManagerOtherCat = GridLayoutManager(context, 2)
@@ -85,28 +96,13 @@ class VideoFragmentOfflineSoftSkill : Fragment(){
 //        }
 
        // url = "/sdcard/download/uttoron/"+AppConstant.catName+".mp4"
+
         var path = ""
-
         if(AppConstant.catName == "সফটস্কিল"){
+            imgThumbnil.setImageResource(R.drawable.thumbnail_softskill)
             path = "android.resource://" + requireContext().getPackageName() + "/"+R.raw.softskill
-        }
 
-        if(AppConstant.catName == "চাকুরীর সাধারণ নিয়ম কানুন"){
-            path = "android.resource://" + requireContext().getPackageName() + "/"+R.raw.job_general_role
         }
-
-        if(AppConstant.catName == "চাকুরীতে উন্নয়নের উপায়"){
-            path = "android.resource://" + requireContext().getPackageName() + "/"+R.raw.job_devlopment
-        }
-
-        if(AppConstant.catName == "আর্থিক ব্যবস্থাপনা ও পরিকল্পনা"){
-            path = "android.resource://" + requireContext().getPackageName() + "/"+R.raw.arthik_bebosthhapona
-        }
-
-        if(AppConstant.catName == "স্বাস্থ্য ও সুরক্ষা"){
-            path = "android.resource://" + requireContext().getPackageName() + "/"+R.raw.health
-        }
-
 
 
         if (savedInstanceState != null) {
@@ -227,11 +223,23 @@ class VideoFragmentOfflineSoftSkill : Fragment(){
                 AppConstant.isHome = false
 
                 AppConstant.subCatName = list[position].name
+                AppConstant.subCatId = list[position].id.toString()
 
-                val transaction = requireActivity().supportFragmentManager.beginTransaction()
-                transaction.replace(R.id.container, ContentFragmentOffline())
-                transaction.addToBackStack(null)
-                transaction.commit()
+                AppConstant.getContent(requireContext()).forEachIndexed { index, content ->
+                    if (content.content != null){
+
+                        if (content.sub_category_id != null ){
+                            if (content.sub_category_id == list[position].id){
+                                AppConstant.content = content.content
+                                val transaction = requireActivity().supportFragmentManager.beginTransaction()
+                                transaction.replace(R.id.container, ContentFragmentOffline())
+                                transaction.addToBackStack(null)
+                                transaction.commit()
+                            }
+                        }
+
+                    }
+                }
             }
         }
 

@@ -54,6 +54,8 @@ public class AppConstant {
     @Nullable
     public static  String infoPagename = "";
     public static  String infoContent = "";
+    @NotNull
+    public static String content = "";
 
 //    public static String clockInOu="";
 //    public static String lat="";

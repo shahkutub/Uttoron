@@ -22,6 +22,7 @@ import com.uttoron.utils.AppConstant
 import kotlinx.android.synthetic.main.content_layout.*
 import android.os.Build
 import android.text.Html
+import android.util.Log
 import com.uttoron.utils.NetInfo
 import kotlinx.android.synthetic.main.video_play_layout.*
 
@@ -44,18 +45,25 @@ class ContentFragmentOffline : Fragment(){
 
         tvTitle.text = AppConstant.subCatName
 
-        for ((index, value) in AppConstant.getContent(context).withIndex()) {
-
-            if (value.sub_category_id != null){
-                if (AppConstant.subCatId.equals(value.sub_category_id.toString())){
-                    tvContent.text = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                        Html.fromHtml(value.content, Html.FROM_HTML_MODE_COMPACT)
-                    } else {
-                        Html.fromHtml(value.content)
-                    }
-                }
-            }
+        Log.e("content",""+AppConstant.content)
+        tvContent.text = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            Html.fromHtml(AppConstant.content, Html.FROM_HTML_MODE_COMPACT)
+        } else {
+            Html.fromHtml(AppConstant.content)
         }
+
+//        for ((index, value) in AppConstant.getContent(context).withIndex()) {
+//
+//            if (value.sub_category_id != null){
+//                if (AppConstant.subCatId.equals(value.sub_category_id.toString())){
+//                    tvContent.text = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+//                        Html.fromHtml(value.content, Html.FROM_HTML_MODE_COMPACT)
+//                    } else {
+//                        Html.fromHtml(value.content)
+//                    }
+//                }
+//            }
+//        }
 
 
 

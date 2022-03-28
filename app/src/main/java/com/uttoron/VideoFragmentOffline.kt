@@ -55,10 +55,18 @@ class VideoFragmentOffline : Fragment(){
 
             AppConstant.subCatName = AppConstant.catName
 
-            val transaction = requireActivity().supportFragmentManager.beginTransaction()
-            transaction.replace(R.id.container, ContentFragmentOffline())
-            transaction.addToBackStack(null)
-            transaction.commit()
+            AppConstant.getContent(requireContext()).forEachIndexed { index, content ->
+                if (content.content != null){
+                    if (content.sub_category_id == null && content.category_name.equals(AppConstant.catName)){
+                        AppConstant.content = content.content
+                        val transaction = requireActivity().supportFragmentManager.beginTransaction()
+                        transaction.replace(R.id.container, ContentFragmentOffline())
+                        transaction.addToBackStack(null)
+                        transaction.commit()
+                    }
+                }
+            }
+
         }
 
         val layoutManagerOtherCat = GridLayoutManager(context, 2)
@@ -113,8 +121,6 @@ class VideoFragmentOffline : Fragment(){
         if(AppConstant.catName == "সফটস্কিল"){
             imgThumbnil.setImageResource(R.drawable.thumbnail_softskill)
             path = "android.resource://" + requireContext().getPackageName() + "/"+R.raw.softskill
-
-
 
         }
 
@@ -248,10 +254,26 @@ class VideoFragmentOffline : Fragment(){
                 AppConstant.subCatName = notifications[position].name
                 AppConstant.subCatId = notifications[position].id.toString()
 
-                val transaction = requireActivity().supportFragmentManager.beginTransaction()
-                transaction.replace(R.id.container, ContentFragmentOffline())
-                transaction.addToBackStack(null)
-                transaction.commit()
+                AppConstant.getContent(requireContext()).forEachIndexed { index, content ->
+                    if (content.content != null){
+
+                        if (content.sub_category_id != null ){
+                            if (content.sub_category_id == notifications[position].id){
+                                AppConstant.content = content.content
+                                val transaction = requireActivity().supportFragmentManager.beginTransaction()
+                                transaction.replace(R.id.container, ContentFragmentOffline())
+                                transaction.addToBackStack(null)
+                                transaction.commit()
+                            }
+                        }
+
+                    }
+                }
+
+//                val transaction = requireActivity().supportFragmentManager.beginTransaction()
+//                transaction.replace(R.id.container, ContentFragmentOffline())
+//                transaction.addToBackStack(null)
+//                transaction.commit()
             }
         }
 
