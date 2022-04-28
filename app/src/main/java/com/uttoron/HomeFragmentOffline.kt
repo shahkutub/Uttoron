@@ -205,7 +205,13 @@ class HomeFragmentOffline : Fragment(){
 //        for ((index, value) in AppConstant.alldata[0].sub_categories.withIndex()) {
 //
 //        }
-        //downloadPdfFile()
+
+        try {
+           // downloadPdfFile()
+        }catch (e:Exception){
+
+        }
+
     }
 
 
@@ -420,14 +426,16 @@ class HomeFragmentOffline : Fragment(){
     private fun downloadPdfFile() {
 
 
-
-        for ((index, value) in AppConstant.alldata[0].contents.withIndex()) {
+        for ((index, value) in AppConstant.getContent(requireContext()).withIndex()) {
 
             if (value.video !=  null){
                 srcUrl = value.video
             }
-            if (value.content_name !=  null){
-                filename = value.content_name+".pdf"
+            if (value.sub_category !=  null){
+                filename = value.sub_category.name+".pdf"
+            }
+            if (value.sub_category ==  null){
+                filename = value.category_name+".pdf"
             }
 
             val download = DownloadFileFromURLTask(requireContext(), outputDir,srcUrl,filename, object :

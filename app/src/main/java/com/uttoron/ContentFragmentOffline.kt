@@ -1,10 +1,10 @@
 package com.uttoron
 
-import android.content.Context
-import android.graphics.Bitmap
 import android.media.MediaPlayer
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,24 +12,12 @@ import android.widget.MediaController
 import android.widget.Toast
 import android.widget.VideoView
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.target.SimpleTarget
-import com.bumptech.glide.request.transition.Transition
-import com.uttoron.model.SubCategory
+import com.github.barteksc.pdfviewer.PDFView
+import com.github.barteksc.pdfviewer.listener.OnRenderListener
 import com.uttoron.utils.AppConstant
 import kotlinx.android.synthetic.main.content_layout.*
-import android.os.Build
-import android.text.Html
-import android.util.Log
-import com.uttoron.utils.NetInfo
 import kotlinx.android.synthetic.main.video_play_layout.*
 import java.io.File
-import android.os.Environment
-
-
-
 
 
 class ContentFragmentOffline : Fragment(){
@@ -57,13 +45,26 @@ class ContentFragmentOffline : Fragment(){
 //            Html.fromHtml(AppConstant.content)
 //        }
 
-       // val file = File("/sdcard/download/uttoron/সময় ব্যবস্থাপনা.pdf")
-
+//        val file = File("/sdcard/download/uttoron/"+AppConstant.subCatName)
+//
 //        pdfv.fromFile(file)
+//            .onRender(OnRenderListener { pages, pageWidth, pageHeight ->
+//                pdfv.fitToWidth()
+//            })
 //            .load()
 
-        pdfv.fromAsset("সময় ব্যবস্থাপনা.pdf")
-            .load()
+        if(AppConstant.subCatName.equals("সময় ব্যবস্থাপনা")){
+            pdfv.fromAsset("সময় ব্যবস্থাপনা.pdf")
+                .onRender(OnRenderListener { pages, pageWidth, pageHeight ->
+                    pdfv.fitToWidth() // optionally pass page number
+                })
+                .load()
+        }
+
+
+//        PDFView.Configurator.onRender(OnRenderListener { pages, pageWidth, pageHeight ->
+//            pdfView.fitToWidth() // optionally pass page number
+//        })
 
         //webview.loadUrl("/sdcard/download/uttoron/"+AppConstant.catName+".mp4")
         //webview.loadData("/sdcard/download/uttoron/uttoronTest.pdf")
@@ -130,6 +131,8 @@ class ContentFragmentOffline : Fragment(){
 
         }
     }
+
+
 
     private fun initializePlayer(url: String) {
         // Show the "Buffering..." message while the video loads.

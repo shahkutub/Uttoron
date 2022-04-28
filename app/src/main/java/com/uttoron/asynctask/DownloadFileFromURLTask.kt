@@ -181,6 +181,7 @@ class DownloadFileFromURLTask(val mContext: Context, private val outputDir: Stri
         } catch (e: Exception) {
             error = e.toString()
             Log.e(TAG, "Exception: $e")
+            progressDialog!!.dismiss()
         }
         return false
     }

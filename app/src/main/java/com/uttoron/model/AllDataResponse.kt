@@ -27,10 +27,10 @@ data class Content(
     val category_id: Int,
     val category_name: String,
     val content: String,
-    val content_name: String,
     val created_at: String,
     val id: Int,
     val sub_category_id: Int,
+    val sub_category: SubCatName,
     val sub_category_name: String,
     val updated_at: String,
     val video: String
