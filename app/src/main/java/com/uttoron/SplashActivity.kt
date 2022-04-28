@@ -287,12 +287,12 @@ class SplashActivity : AppCompatActivity() {
 
                     initUi()
 //                    downloadAllImage()
-//                    if (checkAndRequestPermissions()){
-//                        //downloadFile()
-//                        downloadVid1()
-//                    }else{
-//                        checkAndRequestPermissions()
-//                    }
+                    if (checkAndRequestPermissions()){
+                        //downloadFile()
+                       // downloadVid1()
+                    }else{
+                        checkAndRequestPermissions()
+                    }
 
 
                 }

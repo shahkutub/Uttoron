@@ -25,6 +25,11 @@ import android.text.Html
 import android.util.Log
 import com.uttoron.utils.NetInfo
 import kotlinx.android.synthetic.main.video_play_layout.*
+import java.io.File
+import android.os.Environment
+
+
+
 
 
 class ContentFragmentOffline : Fragment(){
@@ -46,11 +51,23 @@ class ContentFragmentOffline : Fragment(){
         tvTitle.text = AppConstant.subCatName
 
         Log.e("content",""+AppConstant.content)
-        tvContent.text = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            Html.fromHtml(AppConstant.content, Html.FROM_HTML_MODE_COMPACT)
-        } else {
-            Html.fromHtml(AppConstant.content)
-        }
+//        tvContent.text = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+//            Html.fromHtml(AppConstant.content, Html.FROM_HTML_MODE_COMPACT)
+//        } else {
+//            Html.fromHtml(AppConstant.content)
+//        }
+
+       // val file = File("/sdcard/download/uttoron/সময় ব্যবস্থাপনা.pdf")
+
+//        pdfv.fromFile(file)
+//            .load()
+
+        pdfv.fromAsset("সময় ব্যবস্থাপনা.pdf")
+            .load()
+
+        //webview.loadUrl("/sdcard/download/uttoron/"+AppConstant.catName+".mp4")
+        //webview.loadData("/sdcard/download/uttoron/uttoronTest.pdf")
+
 
 //        for ((index, value) in AppConstant.getContent(context).withIndex()) {
 //

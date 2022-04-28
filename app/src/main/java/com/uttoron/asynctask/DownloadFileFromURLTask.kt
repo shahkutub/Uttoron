@@ -42,7 +42,7 @@ class DownloadFileFromURLTask(val mContext: Context, private val outputDir: Stri
         progressDialog = ProgressDialog(mContext)
         progressDialog!!.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
         progressDialog!!.setCancelable(false)
-        progressDialog!!.setTitle("Downloading "+fileName)
+        progressDialog!!.setTitle("Downloading ")
     }
 
 

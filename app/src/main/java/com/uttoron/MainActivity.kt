@@ -98,7 +98,12 @@ class MainActivity : AppCompatActivity()  {
 
 
 
-
+        if (checkAndRequestPermissions()){
+            //downloadFile()
+            // downloadVid1()
+        }else{
+            checkAndRequestPermissions()
+        }
 
         // result = checkPermission()
         navigationView.setOnNavigationItemSelectedListener {
@@ -269,21 +274,7 @@ class MainActivity : AppCompatActivity()  {
     }
 
 
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
-    ) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        when (requestCode) {
-            MY_PERMISSIONS_REQUEST_WRITE_STORAGE -> if (grantResults.size > 0 && grantResults[0] === PackageManager.PERMISSION_GRANTED) {
-               // checkFolder()
-            } else {
-                //code for deny
-                checkAgain()
-            }
-        }
-    }
+
 
 
 
@@ -324,7 +315,7 @@ class MainActivity : AppCompatActivity()  {
                 hud.dismiss()
                 AppConstant.alldata =response.body()
                 // AppConstant.alldata = null
-                Log.e("AppConstant.alldata","size: "+AppConstant.alldata[0].categories.size)
+                //Log.e("AppConstant.alldata","size: "+AppConstant.alldata[0].categories.size)
                 //downloadVid1()
                     allDataresponse = response.body()
                // Log.e("response",""+allDataresponse.toString())
@@ -360,7 +351,10 @@ class MainActivity : AppCompatActivity()  {
                     AppConstant.getHome4Catagories(context).clear()
                     AppConstant.saveHome4Catagories(applicationContext,AppConstant.home4Cat)
 
+
                     loadFragment(HomeFragmentOffline())
+
+
 
                 }
 
@@ -794,6 +788,63 @@ class MainActivity : AppCompatActivity()  {
 
 
     }
+
+
+    private fun checkAndRequestPermissions(): Boolean {
+
+//        val camerapermission = ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
+        val writepermission = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+        val permissionRead = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
+
+        val listPermissionsNeeded = java.util.ArrayList<String>()
+
+//        if (camerapermission != PackageManager.PERMISSION_GRANTED) {
+//            listPermissionsNeeded.add(Manifest.permission.CAMERA)
+//        }
+
+        if (writepermission != PackageManager.PERMISSION_GRANTED) {
+            listPermissionsNeeded.add(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+        }
+
+        if (permissionRead != PackageManager.PERMISSION_GRANTED) {
+            listPermissionsNeeded.add(Manifest.permission.READ_EXTERNAL_STORAGE)
+        }
+
+
+
+        if (!listPermissionsNeeded.isEmpty()) {
+            ActivityCompat.requestPermissions(this, listPermissionsNeeded.toTypedArray(),
+                REQUEST_ID_MULTIPLE_PERMISSIONS
+            )
+            return false
+        }
+        return true
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        //handle permission request results || calls when user from Permission request dialog presses Allow or Deny
+        if (requestCode == REQUEST_ID_MULTIPLE_PERMISSIONS){
+            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[1] == PackageManager.PERMISSION_GRANTED){
+                //downloadFile()
+                //downloadVid1()
+            }
+            else{
+                //permission denied, cann't pick contact, just show message
+                //Toast.makeText(context!!, "Permission denied", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+    companion object {
+
+        val REQUEST_ID_MULTIPLE_PERMISSIONS = 1
+        private val REQUEST_PERM_DELETE = 2000
+    }
+
 
 }
 

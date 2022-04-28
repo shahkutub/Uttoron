@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F6F9FF"
+    android:background="#fff"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <RelativeLayout
@@ -73,6 +73,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_10sdp"
+            android:visibility="gone"
             android:maxLines="1"
             android:text="..................................................................................................................................................."
             android:textColor="@color/cardview_shadow_start_color"
@@ -92,11 +93,22 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text=""
+            android:visibility="gone"
             android:textColor="@color/black"
             android:layout_margin="@dimen/_10sdp"
-
             />
 
+        <com.github.barteksc.pdfviewer.PDFView
+            android:id="@+id/pdfv"
+            android:layout_width="match_parent"
+
+            android:layout_height="match_parent">
+        </com.github.barteksc.pdfviewer.PDFView>
+
+<!--        <WebView-->
+<!--            android:id="@+id/webview"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"/>-->
 
     </LinearLayout>
 

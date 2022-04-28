@@ -201,6 +201,11 @@ class HomeFragmentOffline : Fragment(){
 
        // downloadFile()
 
+
+//        for ((index, value) in AppConstant.alldata[0].sub_categories.withIndex()) {
+//
+//        }
+        //downloadPdfFile()
     }
 
 
@@ -394,6 +399,35 @@ class HomeFragmentOffline : Fragment(){
             }
             if (value.name !=  null){
                 filename = value.name+".mp4"
+            }
+
+            val download = DownloadFileFromURLTask(requireContext(), outputDir,srcUrl,filename, object :
+                DownloadListener {
+                override fun onSuccess(path: String) {
+                    //toast("File is downloaded successfully at $path")
+                }
+
+                override fun onFailure(error: String) {
+                    //toast(error)
+                }
+            })
+            download.execute()
+        }
+
+
+    }
+
+    private fun downloadPdfFile() {
+
+
+
+        for ((index, value) in AppConstant.alldata[0].contents.withIndex()) {
+
+            if (value.video !=  null){
+                srcUrl = value.video
+            }
+            if (value.content_name !=  null){
+                filename = value.content_name+".pdf"
             }
 
             val download = DownloadFileFromURLTask(requireContext(), outputDir,srcUrl,filename, object :

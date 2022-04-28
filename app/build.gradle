@@ -55,4 +55,5 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.7'
     implementation 'de.hdodenhof:circleimageview:3.1.0'
     implementation 'com.mindorks.android:prdownloader:0.6.0'
+    implementation 'com.github.barteksc:android-pdf-viewer:2.8.2'
 }
