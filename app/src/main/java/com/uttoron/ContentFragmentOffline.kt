@@ -45,21 +45,21 @@ class ContentFragmentOffline : Fragment(){
 //            Html.fromHtml(AppConstant.content)
 //        }
 
-//        val file = File("/sdcard/download/uttoron/"+AppConstant.subCatName)
-//
-//        pdfv.fromFile(file)
-//            .onRender(OnRenderListener { pages, pageWidth, pageHeight ->
-//                pdfv.fitToWidth()
-//            })
-//            .load()
+        val file = File("/sdcard/download/uttoron/"+AppConstant.subCatName+".pdf")
 
-        if(AppConstant.subCatName.equals("সময় ব্যবস্থাপনা")){
-            pdfv.fromAsset("সময় ব্যবস্থাপনা.pdf")
-                .onRender(OnRenderListener { pages, pageWidth, pageHeight ->
-                    pdfv.fitToWidth() // optionally pass page number
-                })
-                .load()
-        }
+        pdfv.fromFile(file)
+            .onRender(OnRenderListener { pages, pageWidth, pageHeight ->
+                pdfv.fitToWidth()
+            })
+            .load()
+
+//        if(AppConstant.subCatName.equals("সময় ব্যবস্থাপনা")){
+//            pdfv.fromAsset("সময় ব্যবস্থাপনা.pdf")
+//                .onRender(OnRenderListener { pages, pageWidth, pageHeight ->
+//                    pdfv.fitToWidth() // optionally pass page number
+//                })
+//                .load()
+//        }
 
 
 //        PDFView.Configurator.onRender(OnRenderListener { pages, pageWidth, pageHeight ->

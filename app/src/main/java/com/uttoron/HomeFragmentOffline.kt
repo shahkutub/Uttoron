@@ -29,6 +29,7 @@ import com.bumptech.glide.request.transition.Transition
 import com.uttoron.asynctask.DownloadFileFromURLTask
 import com.uttoron.callback.DownloadListener
 import com.uttoron.model.Category
+import com.uttoron.utils.NetInfo
 import com.uttoron.utils.PersistData
 import kotlinx.android.synthetic.main.content_layout.*
 import kotlinx.android.synthetic.main.home_layout_new_design.imgUttorn
@@ -207,7 +208,10 @@ class HomeFragmentOffline : Fragment(){
 //        }
 
         try {
-           // downloadPdfFile()
+            if(NetInfo.isOnline(requireContext())){
+                downloadPdfFile()
+            }
+
         }catch (e:Exception){
 
         }
@@ -426,29 +430,32 @@ class HomeFragmentOffline : Fragment(){
     private fun downloadPdfFile() {
 
 
-        for ((index, value) in AppConstant.getContent(requireContext()).withIndex()) {
+        for ((index, value) in AppConstant.getContent(context).withIndex()) {
 
-            if (value.video !=  null){
-                srcUrl = value.video
+            if (value.content !=  null){
+                srcUrl = value.content
             }
-            if (value.sub_category !=  null){
-                filename = value.sub_category.name+".pdf"
-            }
-            if (value.sub_category ==  null){
-                filename = value.category_name+".pdf"
-            }
-
-            val download = DownloadFileFromURLTask(requireContext(), outputDir,srcUrl,filename, object :
-                DownloadListener {
-                override fun onSuccess(path: String) {
-                    //toast("File is downloaded successfully at $path")
+            if(srcUrl.contains(".pdf")){
+                if (value.sub_category !=  null){
+                    filename = value.sub_category.name+".pdf"
+                }
+                if (value.sub_category ==  null){
+                    filename = value.category_name+".pdf"
                 }
 
-                override fun onFailure(error: String) {
-                    //toast(error)
-                }
-            })
-            download.execute()
+                val download = DownloadFileFromURLTask(context!!, outputDir,srcUrl,filename, object :
+                    DownloadListener {
+                    override fun onSuccess(path: String) {
+                        //toast("File is downloaded successfully at $path")
+                    }
+
+                    override fun onFailure(error: String) {
+                        //toast(error)
+                    }
+                })
+                download.execute()
+            }
+
         }
 
 

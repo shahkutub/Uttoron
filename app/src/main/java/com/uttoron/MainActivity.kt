@@ -358,16 +358,51 @@ class MainActivity : AppCompatActivity()  {
 
                 }
 
+                //downloadPdfFile()
+
             }
 
             override fun onFailure(call: Call<AllDataResponse>, t:Throwable) {
                 hud.dismiss()
+                //downloadPdfFile()
             }
         })
 
     }
 
+    private fun downloadPdfFile() {
 
+
+        for ((index, value) in AppConstant.getContent(context).withIndex()) {
+
+            if (value.content !=  null){
+                srcUrl = value.content
+            }
+            if(srcUrl.contains(".pdf")){
+                if (value.sub_category !=  null){
+                    filename = value.sub_category.name+".pdf"
+                }
+                if (value.sub_category ==  null){
+                    filename = value.category_name+".pdf"
+                }
+
+                val download = DownloadFileFromURLTask(context!!, outputDir,srcUrl,filename, object :
+                    DownloadListener {
+                    override fun onSuccess(path: String) {
+                        //toast("File is downloaded successfully at $path")
+                    }
+
+                    override fun onFailure(error: String) {
+                        //toast(error)
+                    }
+                })
+                download.execute()
+            }
+
+        }
+
+
+    }
 
 
     var pressCount = 0
