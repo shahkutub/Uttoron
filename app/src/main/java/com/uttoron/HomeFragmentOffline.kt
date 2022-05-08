@@ -207,14 +207,14 @@ class HomeFragmentOffline : Fragment(){
 //
 //        }
 
-        try {
-            if(NetInfo.isOnline(requireContext())){
-                downloadPdfFile()
-            }
-
-        }catch (e:Exception){
-
-        }
+//        try {
+//            if(NetInfo.isOnline(requireContext())){
+//                downloadPdfFile()
+//            }
+//
+//        }catch (e:Exception){
+//
+//        }
 
     }
 
@@ -443,7 +443,7 @@ class HomeFragmentOffline : Fragment(){
                     filename = value.category_name+".pdf"
                 }
 
-                val download = DownloadFileFromURLTask(context!!, outputDir,srcUrl,filename, object :
+                val download = DownloadFileFromURLTask(requireContext(), outputDir,srcUrl,filename, object :
                     DownloadListener {
                     override fun onSuccess(path: String) {
                         //toast("File is downloaded successfully at $path")

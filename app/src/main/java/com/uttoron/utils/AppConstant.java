@@ -56,6 +56,8 @@ public class AppConstant {
     public static  String infoContent = "";
     @NotNull
     public static String content = "";
+    @Nullable
+    public static final String isInstallTime = "isInstallTime";
 
 //    public static String clockInOu="";
 //    public static String lat="";

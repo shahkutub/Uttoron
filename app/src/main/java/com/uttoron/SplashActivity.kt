@@ -55,6 +55,7 @@ import com.google.gson.reflect.TypeToken
 import com.uttoron.asynctask.DownloadImageFileFromURLTask
 import com.uttoron.model.AllDataResponseItem
 import com.uttoron.model.ImageBmpModel
+import com.uttoron.utils.AlertMessage
 import com.uttoron.utils.PersistData
 import java.io.IOException
 
@@ -167,7 +168,16 @@ class SplashActivity : AppCompatActivity() {
 
        // initUi()
 
-
+        if (checkAndRequestPermissions()){
+            Handler(Looper.getMainLooper()).postDelayed({
+            /* Create an Intent that will start the Menu-Activity. */
+            val mainIntent = Intent(this, MainActivity::class.java)
+            startActivity(mainIntent)
+            finish()
+        }, 3000)
+        }else{
+            checkAndRequestPermissions()
+        }
    }
 
 
@@ -193,9 +203,9 @@ class SplashActivity : AppCompatActivity() {
         logo_image.setOnClickListener {
 //            handler?.removeCallbacksAndMessages(null)
 //
-//            val intent = Intent(this, MainActivity::class.java)
-//            startActivity(intent)
-//            finish()
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
         }
 
         val anim = ValueAnimator.ofFloat(1f, 1.5f)
@@ -236,12 +246,12 @@ class SplashActivity : AppCompatActivity() {
 //        }
 
 
-        Handler(Looper.getMainLooper()).postDelayed({
-            /* Create an Intent that will start the Menu-Activity. */
-            val mainIntent = Intent(this, MainActivity::class.java)
-            startActivity(mainIntent)
-            finish()
-        }, 3000)
+//        Handler(Looper.getMainLooper()).postDelayed({
+//            /* Create an Intent that will start the Menu-Activity. */
+//            val mainIntent = Intent(this, MainActivity::class.java)
+//            startActivity(mainIntent)
+//            finish()
+//        }, 3000)
 
 
     }
@@ -287,12 +297,12 @@ class SplashActivity : AppCompatActivity() {
 
                     initUi()
 //                    downloadAllImage()
-                    if (checkAndRequestPermissions()){
-                        //downloadFile()
-                       // downloadVid1()
-                    }else{
-                        checkAndRequestPermissions()
-                    }
+//                    if (checkAndRequestPermissions()){
+//                        //downloadFile()
+//                       // downloadVid1()
+//                    }else{
+//                        checkAndRequestPermissions()
+//                    }
 
 
                 }
@@ -669,7 +679,7 @@ class SplashActivity : AppCompatActivity() {
         if (requestCode == REQUEST_ID_MULTIPLE_PERMISSIONS){
             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[1] == PackageManager.PERMISSION_GRANTED){
                //downloadFile()
-                downloadVid1()
+                //downloadVid1()
             }
             else{
                 //permission denied, cann't pick contact, just show message

@@ -57,22 +57,12 @@ import com.uttoron.model.TrackResponse
 import com.uttoron.utils.AlertMessage
 import com.uttoron.utils.PersistData
 import java.io.*
-import java.lang.Exception
-import java.lang.ref.WeakReference
-import java.net.HttpURLConnection
-import java.net.URL
+
 import java.util.*
 import kotlin.collections.ArrayList
-
-
-
-
-private const val REQ_ADD_IMAGE_TO_ALBUM = 1
-private const val REQ_SAVE_BITMAP = 2
-private const val REQ_DOWNLOAD_FILE = 3
-private const val REQ_PICK_FILE = 4
-private const val REQ_CREATE_WRITE_REQUEST = 5
-private const val REQ_ALL_FILES_ACCESS_PERMISSION = 6
+import android.content.Intent
+import android.net.Uri
+import android.provider.Settings
 
 val storagePermission = arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE)
 private const val outputDir = "uttron"
@@ -95,15 +85,42 @@ class MainActivity : AppCompatActivity()  {
         setContentView(R.layout.activity_main)
 
         context = this
+        val currentapiVersion = Build.VERSION.SDK_INT
+        if (currentapiVersion > 29){
+            if (Environment.isExternalStorageManager()) {
 
+// If you don't have access, launch a new activity to show the user the system's dialog
+// to allow access to the external storage
+            } else {
+                val intent = Intent()
+                intent.action = Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION
+                val uri: Uri = Uri.fromParts("package", this.packageName, null)
+                intent.data = uri
+                startActivity(intent)
+            }
+        }
 
+        //downloadPdfFile()
 
         if (checkAndRequestPermissions()){
-            //downloadFile()
-            // downloadVid1()
+            if (!PersistData.getBooleanData(context,AppConstant.isInstallTime)){
+                try {
+                    if(NetInfo.isOnline(context)){
+                        downloadPdfFile()
+                        PersistData.setBooleanData(context,AppConstant.isInstallTime,true)
+                    }else{
+                        context?.let { AlertMessage.showMessage(it, "সতর্কতা!", "ইন্টারনেট সংযোগ নেই!") }
+                    }
+
+                }catch (e:Exception){
+
+                }
+
+            }
         }else{
             checkAndRequestPermissions()
         }
+
 
         // result = checkPermission()
         navigationView.setOnNavigationItemSelectedListener {
@@ -161,6 +178,20 @@ class MainActivity : AppCompatActivity()  {
 //        }
 
 
+        if (!PersistData.getBooleanData(context,AppConstant.isInstallTime)){
+            try {
+                if(NetInfo.isOnline(context)){
+                    downloadPdfFile()
+                    PersistData.setBooleanData(context,AppConstant.isInstallTime,true)
+                }else{
+                    context?.let { AlertMessage.showMessage(it, "সতর্কতা!", "ইন্টারনেট সংযোগ নেই!") }
+                }
+
+            }catch (e:Exception){
+
+            }
+
+        }
 
 
     }
@@ -291,11 +322,11 @@ class MainActivity : AppCompatActivity()  {
     private fun getAllData() {
         if (!this!!.context?.let { NetInfo.isOnline(it) }!!)
         {
-            context?.let { AlertMessage.showMessage(it, "Alert!", "No internet connection!") }
+            context?.let { AlertMessage.showMessage(it, "সতর্কতা!", "ইন্টারনেট সংযোগ নেই!") }
         }
         var hud = KProgressHUD.create(this@MainActivity)
             .setStyle(KProgressHUD.Style.SPIN_INDETERMINATE)
-            .setLabel("Please wait")
+            .setLabel("অপেক্ষা করুন....")
             .setMaxProgress(100)
         hud!!.show()
 
@@ -358,7 +389,7 @@ class MainActivity : AppCompatActivity()  {
 
                 }
 
-                //downloadPdfFile()
+                downloadPdfFile()
 
             }
 
@@ -865,8 +896,20 @@ class MainActivity : AppCompatActivity()  {
         //handle permission request results || calls when user from Permission request dialog presses Allow or Deny
         if (requestCode == REQUEST_ID_MULTIPLE_PERMISSIONS){
             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[1] == PackageManager.PERMISSION_GRANTED){
-                //downloadFile()
-                //downloadVid1()
+                if (!PersistData.getBooleanData(context,AppConstant.isInstallTime)){
+                    try {
+                        if(NetInfo.isOnline(context)){
+                            downloadPdfFile()
+                            PersistData.setBooleanData(context,AppConstant.isInstallTime,true)
+                        }else{
+                            context?.let { AlertMessage.showMessage(it, "সতর্কতা!", "ইন্টারনেট সংযোগ নেই!") }
+                        }
+
+                    }catch (e:Exception){
+
+                    }
+
+                }
             }
             else{
                 //permission denied, cann't pick contact, just show message

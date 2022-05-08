@@ -4,6 +4,7 @@ import android.media.MediaPlayer
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.os.Environment
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -45,9 +46,20 @@ class ContentFragmentOffline : Fragment(){
 //            Html.fromHtml(AppConstant.content)
 //        }
 
-        val file = File("/sdcard/download/uttoron/"+AppConstant.subCatName+".pdf")
+        var stringFilePath = Environment.getExternalStorageDirectory().getPath()
 
-        pdfv.fromFile(file)
+        //val file = File("/sdcard/download/uttoron/"+AppConstant.subCatName+".pdf")
+        val file = File("/sdcard/download/"+AppConstant.subCatName+".pdf")
+        //val uri:Uri =  File(path).toUri()
+
+//        pdfv.fromFile(file)
+//            .onRender(OnRenderListener { pages, pageWidth, pageHeight ->
+//                pdfv.fitToWidth()
+//            })
+//            .load()
+
+        pdfv.fromUri(Uri.parse("file:///sdcard/download/"+AppConstant.subCatName+".pdf"))
+        //pdfv.fromUri(Uri.parse("/storage/emulated/0/Download/সমস্যা সমাধানের উপায়.pdf"))
             .onRender(OnRenderListener { pages, pageWidth, pageHeight ->
                 pdfv.fitToWidth()
             })

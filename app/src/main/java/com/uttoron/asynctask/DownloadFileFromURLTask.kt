@@ -42,7 +42,7 @@ class DownloadFileFromURLTask(val mContext: Context, private val outputDir: Stri
         progressDialog = ProgressDialog(mContext)
         progressDialog!!.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
         progressDialog!!.setCancelable(false)
-        progressDialog!!.setTitle("Downloading ")
+        progressDialog!!.setTitle("অপেক্ষা করুন....")
     }
 
 
@@ -80,34 +80,37 @@ class DownloadFileFromURLTask(val mContext: Context, private val outputDir: Stri
             if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
 
                 // first we create app name folder direct to the root directory
-                destURL = Environment.getExternalStorageDirectory().path + File.separator + outputDir
-                var desFile = File(destURL)
-                if (!desFile.exists()) {
-                    desFile.mkdir()
-                }
+                destURL = Environment.getExternalStorageDirectory().path
+//                var desFile = File(destURL)
+//                if (!desFile.exists()) {
+//                    desFile.mkdir()
+//                }
+
+                //Log.i(TAG, "Downloading destination url: $destURL")
 //                else{
 //                    deleteDirectory(desFile)
 //                }
 
                 // once the app name directory created we create download directory inside app directory
-                destURL = destURL + File.separator + Environment.DIRECTORY_DOWNLOADS
-                desFile = File(destURL)
-                if (!desFile.exists()) {
-                    desFile.mkdir()
-                }
-
-                destURL = destURL + File.separator + fileName
-
-                // final output path
-                outputPath = destURL
-
-                val fname: String = fileName
-                val filevid = File("/sdcard/"+outputPath)
-                // if (filevid.exists ()) {
-                filevid.delete ()
-                //  }
-
+                destURL = destURL + File.separator + Environment.DIRECTORY_DOWNLOADS+ File.separator + fileName
                 Log.i(TAG, "Downloading destination url: $destURL")
+//                desFile = File(destURL)
+//                if (!desFile.exists()) {
+//                    desFile.mkdir()
+//                }
+//
+//               // destURL = destURL + File.separator + fileName
+//
+//                // final output path
+                outputPath = destURL
+//
+//                val fname: String = fileName
+                val filevid = File("/sdcard/"+outputPath)
+                if (filevid.exists ()) {
+                    filevid.delete ()
+                }
+//
+//                Log.i(TAG, "Downloading destination url: $destURL")
                 Log.i(TAG, "Downloading -> Below Android 11")
                 outputStream = FileOutputStream(destURL)
                 while (inputStream.read(buffer).also { count = it } != -1) {
@@ -132,24 +135,25 @@ class DownloadFileFromURLTask(val mContext: Context, private val outputDir: Stri
 
                 var desDirectory = Environment.DIRECTORY_DOWNLOADS
                 // If you want to create custom directory inside Download directory only
-                desDirectory = desDirectory + File.separator + outputDir
+                //desDirectory = desDirectory + File.separator + outputDir
+                //desDirectory = desDirectory + File.separator + outputDir
                 // final output path
                 outputPath = desDirectory + File.separator + fileName
 
-                val desFile = File(desDirectory)
-                if (!desFile.exists()) {
-                    desFile.mkdir()
-                }
+//                val desFile = File(desDirectory)
+//                if (!desFile.exists()) {
+//                    desFile.mkdir()
+//                }
 //                else{
 //                    val file = File(desDirectory+ outputPath)
 //                    val deleted: Boolean = file.delete()
 //                }
 
-                val fname: String = fileName
+//                val fname: String = fileName
                 val filevid = File("/sdcard/"+outputPath)
-               // if (filevid.exists ()) {
+                if (filevid.exists ()) {
                     filevid.delete ()
-                  //  }
+                    }
 
                 Log.i(TAG, "Downloading destination directory: $outputPath")
 
