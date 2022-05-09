@@ -60,15 +60,15 @@ class VideoFragmentOfflineSoftSkill : Fragment(){
                 Log.e("category_name",""+content.category_name)
                 Log.e("sub_category_id",""+content.sub_category_id)
                 Log.e("content",""+content.content)
-                if (content.content != null){
-                    if (content.sub_category_id == 0 && content.category_name.equals(AppConstant.catName)){
+//                if (content.content != null){
+//                    if (content.sub_category_id == 0 && content.category_name.equals(AppConstant.catName)){
                         AppConstant.content = content.content
                         val transaction = requireActivity().supportFragmentManager.beginTransaction()
                         transaction.replace(R.id.container, ContentFragmentOffline())
                         transaction.addToBackStack(null)
                         transaction.commit()
-                    }
-                }
+//                    }
+//                }
             }
         }
 

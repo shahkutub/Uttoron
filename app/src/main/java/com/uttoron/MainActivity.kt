@@ -100,7 +100,10 @@ class MainActivity : AppCompatActivity()  {
             }
         }
 
-        //downloadPdfFile()
+//        if(NetInfo.isOnline(context)){
+//            downloadPdfFile()
+//            //PersistData.setBooleanData(context,AppConstant.isInstallTime,true)
+//        }
 
         if (checkAndRequestPermissions()){
             if (!PersistData.getBooleanData(context,AppConstant.isInstallTime)){

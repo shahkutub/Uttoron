@@ -40,6 +40,7 @@ class ContentFragmentOffline : Fragment(){
         tvTitle.text = AppConstant.subCatName
 
         Log.e("content",""+AppConstant.content)
+        Log.e("subcatname",""+AppConstant.subCatName)
 //        tvContent.text = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
 //            Html.fromHtml(AppConstant.content, Html.FROM_HTML_MODE_COMPACT)
 //        } else {

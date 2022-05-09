@@ -2,7 +2,6 @@ package com.uttoron
 
 import android.Manifest
 import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import android.app.Activity
 import android.content.Intent
 import android.view.animation.AnimationUtils
@@ -43,10 +42,10 @@ import androidx.core.app.ActivityCompat.startIntentSenderForResult
 
 import android.app.PendingIntent
 import android.graphics.Bitmap
-import android.os.Build
-import android.os.Handler
-import android.os.Looper
+import android.os.*
+import android.provider.Settings
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.SimpleTarget
 import com.bumptech.glide.request.transition.Transition
@@ -75,6 +74,7 @@ class SplashActivity : AppCompatActivity() {
      */
 
     var context : Context ? = null
+    @RequiresApi(Build.VERSION_CODES.R)
     public override fun onCreate(icicle: Bundle?) {
         super.onCreate(icicle)
 
@@ -167,6 +167,20 @@ class SplashActivity : AppCompatActivity() {
 //        val deleted: Boolean = file.delete()
 
        // initUi()
+        val currentapiVersion = Build.VERSION.SDK_INT
+        if (currentapiVersion > 29){
+            if (Environment.isExternalStorageManager()) {
+
+// If you don't have access, launch a new activity to show the user the system's dialog
+// to allow access to the external storage
+            } else {
+                val intent = Intent()
+                intent.action = Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION
+                val uri: Uri = Uri.fromParts("package", this.packageName, null)
+                intent.data = uri
+                startActivity(intent)
+            }
+        }
 
         if (checkAndRequestPermissions()){
             Handler(Looper.getMainLooper()).postDelayed({

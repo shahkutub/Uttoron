@@ -240,12 +240,12 @@ class HomeFragmentOffline : Fragment(){
 
                 if (list[position].name.equals("সমস্যা সমাধানের উপায়")){
                     holder.tvCatName.text = "সমস্যা সমাধানের \n উপায়"
-                    holder.imgTopCat.setImageResource(R.drawable.dokkta)
+                    holder.imgTopCat.setImageResource(R.drawable.sothiksiddanto)
                 }
 
-            if (list[position].name.equals("সঠিক সিদ্ধান্ত গ্রহণ")){
-                holder.tvCatName.text = "সঠিক সিদ্ধান্ত \n গ্রহণ"
-                holder.imgTopCat.setImageResource(R.drawable.sothiksiddanto)
+            if (list[position].name.equals("দলগত কাজ")){
+                holder.tvCatName.text = "দলগত কাজ"
+                holder.imgTopCat.setImageResource(R.drawable.dokkta)
             }
 
             if (list[position].name.equals("সময় ব্যবস্থাপনা")){

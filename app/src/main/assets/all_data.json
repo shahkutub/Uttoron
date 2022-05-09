@@ -1,9 +1,9 @@
 [
   {
     "id": 1,
-    "track_no": 148,
+    "track_no": 161,
     "created_at": null,
-    "updated_at": "2022-04-28T08:44:35.000000Z",
+    "updated_at": "2022-05-09T09:25:47.000000Z",
     "general_settings": [
       {
         "id": 2,
@@ -93,21 +93,21 @@
         "id": 12,
         "category_id": 1,
         "category_name": "সফটস্কিল",
-        "name": "সমস্যা সমাধানের উপায়",
+        "name": "দলগত কাজ",
         "icon": "http://uttoron.nanoit.biz/public/backend/upload/sub_category/202201020557সমস্যা সমাধানের দক্ষতা উন্নয়ন.png",
         "sort_order": 13,
         "created_at": "2021-12-22T23:14:28.000000Z",
-        "updated_at": "2022-03-24T06:14:57.000000Z"
+        "updated_at": "2022-05-09T09:25:47.000000Z"
       },
       {
         "id": 14,
         "category_id": 1,
         "category_name": "সফটস্কিল",
-        "name": "সঠিক সিদ্ধান্ত গ্রহণ",
+        "name": "সমস্যা সমাধানের উপায়",
         "icon": "http://uttoron.nanoit.biz/public/backend/upload/sub_category/202201020558সঠিক সিদ্ধান্ত গ্রহণ.png",
         "sort_order": 14,
         "created_at": "2021-12-22T23:15:25.000000Z",
-        "updated_at": "2022-01-02T16:58:31.000000Z"
+        "updated_at": "2022-05-09T09:24:12.000000Z"
       },
       {
         "id": 11,
@@ -324,10 +324,10 @@
           "created_at": "2021-12-22 23:14:11",
           "updated_at": "2022-01-02 16:56:40"
         },
-        "content": "http://uttoron.nanoit.biz/public/backend/upload/pdf_content/202204280344সময় ব্যবস্থাপনা.pdf",
+        "content": "http://uttoron.nanoit.biz/public/backend/upload/pdf_content/202205090758সময় ব্যবস্থাপনা-compressed.pdf",
         "video": "http://uttoron.nanoit.biz/public/backend/upload",
         "created_at": "2022-03-27T06:13:06.000000Z",
-        "updated_at": "2022-04-28T03:44:51.000000Z"
+        "updated_at": "2022-05-09T07:58:53.000000Z"
       },
       {
         "id": 9,
@@ -337,13 +337,13 @@
         "sub_category": {
           "id": 12,
           "category_id": 1,
-          "name": "সমস্যা সমাধানের উপায়",
+          "name": "দলগত কাজ",
           "icon": "202201020557সমস্যা সমাধানের দক্ষতা উন্নয়ন.png",
           "sort_order": 13,
           "created_at": "2021-12-22 23:14:28",
-          "updated_at": "2022-03-24 06:14:57"
+          "updated_at": "2022-05-09 09:25:47"
         },
-        "content": "http://uttoron.nanoit.biz/public/backend/upload/pdf_content/202204280844সময় ব্যবস্থাপনা.pdf",
+        "content": "http://uttoron.nanoit.biz/public/backend/upload/pdf_content",
         "video": "http://uttoron.nanoit.biz/public/backend/upload",
         "created_at": "2022-03-27T06:13:16.000000Z",
         "updated_at": "2022-04-28T08:44:35.000000Z"
@@ -356,11 +356,11 @@
         "sub_category": {
           "id": 14,
           "category_id": 1,
-          "name": "সঠিক সিদ্ধান্ত গ্রহণ",
+          "name": "সমস্যা সমাধানের উপায়",
           "icon": "202201020558সঠিক সিদ্ধান্ত গ্রহণ.png",
           "sort_order": 14,
           "created_at": "2021-12-22 23:15:25",
-          "updated_at": "2022-01-02 16:58:31"
+          "updated_at": "2022-05-09 09:24:12"
         },
         "content": "http://uttoron.nanoit.biz/public/backend/upload/pdf_content",
         "video": "http://uttoron.nanoit.biz/public/backend/upload",
@@ -373,10 +373,10 @@
         "category_name": "সফটস্কিল",
         "sub_category_id": null,
         "sub_category": null,
-        "content": "http://uttoron.nanoit.biz/public/backend/upload/pdf_content",
+        "content": "http://uttoron.nanoit.biz/public/backend/upload/pdf_content/202205090758SOFT Skill 280422-compressed.pdf",
         "video": "http://uttoron.nanoit.biz/public/backend/upload",
         "created_at": "2022-03-27T09:02:13.000000Z",
-        "updated_at": "2022-03-27T12:18:52.000000Z"
+        "updated_at": "2022-05-09T07:58:23.000000Z"
       },
       {
         "id": 10,
@@ -645,6 +645,17 @@
         "updated_at": "2022-03-27T06:18:24.000000Z"
       },
       {
+        "id": 29,
+        "category_id": 6,
+        "category_name": "আর্থিক ব্যবস্থাপনা ও পরিকল্পনা",
+        "sub_category_id": null,
+        "sub_category": null,
+        "content": "http://uttoron.nanoit.biz/public/backend/upload/pdf_content/202205090759আর্থিক ব্যবস্থাপনা-compressed.pdf",
+        "video": "http://uttoron.nanoit.biz/public/backend/upload",
+        "created_at": "2022-05-09T07:23:46.000000Z",
+        "updated_at": "2022-05-09T07:59:36.000000Z"
+      },
+      {
         "id": 3,
         "category_id": 7,
         "category_name": "স্বাস্থ্য ও সুরক্ষা",
@@ -661,7 +672,7 @@
         "content": "http://uttoron.nanoit.biz/public/backend/upload/pdf_content",
         "video": "http://uttoron.nanoit.biz/public/backend/upload/videos/hFqQkCJeNQRy9WD1LR3onX97KdCcCBdSWZ71ILuY.mp4",
         "created_at": "2022-03-24T08:00:22.000000Z",
-        "updated_at": "2022-03-27T06:19:31.000000Z"
+        "updated_at": "2022-05-09T07:11:47.000000Z"
       },
       {
         "id": 25,
@@ -700,6 +711,17 @@
         "video": "http://uttoron.nanoit.biz/public/backend/upload",
         "created_at": "2022-03-27T06:18:48.000000Z",
         "updated_at": "2022-03-27T06:18:48.000000Z"
+      },
+      {
+        "id": 30,
+        "category_id": 7,
+        "category_name": "স্বাস্থ্য ও সুরক্ষা",
+        "sub_category_id": null,
+        "sub_category": null,
+        "content": "http://uttoron.nanoit.biz/public/backend/upload/pdf_content/202205090759স্বাস্থ্য ও সুরক্ষা-compressed.pdf",
+        "video": "http://uttoron.nanoit.biz/public/backend/upload",
+        "created_at": "2022-05-09T07:34:48.000000Z",
+        "updated_at": "2022-05-09T07:59:18.000000Z"
       }
     ]
   }
