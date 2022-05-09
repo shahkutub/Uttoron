@@ -61,7 +61,7 @@ class VideoFragmentOffline : Fragment(){
                         AppConstant.content = content.content
                         val transaction = requireActivity().supportFragmentManager.beginTransaction()
                         transaction.replace(R.id.container, ContentFragmentOffline())
-                        transaction.addToBackStack(null)
+                        transaction.addToBackStack("VidFragment")
                         transaction.commit()
 //                    }
 //                }
@@ -132,11 +132,11 @@ class VideoFragmentOffline : Fragment(){
 
 
         imgBack.setOnClickListener {
-            requireActivity().onBackPressed()
-//            val transaction = requireActivity().supportFragmentManager.beginTransaction()
-//            transaction.replace(R.id.container, HomeFragmentOffline())
-//            transaction.addToBackStack(null)
-//            transaction.commit()
+            //requireActivity().onBackPressed()
+            val transaction = requireActivity().supportFragmentManager.beginTransaction()
+            transaction.replace(R.id.container, HomeFragmentOffline())
+            transaction.addToBackStack(null)
+            transaction.commit()
         }
 
         var url = ""
@@ -359,8 +359,8 @@ class VideoFragmentOffline : Fragment(){
                             if (content.sub_category_id == notifications[position].id){
                                 AppConstant.content = content.content
                                 val transaction = requireActivity().supportFragmentManager.beginTransaction()
-                                transaction.replace(R.id.container, ContentFragmentOffline())
-                                transaction.addToBackStack(null)
+                                transaction.add(R.id.container, ContentFragmentOffline())
+                               // transaction.addToBackStack(null)
                                 transaction.commit()
                             }
                         }

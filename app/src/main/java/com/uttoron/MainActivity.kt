@@ -316,8 +316,8 @@ class MainActivity : AppCompatActivity()  {
     private fun loadFragment(fragment: Fragment) {
         // load fragment
         val transaction = supportFragmentManager.beginTransaction()
-        transaction.replace(R.id.container, fragment)
-        transaction.addToBackStack(null)
+        transaction.add(R.id.container, fragment)
+        //transaction.addToBackStack(null)
         transaction.commit()
     }
 
@@ -441,13 +441,13 @@ class MainActivity : AppCompatActivity()  {
 
     var pressCount = 0
     override fun onBackPressed() {
-//        pressCount = pressCount+1
-//        if (pressCount == 1){
-//            Toast.makeText(applicationContext,"To exit from app, press again",Toast.LENGTH_SHORT).show()
-//        }else if (pressCount == 2){
-//            pressCount = 0
-//            finish()
-//        }
+        pressCount = pressCount+1
+        if (pressCount == 1){
+            Toast.makeText(applicationContext,"To exit from app, press again",Toast.LENGTH_SHORT).show()
+        }else if (pressCount == 2){
+            pressCount = 0
+            finish()
+        }
 
 //        val transaction = supportFragmentManager.beginTransaction()
 //        if (AppConstant.isHome){
@@ -476,16 +476,16 @@ class MainActivity : AppCompatActivity()  {
 //        }
 
 
-        val fragments = supportFragmentManager.backStackEntryCount
-        if (fragments == 1) {
-            finish()
-        } else {
-            if (fragmentManager.backStackEntryCount > 1) {
-                fragmentManager.popBackStack()
-            } else {
-                super.onBackPressed()
-            }
-        }
+//        val fragments = supportFragmentManager.backStackEntryCount
+//        if (fragments == 1) {
+//            finish()
+//        } else {
+//            if (fragmentManager.backStackEntryCount > 1) {
+//                fragmentManager.popBackStack()
+//            } else {
+//                super.onBackPressed()
+//            }
+//        }
 
     }
 

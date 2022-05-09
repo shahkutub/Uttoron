@@ -13,6 +13,7 @@ import android.widget.MediaController
 import android.widget.Toast
 import android.widget.VideoView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import com.github.barteksc.pdfviewer.PDFView
 import com.github.barteksc.pdfviewer.listener.OnRenderListener
 import com.uttoron.utils.AppConstant
@@ -99,16 +100,16 @@ class ContentFragmentOffline : Fragment(){
 
 
         imgBack.setOnClickListener {
-            requireActivity().onBackPressed()
-//            val transaction = requireActivity().supportFragmentManager.beginTransaction()
-//            if (AppConstant.isHome){
-//                    transaction.replace(R.id.container, HomeFragmentOffline())
-//            }else{
-//                transaction.replace(R.id.container, VideoFragmentOffline())
-//            }
-//            //transaction.replace(R.id.container, VideoFragment())
-//            transaction.addToBackStack(null)
-//            transaction.commit()
+
+            val transaction = requireActivity().supportFragmentManager.beginTransaction()
+            if (AppConstant.isHome){
+                    transaction.replace(R.id.container, HomeFragmentOffline())
+            }else{
+                transaction.replace(R.id.container, VideoFragmentOffline())
+            }
+            //transaction.replace(R.id.container, VideoFragment())
+            transaction.addToBackStack(null)
+            transaction.commit()
         }
 
         //imgUttornContent.setImageURI(Uri.parse("/sdcard/download/uttoron/app_logo_icon"+".png"))

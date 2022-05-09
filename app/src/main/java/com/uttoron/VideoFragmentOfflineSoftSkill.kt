@@ -62,6 +62,7 @@ class VideoFragmentOfflineSoftSkill : Fragment(){
                 Log.e("content",""+content.content)
 //                if (content.content != null){
 //                    if (content.sub_category_id == 0 && content.category_name.equals(AppConstant.catName)){
+                         AppConstant.isHome = false
                         AppConstant.content = content.content
                         val transaction = requireActivity().supportFragmentManager.beginTransaction()
                         transaction.replace(R.id.container, ContentFragmentOffline())
@@ -204,12 +205,12 @@ class VideoFragmentOfflineSoftSkill : Fragment(){
 
             if (list[position].name.equals("সমস্যা সমাধানের উপায়")){
                 holder.tvCatNameOther.text = "সমস্যা সমাধানের \n উপায়"
-                holder.imgOtehrCat.setImageResource(R.drawable.dokkta)
+                holder.imgOtehrCat.setImageResource(R.drawable.sothiksiddanto)
             }
 
-            if (list[position].name.equals("সঠিক সিদ্ধান্ত গ্রহণ")){
-                holder.tvCatNameOther.text = "সঠিক সিদ্ধান্ত \n গ্রহণ"
-                holder.imgOtehrCat.setImageResource(R.drawable.sothiksiddanto)
+            if (list[position].name.equals("দলগত কাজ")){
+                holder.tvCatNameOther.text = "দলগত কাজ"
+                holder.imgOtehrCat.setImageResource(R.drawable.dokkta)
             }
 
             if (list[position].name.equals("সময় ব্যবস্থাপনা")){

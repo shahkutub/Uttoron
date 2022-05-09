@@ -147,7 +147,7 @@ class HomeFragmentOffline : Fragment(){
             AppConstant.catID = topCatId
             AppConstant.subCatList = topcatCatSubCategoryList
             val transaction = requireActivity().supportFragmentManager.beginTransaction()
-            transaction.replace(R.id.container, VideoFragmentOfflineSoftSkill())
+            transaction.add(R.id.container, VideoFragmentOfflineSoftSkill())
             transaction.addToBackStack(null)
             transaction.commit()
         }
@@ -349,7 +349,8 @@ class HomeFragmentOffline : Fragment(){
 
                 //AppConstant.subCatList = dataList[position].
                 val transaction = requireActivity().supportFragmentManager.beginTransaction()
-                transaction.replace(R.id.container, VideoFragmentOffline())
+                transaction.add(R.id.container, VideoFragmentOffline(),"VidFragment")
+                //transaction.add(detailFragment, "detail")
                 transaction.addToBackStack(null)
                 transaction.commit()
             }
