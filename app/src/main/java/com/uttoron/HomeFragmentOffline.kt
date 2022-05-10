@@ -279,7 +279,7 @@ class HomeFragmentOffline : Fragment(){
 
             holder.fullTop.setOnClickListener {
 
-                AppConstant.isHome = false
+                AppConstant.isHome = true
 
                 AppConstant.subCatName = list[position].name
                 AppConstant.subCatId = list[position].id.toString()
