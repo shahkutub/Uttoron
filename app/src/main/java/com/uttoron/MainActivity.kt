@@ -441,13 +441,15 @@ class MainActivity : AppCompatActivity()  {
 
     var pressCount = 0
     override fun onBackPressed() {
-        pressCount = pressCount+1
-        if (pressCount == 1){
-            Toast.makeText(applicationContext,"To exit from app, press again",Toast.LENGTH_SHORT).show()
-        }else if (pressCount == 2){
-            pressCount = 0
-            finish()
-        }
+//        pressCount = pressCount+1
+//        if (pressCount == 1){
+//            Toast.makeText(applicationContext,"To exit from app, press again",Toast.LENGTH_SHORT).show()
+//        }else if (pressCount == 2){
+//            pressCount = 0
+//            finish()
+//        }
+
+        showMessageFinish(context,"Alert","Do you want to exit?")
 
 //        val transaction = supportFragmentManager.beginTransaction()
 //        if (AppConstant.isHome){
@@ -456,19 +458,33 @@ class MainActivity : AppCompatActivity()  {
 //            transaction.commit()
 //            pressCount = 1
 //        }else{
+//
+//            transaction.replace(R.id.container, VideoFragmentOffline())
+//            transaction.addToBackStack(null)
+//            transaction.commit()
+//
+//        }
+//
+//        if (AppConstant.isVidSoft){
+//            transaction.replace(R.id.container, VideoFragmentOfflineSoftSkill())
+//            transaction.addToBackStack(null)
+//            transaction.commit()
+//            pressCount = 0
+//        }else{
 //            transaction.replace(R.id.container, VideoFragmentOffline())
 //            transaction.addToBackStack(null)
 //            transaction.commit()
 //            pressCount = 0
 //        }
-//
+
+
 //        if(pressCount ==1){
 //            finish()
 //        }
         //transaction.replace(R.id.container, VideoFragment())
 
 //        val count = supportFragmentManager.backStackEntryCount
-//        if (count == 1) {
+//        if (count == 0) {
 //            super.onBackPressed()
 //            finish()
 //        } else {
@@ -477,7 +493,7 @@ class MainActivity : AppCompatActivity()  {
 
 
 //        val fragments = supportFragmentManager.backStackEntryCount
-//        if (fragments == 1) {
+//        if (fragments == 0) {
 //            finish()
 //        } else {
 //            if (fragmentManager.backStackEntryCount > 1) {
@@ -926,6 +942,32 @@ class MainActivity : AppCompatActivity()  {
         private val REQUEST_PERM_DELETE = 2000
     }
 
+    /*
+	 * show alert dialog P: context, title and message
+	 */
+    fun showMessageFinish(
+        c: Context?, title: String?,
+        message: String?
+    ) {
+        val aBuilder = AlertDialog.Builder(c)
+        aBuilder.setTitle(title)
+        aBuilder.setIcon(R.mipmap.ic_launcher)
+        aBuilder.setMessage(message)
+        aBuilder.setPositiveButton(
+            "Ok"
+        ) { dialog, which ->
+            finish()
+            dialog.dismiss()
+        }
 
+        aBuilder.setNegativeButton(
+            "No"
+        ) { dialog, which ->
+            //finish()
+            dialog.dismiss()
+        }
+
+        aBuilder.show()
+    }
 }
 
