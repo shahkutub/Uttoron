@@ -678,4 +678,5 @@ public  static final String  getEngnumber(String number){
     public static String subCatName = "";
     public static String subCatId = "";
     public static boolean isHome = false;
+    public static boolean isVidSoft = false;
 }

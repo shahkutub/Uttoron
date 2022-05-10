@@ -62,10 +62,11 @@ class VideoFragmentOfflineSoftSkill : Fragment(){
                 Log.e("content",""+content.content)
 //                if (content.content != null){
 //                    if (content.sub_category_id == 0 && content.category_name.equals(AppConstant.catName)){
-                         AppConstant.isHome = false
+                //AppConstant.isHome = false
+                AppConstant.isVidSoft = true
                         AppConstant.content = content.content
                         val transaction = requireActivity().supportFragmentManager.beginTransaction()
-                        transaction.replace(R.id.container, ContentFragmentOffline())
+                        transaction.replace(R.id.container, ContentFragmentOfflineSoftSkill())
                         transaction.addToBackStack(null)
                         transaction.commit()
 //                    }
@@ -80,11 +81,11 @@ class VideoFragmentOfflineSoftSkill : Fragment(){
         recyclevidCats!!.setAdapter(usersAdapterOtherCat)
 
         imgBack.setOnClickListener {
-            requireActivity().onBackPressed()
-//            val transaction = requireActivity().supportFragmentManager.beginTransaction()
-//            transaction.replace(R.id.container, HomeFragmentOffline())
-//            transaction.addToBackStack(null)
-//            transaction.commit()
+            //requireActivity().onBackPressed()
+            val transaction = requireActivity().supportFragmentManager.beginTransaction()
+            transaction.replace(R.id.container, HomeFragmentOffline())
+            transaction.addToBackStack(null)
+            transaction.commit()
         }
 
         var url = ""
@@ -222,6 +223,7 @@ class VideoFragmentOfflineSoftSkill : Fragment(){
 
             holder.fullViewCat.setOnClickListener {
                 AppConstant.isHome = false
+                AppConstant.isVidSoft = true
 
                 AppConstant.subCatName = list[position].name
                 AppConstant.subCatId = list[position].id.toString()
@@ -233,7 +235,7 @@ class VideoFragmentOfflineSoftSkill : Fragment(){
                             if (content.sub_category_id == list[position].id){
                                 AppConstant.content = content.content
                                 val transaction = requireActivity().supportFragmentManager.beginTransaction()
-                                transaction.replace(R.id.container, ContentFragmentOffline())
+                                transaction.replace(R.id.container, ContentFragmentOfflineSoftSkill())
                                 transaction.addToBackStack(null)
                                 transaction.commit()
                             }
