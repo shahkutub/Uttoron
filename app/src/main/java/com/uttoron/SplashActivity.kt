@@ -167,31 +167,31 @@ class SplashActivity : AppCompatActivity() {
 //        val deleted: Boolean = file.delete()
 
        // initUi()
-        val currentapiVersion = Build.VERSION.SDK_INT
-        if (currentapiVersion > 29){
-            if (Environment.isExternalStorageManager()) {
+//        val currentapiVersion = Build.VERSION.SDK_INT
+//        if (currentapiVersion > 29){
+//            if (Environment.isExternalStorageManager()) {
+//
+//// If you don't have access, launch a new activity to show the user the system's dialog
+//// to allow access to the external storage
+//            } else {
+//                val intent = Intent()
+//                intent.action = Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION
+//                val uri: Uri = Uri.fromParts("package", this.packageName, null)
+//                intent.data = uri
+//                startActivity(intent)
+//            }
+//        }
 
-// If you don't have access, launch a new activity to show the user the system's dialog
-// to allow access to the external storage
-            } else {
-                val intent = Intent()
-                intent.action = Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION
-                val uri: Uri = Uri.fromParts("package", this.packageName, null)
-                intent.data = uri
-                startActivity(intent)
-            }
-        }
-
-        if (checkAndRequestPermissions()){
-            Handler(Looper.getMainLooper()).postDelayed({
-            /* Create an Intent that will start the Menu-Activity. */
-            val mainIntent = Intent(this, MainActivity::class.java)
-            startActivity(mainIntent)
-            finish()
-        }, 3000)
-        }else{
-            checkAndRequestPermissions()
-        }
+//        if (checkAndRequestPermissions()){
+//            Handler(Looper.getMainLooper()).postDelayed({
+//            /* Create an Intent that will start the Menu-Activity. */
+//            val mainIntent = Intent(this, MainActivity::class.java)
+//            startActivity(mainIntent)
+//            finish()
+//        }, 3000)
+//        }else{
+//            checkAndRequestPermissions()
+//        }
    }
 
 
@@ -217,9 +217,9 @@ class SplashActivity : AppCompatActivity() {
         logo_image.setOnClickListener {
 //            handler?.removeCallbacksAndMessages(null)
 //
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-            finish()
+//            val intent = Intent(this, MainActivity::class.java)
+//            startActivity(intent)
+//            finish()
         }
 
         val anim = ValueAnimator.ofFloat(1f, 1.5f)
@@ -237,11 +237,11 @@ class SplashActivity : AppCompatActivity() {
         imgForword.startAnimation(animMove)
 
 
-//        Handler().postDelayed({
-//            val intent = Intent(this, MainActivity::class.java)
-//            startActivity(intent)
-//            finish()
-//        }, 3000) // 3000 is the delayed time in milliseconds.
+        Handler().postDelayed({
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }, 3000) // 3000 is the delayed time in milliseconds.
 
 
 //        if(NetInfo.isOnline(applicationContext)){

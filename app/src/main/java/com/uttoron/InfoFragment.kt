@@ -24,6 +24,7 @@ import android.os.Build
 import android.text.Html
 import android.text.TextUtils
 import android.view.MenuItem
+import com.github.barteksc.pdfviewer.listener.OnRenderListener
 import com.uttoron.utils.NetInfo
 import com.uttoron.utils.PersistData
 import kotlinx.android.synthetic.main.activity_main.*
@@ -65,12 +66,19 @@ class InfoFragment : Fragment(){
 //           var  item = requireActivity().navigationView.getMenu().findItem(R.id.navigation_home)
 //            item.setChecked(true)
 
-            requireActivity().onBackPressed()
+            //requireActivity().onBackPressed()
             //requireActivity().navigationView.getMenu().getItem(0).setChecked(true)
-
+            val transaction = requireActivity().supportFragmentManager.beginTransaction()
+            transaction.replace(R.id.container, HomeFragmentOffline())
+            transaction.addToBackStack(null)
+            transaction.commit()
         }
 
-
+        pdfv.fromAsset("uttoron_Shomporke_Jani.pdf")
+            .onRender(OnRenderListener { pages, pageWidth, pageHeight ->
+                pdfv.fitToWidth()
+            })
+            .load()
 
     }
 

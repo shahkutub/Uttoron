@@ -54,18 +54,18 @@ class ContentFragmentOffline : Fragment(){
         val file = File("/sdcard/download/"+AppConstant.subCatName+".pdf")
         //val uri:Uri =  File(path).toUri()
 
-//        pdfv.fromFile(file)
-//            .onRender(OnRenderListener { pages, pageWidth, pageHeight ->
-//                pdfv.fitToWidth()
-//            })
-//            .load()
-
-        pdfv.fromUri(Uri.parse("file:///sdcard/download/"+AppConstant.subCatName+".pdf"))
-        //pdfv.fromUri(Uri.parse("/storage/emulated/0/Download/সমস্যা সমাধানের উপায়.pdf"))
+        pdfv.fromAsset(AppConstant.subCatName+".pdf")
             .onRender(OnRenderListener { pages, pageWidth, pageHeight ->
                 pdfv.fitToWidth()
             })
             .load()
+
+//        pdfv.fromUri(Uri.parse("file:///sdcard/download/"+AppConstant.subCatName+".pdf"))
+//        //pdfv.fromUri(Uri.parse("/storage/emulated/0/Download/সমস্যা সমাধানের উপায়.pdf"))
+//            .onRender(OnRenderListener { pages, pageWidth, pageHeight ->
+//                pdfv.fitToWidth()
+//            })
+//            .load()
 
 //        if(AppConstant.subCatName.equals("সময় ব্যবস্থাপনা")){
 //            pdfv.fromAsset("সময় ব্যবস্থাপনা.pdf")
@@ -101,6 +101,7 @@ class ContentFragmentOffline : Fragment(){
 
         imgBack.setOnClickListener {
 
+            videoview.stopPlayback()
             val transaction = requireActivity().supportFragmentManager.beginTransaction()
             if (AppConstant.isHome){
                     transaction.replace(R.id.container, HomeFragmentOffline())

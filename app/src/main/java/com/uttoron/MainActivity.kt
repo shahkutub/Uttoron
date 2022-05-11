@@ -85,44 +85,44 @@ class MainActivity : AppCompatActivity()  {
         setContentView(R.layout.activity_main)
 
         context = this
-        val currentapiVersion = Build.VERSION.SDK_INT
-        if (currentapiVersion > 29){
-            if (Environment.isExternalStorageManager()) {
-
-// If you don't have access, launch a new activity to show the user the system's dialog
-// to allow access to the external storage
-            } else {
-                val intent = Intent()
-                intent.action = Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION
-                val uri: Uri = Uri.fromParts("package", this.packageName, null)
-                intent.data = uri
-                startActivity(intent)
-            }
-        }
+//        val currentapiVersion = Build.VERSION.SDK_INT
+//        if (currentapiVersion > 29){
+//            if (Environment.isExternalStorageManager()) {
+//
+//// If you don't have access, launch a new activity to show the user the system's dialog
+//// to allow access to the external storage
+//            } else {
+//                val intent = Intent()
+//                intent.action = Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION
+//                val uri: Uri = Uri.fromParts("package", this.packageName, null)
+//                intent.data = uri
+//                startActivity(intent)
+//            }
+//        }
 
 //        if(NetInfo.isOnline(context)){
 //            downloadPdfFile()
 //            //PersistData.setBooleanData(context,AppConstant.isInstallTime,true)
 //        }
 
-        if (checkAndRequestPermissions()){
-            if (!PersistData.getBooleanData(context,AppConstant.isInstallTime)){
-                try {
-                    if(NetInfo.isOnline(context)){
-                        downloadPdfFile()
-                        PersistData.setBooleanData(context,AppConstant.isInstallTime,true)
-                    }else{
-                        context?.let { AlertMessage.showMessage(it, "সতর্কতা!", "ইন্টারনেট সংযোগ নেই!") }
-                    }
-
-                }catch (e:Exception){
-
-                }
-
-            }
-        }else{
-            checkAndRequestPermissions()
-        }
+//        if (checkAndRequestPermissions()){
+//            if (!PersistData.getBooleanData(context,AppConstant.isInstallTime)){
+//                try {
+//                    if(NetInfo.isOnline(context)){
+//                        downloadPdfFile()
+//                        PersistData.setBooleanData(context,AppConstant.isInstallTime,true)
+//                    }else{
+//                        context?.let { AlertMessage.showMessage(it, "সতর্কতা!", "ইন্টারনেট সংযোগ নেই!") }
+//                    }
+//
+//                }catch (e:Exception){
+//
+//                }
+//
+//            }
+//        }else{
+//            checkAndRequestPermissions()
+//        }
 
 
         // result = checkPermission()
@@ -161,9 +161,9 @@ class MainActivity : AppCompatActivity()  {
         }
 
 
-        if(result){
-            checkFolder()
-        }
+//        if(result){
+//            checkFolder()
+//        }
         if (!NetInfo.isOnline(applicationContext)) {
             loadFragment(HomeFragmentOffline())
             //getAllData()
@@ -173,7 +173,7 @@ class MainActivity : AppCompatActivity()  {
             loadFragment(HomeFragmentOffline())
             //loadFragment(HomeFragment())
             //getAllData()
-            getTrackData()
+            //getTrackData()
         }
 
 //        btn_update_fab.setOnClickListener {
@@ -181,20 +181,20 @@ class MainActivity : AppCompatActivity()  {
 //        }
 
 
-        if (!PersistData.getBooleanData(context,AppConstant.isInstallTime)){
-            try {
-                if(NetInfo.isOnline(context)){
-                    downloadPdfFile()
-                    PersistData.setBooleanData(context,AppConstant.isInstallTime,true)
-                }else{
-                    context?.let { AlertMessage.showMessage(it, "সতর্কতা!", "ইন্টারনেট সংযোগ নেই!") }
-                }
-
-            }catch (e:Exception){
-
-            }
-
-        }
+//        if (!PersistData.getBooleanData(context,AppConstant.isInstallTime)){
+//            try {
+//                if(NetInfo.isOnline(context)){
+//                    downloadPdfFile()
+//                    PersistData.setBooleanData(context,AppConstant.isInstallTime,true)
+//                }else{
+//                    context?.let { AlertMessage.showMessage(it, "সতর্কতা!", "ইন্টারনেট সংযোগ নেই!") }
+//                }
+//
+//            }catch (e:Exception){
+//
+//            }
+//
+//        }
 
 
     }
@@ -392,7 +392,7 @@ class MainActivity : AppCompatActivity()  {
 
                 }
 
-                downloadPdfFile()
+                //downloadPdfFile()
 
             }
 
@@ -449,7 +449,7 @@ class MainActivity : AppCompatActivity()  {
 //            finish()
 //        }
 
-        showMessageFinish(context,"Alert","Do you want to exit?")
+        showMessageFinish()
 
 //        val transaction = supportFragmentManager.beginTransaction()
 //        if (AppConstant.isHome){
@@ -574,16 +574,16 @@ class MainActivity : AppCompatActivity()  {
 
     private fun updateDialog() {
         val builder = AlertDialog.Builder(this)
-        builder.setTitle("Update available!")
-        builder.setMessage("Do you want to update")
+        builder.setTitle("আপডেট উপলব্ধ!")
+        builder.setMessage("আপনি কি আপডেট করতে চান?")
 //builder.setPositiveButton("OK", DialogInterface.OnClickListener(function = x))
 
-        builder.setPositiveButton("Yes") { dialog, which ->
+        builder.setPositiveButton("হ্যাঁ") { dialog, which ->
             dialog.dismiss()
             getAllData()
         }
 
-        builder.setNegativeButton("No") { dialog, which ->
+        builder.setNegativeButton("না") { dialog, which ->
             dialog.dismiss()
 
 
@@ -945,29 +945,28 @@ class MainActivity : AppCompatActivity()  {
     /*
 	 * show alert dialog P: context, title and message
 	 */
-    fun showMessageFinish(
-        c: Context?, title: String?,
-        message: String?
-    ) {
-        val aBuilder = AlertDialog.Builder(c)
-        aBuilder.setTitle(title)
-        aBuilder.setIcon(R.mipmap.ic_launcher)
-        aBuilder.setMessage(message)
-        aBuilder.setPositiveButton(
-            "Ok"
-        ) { dialog, which ->
+    fun showMessageFinish() {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("সতর্কতা!")
+        builder.setMessage("আপনি কি এপ থেকে বের হতে চান?")
+//builder.setPositiveButton("OK", DialogInterface.OnClickListener(function = x))
+
+        builder.setPositiveButton("হ্যাঁ") { dialog, which ->
+            dialog.dismiss()
             finish()
-            dialog.dismiss()
+
         }
 
-        aBuilder.setNegativeButton(
-            "No"
-        ) { dialog, which ->
-            //finish()
+        builder.setNegativeButton("না") { dialog, which ->
             dialog.dismiss()
+
         }
 
-        aBuilder.show()
+//        builder.setNeutralButton("Maybe") { dialog, which ->
+//            Toast.makeText(applicationContext,
+//                "Maybe", Toast.LENGTH_SHORT).show()
+//        }
+        builder.show()
     }
 }
 

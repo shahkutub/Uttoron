@@ -228,7 +228,11 @@ class QuizeFragment : Fragment(){
 //
 //            initQuiz()
 
-            requireActivity().onBackPressed()
+            //requireActivity().onBackPressed()
+            val transaction = requireActivity().supportFragmentManager.beginTransaction()
+            transaction.replace(R.id.container, HomeFragmentOffline())
+            transaction.addToBackStack(null)
+            transaction.commit()
         }
         var pressCount = 0
         imgBack.setOnClickListener {
@@ -251,12 +255,21 @@ class QuizeFragment : Fragment(){
                 pressCount++
                 if (pressCount >1){
                     pressCount = 0
-                    requireActivity().onBackPressed()
+                    //requireActivity().onBackPressed()
+                    val transaction = requireActivity().supportFragmentManager.beginTransaction()
+                    transaction.replace(R.id.container, HomeFragmentOffline())
+                    transaction.addToBackStack(null)
+                    transaction.commit()
                 }else{
                     Toast.makeText(requireContext(),"আপনি কুইজ সমাপ্ত করেননি, বের হতে চাইলে আবার চাপুন।",Toast.LENGTH_SHORT).show()
                 }
             }else{
-                requireActivity().onBackPressed()
+
+                //requireActivity().onBackPressed()
+                val transaction = requireActivity().supportFragmentManager.beginTransaction()
+                transaction.replace(R.id.container, HomeFragmentOffline())
+            transaction.addToBackStack(null)
+            transaction.commit()
             }
 
 //            val transaction = requireActivity().supportFragmentManager.beginTransaction()

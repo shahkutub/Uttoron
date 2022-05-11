@@ -51,21 +51,22 @@ class VideoFragmentOffline : Fragment(){
         tvCatname.text = AppConstant.catName
         //tvSloganTop.text = AppConstant.getGeneralsettings(requireContext())[0].slogan
         tvCatname.setOnClickListener {
+            videoview.stopPlayback()
             AppConstant.isHome = false
 
             AppConstant.subCatName = AppConstant.catName
 
-            AppConstant.getContent(requireContext()).forEachIndexed { index, content ->
+            //AppConstant.getContent(requireContext()).forEachIndexed { index, content ->
 //                if (content.content != null){
 //                    if (content.sub_category_id == null && content.category_name.equals(AppConstant.catName)){
-                        AppConstant.content = content.content
+                        //AppConstant.content = content.content
                         val transaction = requireActivity().supportFragmentManager.beginTransaction()
                         transaction.replace(R.id.container, ContentFragmentOffline())
                         transaction.addToBackStack("VidFragment")
                         transaction.commit()
 //                    }
 //                }
-            }
+            //}
 
         }
 
@@ -132,6 +133,7 @@ class VideoFragmentOffline : Fragment(){
 
 
         imgBack.setOnClickListener {
+            videoview.stopPlayback()
             //requireActivity().onBackPressed()
             val transaction = requireActivity().supportFragmentManager.beginTransaction()
             transaction.replace(R.id.container, HomeFragmentOffline())
@@ -278,6 +280,8 @@ class VideoFragmentOffline : Fragment(){
             holder.imgOtehrCat.visibility =View.GONE
 
             holder.fullViewCat.setOnClickListener {
+
+                videoview.stopPlayback()
                 AppConstant.isHome = false
 
                 AppConstant.subCatName = notifications[position].name
@@ -347,6 +351,7 @@ class VideoFragmentOffline : Fragment(){
             holder.imgOtehrCat.visibility =View.GONE
 
             holder.fullViewCat.setOnClickListener {
+                videoview.stopPlayback()
                 AppConstant.isHome = false
 
                 AppConstant.subCatName = notifications[position].name

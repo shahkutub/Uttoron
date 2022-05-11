@@ -1,9 +1,9 @@
 [
   {
     "id": 1,
-    "track_no": 161,
+    "track_no": 163,
     "created_at": null,
-    "updated_at": "2022-05-09T09:25:47.000000Z",
+    "updated_at": "2022-05-09T10:28:00.000000Z",
     "general_settings": [
       {
         "id": 2,
@@ -120,6 +120,46 @@
         "updated_at": "2022-01-02T16:56:40.000000Z"
       },
       {
+        "id": 20,
+        "category_id": 4,
+        "category_name": "চাকুরীর সাধারণ নিয়ম কানুন",
+        "name": "চাকুরীতে পদোন্নতির উপায়",
+        "icon": "http://uttoron.nanoit.biz/public/backend/upload/sub_category",
+        "sort_order": 21,
+        "created_at": "2022-02-07T08:00:24.000000Z",
+        "updated_at": "2022-03-24T07:32:56.000000Z"
+      },
+      {
+        "id": 22,
+        "category_id": 4,
+        "category_name": "চাকুরীর সাধারণ নিয়ম কানুন",
+        "name": "চাকুরী পরিবর্তনের সাধারণ বিধি",
+        "icon": "http://uttoron.nanoit.biz/public/backend/upload/sub_category",
+        "sort_order": 22,
+        "created_at": "2022-02-07T08:02:11.000000Z",
+        "updated_at": "2022-03-24T07:32:40.000000Z"
+      },
+      {
+        "id": 21,
+        "category_id": 4,
+        "category_name": "চাকুরীর সাধারণ নিয়ম কানুন",
+        "name": "সাধারণ বিষয়সমূহ",
+        "icon": "http://uttoron.nanoit.biz/public/backend/upload/sub_category",
+        "sort_order": 23,
+        "created_at": "2022-02-07T08:01:03.000000Z",
+        "updated_at": "2022-03-24T07:32:16.000000Z"
+      },
+      {
+        "id": 19,
+        "category_id": 4,
+        "category_name": "চাকুরীর সাধারণ নিয়ম কানুন",
+        "name": "ক্ষতিপূরণ সংক্রান্ত নিয়ম",
+        "icon": "http://uttoron.nanoit.biz/public/backend/upload/sub_category",
+        "sort_order": 24,
+        "created_at": "2022-02-07T08:00:02.000000Z",
+        "updated_at": "2022-02-07T08:00:02.000000Z"
+      },
+      {
         "id": 18,
         "category_id": 4,
         "category_name": "চাকুরীর সাধারণ নিয়ম কানুন",
@@ -150,44 +190,14 @@
         "updated_at": "2022-03-24T07:57:18.000000Z"
       },
       {
-        "id": 19,
-        "category_id": 4,
-        "category_name": "চাকুরীর সাধারণ নিয়ম কানুন",
-        "name": "ক্ষতিপূরণ সংক্রান্ত নিয়ম",
+        "id": 23,
+        "category_id": 5,
+        "category_name": "চাকুরীতে উন্নয়নের উপায়",
+        "name": "কর্মীর অধিকার",
         "icon": "http://uttoron.nanoit.biz/public/backend/upload/sub_category",
-        "sort_order": 24,
-        "created_at": "2022-02-07T08:00:02.000000Z",
-        "updated_at": "2022-02-07T08:00:02.000000Z"
-      },
-      {
-        "id": 21,
-        "category_id": 4,
-        "category_name": "চাকুরীর সাধারণ নিয়ম কানুন",
-        "name": "সাধারণ বিষয়সমূহ",
-        "icon": "http://uttoron.nanoit.biz/public/backend/upload/sub_category",
-        "sort_order": 23,
-        "created_at": "2022-02-07T08:01:03.000000Z",
-        "updated_at": "2022-03-24T07:32:16.000000Z"
-      },
-      {
-        "id": 22,
-        "category_id": 4,
-        "category_name": "চাকুরীর সাধারণ নিয়ম কানুন",
-        "name": "চাকুরী পরিবর্তনের সাধারণ বিধি",
-        "icon": "http://uttoron.nanoit.biz/public/backend/upload/sub_category",
-        "sort_order": 22,
-        "created_at": "2022-02-07T08:02:11.000000Z",
-        "updated_at": "2022-03-24T07:32:40.000000Z"
-      },
-      {
-        "id": 20,
-        "category_id": 4,
-        "category_name": "চাকুরীর সাধারণ নিয়ম কানুন",
-        "name": "চাকুরীতে পদোন্নতির উপায়",
-        "icon": "http://uttoron.nanoit.biz/public/backend/upload/sub_category",
-        "sort_order": 21,
-        "created_at": "2022-02-07T08:00:24.000000Z",
-        "updated_at": "2022-03-24T07:32:56.000000Z"
+        "sort_order": 33,
+        "created_at": "2022-02-07T08:03:21.000000Z",
+        "updated_at": "2022-02-07T08:03:21.000000Z"
       },
       {
         "id": 15,
@@ -208,16 +218,6 @@
         "sort_order": 32,
         "created_at": "2021-12-22T23:16:34.000000Z",
         "updated_at": "2021-12-22T23:16:34.000000Z"
-      },
-      {
-        "id": 23,
-        "category_id": 5,
-        "category_name": "চাকুরীতে উন্নয়নের উপায়",
-        "name": "কর্মীর অধিকার",
-        "icon": "http://uttoron.nanoit.biz/public/backend/upload/sub_category",
-        "sort_order": 33,
-        "created_at": "2022-02-07T08:03:21.000000Z",
-        "updated_at": "2022-02-07T08:03:21.000000Z"
       },
       {
         "id": 24,
@@ -288,6 +288,16 @@
         "sort_order": 53,
         "created_at": "2022-03-24T07:39:14.000000Z",
         "updated_at": "2022-03-24T07:39:14.000000Z"
+      },
+      {
+        "id": 31,
+        "category_id": 7,
+        "category_name": "স্বাস্থ্য ও সুরক্ষা",
+        "name": "জরুরী ফোন নম্বর সমূহ",
+        "icon": "http://uttoron.nanoit.biz/public/backend/upload/sub_category",
+        "sort_order": 54,
+        "created_at": "2022-05-09T10:23:15.000000Z",
+        "updated_at": "2022-05-09T10:23:15.000000Z"
       }
     ],
     "contents": [
@@ -722,6 +732,25 @@
         "video": "http://uttoron.nanoit.biz/public/backend/upload",
         "created_at": "2022-05-09T07:34:48.000000Z",
         "updated_at": "2022-05-09T07:59:18.000000Z"
+      },
+      {
+        "id": 31,
+        "category_id": 7,
+        "category_name": "স্বাস্থ্য ও সুরক্ষা",
+        "sub_category_id": 31,
+        "sub_category": {
+          "id": 31,
+          "category_id": 7,
+          "name": "জরুরী ফোন নম্বর সমূহ",
+          "icon": null,
+          "sort_order": 54,
+          "created_at": "2022-05-09 10:23:15",
+          "updated_at": "2022-05-09 10:23:15"
+        },
+        "content": "http://uttoron.nanoit.biz/public/backend/upload/pdf_content",
+        "video": "http://uttoron.nanoit.biz/public/backend/upload",
+        "created_at": "2022-05-09T10:28:00.000000Z",
+        "updated_at": "2022-05-09T10:28:00.000000Z"
       }
     ]
   }

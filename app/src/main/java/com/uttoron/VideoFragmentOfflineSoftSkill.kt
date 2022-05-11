@@ -52,26 +52,27 @@ class VideoFragmentOfflineSoftSkill : Fragment(){
         //tvSloganTop.text = AppConstant.getGeneralsettings(requireContext())[0].slogan
 
         tvCatname.setOnClickListener {
+            videoview.stopPlayback()
             AppConstant.isHome = false
 
             AppConstant.subCatName = AppConstant.catName
 
-            AppConstant.getContent(requireContext()).forEachIndexed { index, content ->
-                Log.e("category_name",""+content.category_name)
-                Log.e("sub_category_id",""+content.sub_category_id)
-                Log.e("content",""+content.content)
+            //AppConstant.getContent(requireContext()).forEachIndexed { index, content ->
+//                Log.e("category_name",""+content.category_name)
+//                Log.e("sub_category_id",""+content.sub_category_id)
+//                Log.e("content",""+content.content)
 //                if (content.content != null){
 //                    if (content.sub_category_id == 0 && content.category_name.equals(AppConstant.catName)){
                 //AppConstant.isHome = false
                 AppConstant.isVidSoft = true
-                        AppConstant.content = content.content
+                        //AppConstant.content = content.content
                         val transaction = requireActivity().supportFragmentManager.beginTransaction()
                         transaction.replace(R.id.container, ContentFragmentOfflineSoftSkill())
                         transaction.addToBackStack(null)
                         transaction.commit()
 //                    }
 //                }
-            }
+            //}
         }
 
         val layoutManagerOtherCat = GridLayoutManager(context, 2)
@@ -82,6 +83,7 @@ class VideoFragmentOfflineSoftSkill : Fragment(){
 
         imgBack.setOnClickListener {
             //requireActivity().onBackPressed()
+            videoview.stopPlayback()
             val transaction = requireActivity().supportFragmentManager.beginTransaction()
             transaction.replace(R.id.container, HomeFragmentOffline())
             transaction.addToBackStack(null)
@@ -222,6 +224,7 @@ class VideoFragmentOfflineSoftSkill : Fragment(){
 
 
             holder.fullViewCat.setOnClickListener {
+                videoview.stopPlayback()
                 AppConstant.isHome = false
                 AppConstant.isVidSoft = true
 

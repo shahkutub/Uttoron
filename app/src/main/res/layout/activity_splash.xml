@@ -51,11 +51,10 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="@dimen/_40sdp"
         android:gravity="center"
-        android:orientation="horizontal"
-        android:layout_marginBottom="@dimen/_30sdp"
-        android:layout_alignParentBottom="true"
-        >
+        android:orientation="horizontal">
 
         <ImageView
             android:layout_width="@dimen/_50sdp"
@@ -65,16 +64,14 @@
         <LinearLayout
             android:layout_width="@dimen/_2sdp"
             android:layout_height="match_parent"
-            android:background="#fff"
             android:layout_marginLeft="@dimen/_40sdp"
             android:layout_marginRight="@dimen/_40sdp"
-            />
+            android:background="#fff" />
 
         <ImageView
             android:layout_width="@dimen/_120sdp"
             android:layout_height="@dimen/_50sdp"
-            android:src="@drawable/swice_contact"
-            />
+            android:src="@drawable/swice_contact" />
     </LinearLayout>
 
 
