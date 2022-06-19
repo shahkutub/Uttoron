@@ -24,6 +24,8 @@ import kotlinx.android.synthetic.main.video_layout.*
 import kotlinx.android.synthetic.main.video_play_layout.*
 import android.os.Build
 import androidx.recyclerview.widget.LinearLayoutManager
+import kotlinx.android.synthetic.main.content_layout.*
+import kotlinx.android.synthetic.main.video_layout.imgBack
 
 
 class VideoFragmentOffline : Fragment(){
@@ -45,7 +47,7 @@ class VideoFragmentOffline : Fragment(){
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-
+        videoview.stopPlayback()
         //imgUttornVId.setImageURI(Uri.parse("/sdcard/download/uttoron/app_logo_icon"+".png"))
 
         tvCatname.text = AppConstant.catName
@@ -206,6 +208,19 @@ class VideoFragmentOffline : Fragment(){
 
     }
 
+    override fun setUserVisibleHint(isVisibleToUser: Boolean) {
+        super.setUserVisibleHint(isVisibleToUser)
+        // Make sure that we are currently visible
+        if (this.isVisible) {
+            // If we are becoming invisible, then...
+            if (!isVisibleToUser) {
+                videoview.stopPlayback()
+                //mp.stop()
+            } else {
+                // do what you like
+            }
+        }
+    }
 
     private fun initializePlayer(url: String) {
         // Show the "Buffering..." message while the video loads.
@@ -423,4 +438,10 @@ class VideoFragmentOffline : Fragment(){
     private fun releasePlayer() {
         videoview.stopPlayback()
     }
+
+//    override fun onDetach() {
+//        super.onDetach()
+//        videoview.stopPlayback()
+//    }
+
 }

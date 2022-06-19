@@ -33,11 +33,30 @@ class ContentFragmentOffline : Fragment(){
         return inflater.inflate(R.layout.content_layout,container,false)
     }
 
+    override fun setUserVisibleHint(isVisibleToUser: Boolean) {
+        super.setUserVisibleHint(isVisibleToUser)
+        // Make sure that we are currently visible
+//        if (this.isVisible) {
+//            // If we are becoming invisible, then...
+//            if (!isVisibleToUser) {
+//                videoview.stopPlayback()
+//                //mp.stop()
+//            } else {
+//                // do what you like
+//            }
+//        }
 
+        if (!isVisibleToUser) {
+            videoview.stopPlayback()
+            //mp.stop()
+        } else {
+            // do what you like
+        }
+    }
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-
+        videoview.stopPlayback()
         tvTitle.text = AppConstant.subCatName
 
         Log.e("content",""+AppConstant.content)
@@ -225,4 +244,8 @@ class ContentFragmentOffline : Fragment(){
         videoview.stopPlayback()
     }
 
+//    override fun onDetach() {
+//        super.onDetach()
+//        videoview.stopPlayback()
+//    }
 }

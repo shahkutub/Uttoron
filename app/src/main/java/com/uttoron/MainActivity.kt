@@ -2,67 +2,70 @@ package com.uttoron
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.annotation.TargetApi
+import android.app.Activity
+import android.app.AlertDialog
 import android.app.Dialog
+import android.content.ActivityNotFoundException
+import android.content.Context
+import android.content.DialogInterface
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.media.MediaPlayer
+import android.net.Uri
+import android.os.AsyncTask
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
+import android.widget.MediaController
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.fragment.app.FragmentManager
+import com.downloader.*
 import com.kaopiz.kprogresshud.KProgressHUD
+import com.uttoron.asynctask.DownloadFileFromURLTask
+import com.uttoron.asynctask.DownloadImageFileFromURLTask
+import com.uttoron.callback.DownloadListener
 import com.uttoron.model.AllDataResponse
 import com.uttoron.model.Category
+import com.uttoron.model.TrackResponse
+import com.uttoron.utils.AlertMessage
 import com.uttoron.utils.AppConstant
 import com.uttoron.utils.NetInfo
+import com.uttoron.utils.PersistData
 import gov.bd.mpportal.utils.ApiKt
 import gov.bd.mpportal.utils.baseUrl
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.video_play_layout.*
+import org.jsoup.Jsoup
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import android.os.Environment
-import androidx.core.app.ActivityCompat
-
-import android.content.DialogInterface
-
-import android.os.Build
-
-import android.annotation.TargetApi
-import android.app.AlertDialog
-import android.content.Context
-
-import android.content.pm.PackageManager
-import android.graphics.Bitmap
-import android.os.AsyncTask
-
-import androidx.core.content.ContextCompat
-import android.os.PowerManager
-import android.os.PowerManager.WakeLock
-import androidx.annotation.RequiresApi
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.bumptech.glide.load.resource.bitmap.DownsampleStrategy
-import com.bumptech.glide.request.RequestOptions
-import com.downloader.*
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
-import com.uttoron.asynctask.DownloadFileFromURLTask
-import com.uttoron.asynctask.DownloadImageFileFromURLTask
-import com.uttoron.asynctask.SaveBitmapTask
-import com.uttoron.callback.DownloadListener
-import com.uttoron.model.AllDataResponseItem
-import com.uttoron.model.TrackResponse
-import com.uttoron.utils.AlertMessage
-import com.uttoron.utils.PersistData
 import java.io.*
-
 import java.util.*
-import kotlin.collections.ArrayList
-import android.content.Intent
-import android.net.Uri
-import android.provider.Settings
+import com.google.android.play.core.appupdate.AppUpdateManager
+import com.google.android.play.core.appupdate.AppUpdateManagerFactory
+import android.content.IntentSender
+import android.content.IntentSender.SendIntentException
+import android.view.View
+import com.google.android.material.snackbar.Snackbar
+
+import com.google.android.play.core.install.model.AppUpdateType
+
+import com.google.android.play.core.appupdate.AppUpdateInfo
+import com.google.android.play.core.install.InstallState
+import com.google.android.play.core.install.model.UpdateAvailability
+import com.google.android.play.core.tasks.Task
+import com.google.android.play.core.install.model.InstallStatus
+import com.google.android.play.core.install.InstallStateUpdatedListener
+import com.google.android.play.core.tasks.OnSuccessListener
+
 
 val storagePermission = arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE)
 private const val outputDir = "uttron"
@@ -79,12 +82,27 @@ class MainActivity : AppCompatActivity()  {
     var context:Context? = null
     private var filename: String = ""
     private var srcUrl: String  = ""
+
+
+    var currentVersion: String? = null
+
+     var appUpdateManager: AppUpdateManager? = null
+    private val IMMEDIATE_APP_UPDATE_REQ_CODE = 124
+    private var installStateUpdatedListener: InstallStateUpdatedListener? = null
+
+    private val FLEXIBLE_APP_UPDATE_REQ_CODE = 123
+
     @SuppressLint("NewApi")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         context = this
+
+        appUpdateManager = AppUpdateManagerFactory.create(getApplicationContext());
+        checkUpdate()
+
+        //appUpdate()
 //        val currentapiVersion = Build.VERSION.SDK_INT
 //        if (currentapiVersion > 29){
 //            if (Environment.isExternalStorageManager()) {
@@ -135,11 +153,37 @@ class MainActivity : AppCompatActivity()  {
 //                }
 
                 R.id.navigation_home-> {
+
+                    val fm: FragmentManager = getSupportFragmentManager()
+                    for (i in 0 until fm.getBackStackEntryCount()) {
+                        fm.popBackStack()
+                    }
+                    val controller = MediaController(context)
+                    if (controller.isShowing){
+                        //controller.s
+                    }
+
                     //title=resources.getString(R.string.home)
                     if (!NetInfo.isOnline(applicationContext)) {
+                        //videoview.stopPlayback()
+                        var mediaPlayer = MediaPlayer()
+                        if (mediaPlayer.isPlaying()){
+                            mediaPlayer.stop()
+                            //mediaPlayer.stop()
+                            mediaPlayer.release()
+
+                        }
                         loadFragment(HomeFragmentOffline())
                         //Toast.makeText(this, "Please Connect to Internet", Toast.LENGTH_LONG).show();
                     }else{
+                        //videoview.stopPlayback()
+                        var mediaPlayer = MediaPlayer()
+                        if (mediaPlayer.isPlaying()){
+                            //mediaPlayer.stop()
+                            mediaPlayer.stop()
+                            mediaPlayer.release()
+
+                        }
                         loadFragment(HomeFragmentOffline())
                         //loadFragment(HomeFragment())
                         //getAllData()
@@ -199,7 +243,71 @@ class MainActivity : AppCompatActivity()  {
 
     }
 
+    private fun checkUpdate() {
+        val appUpdateInfoTask = appUpdateManager!!.appUpdateInfo
+        appUpdateInfoTask.addOnSuccessListener { appUpdateInfo: AppUpdateInfo ->
+            if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE
+                && appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.IMMEDIATE)
+            ) {
+                startUpdateFlow(appUpdateInfo)
+            } else if (appUpdateInfo.updateAvailability() == UpdateAvailability.DEVELOPER_TRIGGERED_UPDATE_IN_PROGRESS) {
+                startUpdateFlow(appUpdateInfo)
+            }
+        }
+    }
 
+    private fun startUpdateFlow(appUpdateInfo: AppUpdateInfo) {
+        try {
+            appUpdateManager!!.startUpdateFlowForResult(
+                appUpdateInfo,
+                AppUpdateType.IMMEDIATE,
+                this,
+                IMMEDIATE_APP_UPDATE_REQ_CODE
+            )
+        } catch (e: SendIntentException) {
+            e.printStackTrace()
+        }
+    }
+
+    private fun popupSnackBarForCompleteUpdate() {
+        Snackbar.make(
+            findViewById<View>(android.R.id.content).rootView,
+            "New app is ready!",
+            Snackbar.LENGTH_INDEFINITE
+        )
+            .setAction("Install") { view: View? ->
+                if (appUpdateManager != null) {
+                    appUpdateManager!!.completeUpdate()
+                }
+            }
+            .setActionTextColor(resources.getColor(android.R.color.holo_red_dark))
+            .show()
+    }
+
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == IMMEDIATE_APP_UPDATE_REQ_CODE) {
+            if (resultCode == RESULT_CANCELED) {
+                Toast.makeText(
+                    applicationContext,
+                    "Update canceled by user! Result Code: $resultCode", Toast.LENGTH_LONG
+                ).show()
+            } else if (resultCode == RESULT_OK) {
+                Toast.makeText(
+                    applicationContext,
+                    "Update success! Result Code: $resultCode", Toast.LENGTH_LONG
+                ).show()
+            } else {
+                Toast.makeText(
+                    applicationContext,
+                    "Update Failed! Result Code: $resultCode",
+                    Toast.LENGTH_LONG
+                ).show()
+                checkUpdate()
+            }
+        }
+    }
     //hare you can start downloding video
     fun newDownload(url: String?) {
        // val downloadTask = DownloadTask(this@MainActivity)
@@ -968,5 +1076,121 @@ class MainActivity : AppCompatActivity()  {
 //        }
         builder.show()
     }
+
+    private fun appUpdate() {
+        //Toast.makeText(getBaseContext(),"App update", Toast.LENGTH_SHORT).show();
+        try {
+            currentVersion = packageManager.getPackageInfo(packageName, 0).versionName
+        } catch (e: PackageManager.NameNotFoundException) {
+            e.printStackTrace()
+        }
+
+        Toast.makeText(getBaseContext(),"currentVersion"+currentVersion, Toast.LENGTH_SHORT).show();
+
+        CheckIsUpdateReady(
+            //"https://play.google.com/store/apps/details?id=$packageName&hl=en",
+            "https://play.google.com/store/apps/details?id=com.uttoron",
+            object : UrlResponce() {
+                override fun onReceived(resposeStr: String?) {
+                    Toast.makeText(getBaseContext(),"resposeStr: "+resposeStr, Toast.LENGTH_SHORT).show();
+
+                    //resposeStr = "6.0.0";
+                    if (!currentVersion.equals(
+                            resposeStr,
+                            ignoreCase = true
+                        ) && null != resposeStr
+                    ) {
+                        //show dialog
+                        //Toast.makeText(this, "Update App", Toast.LENGTH_SHORT).show();
+                        val builder = AlertDialog.Builder(
+                            context!!
+                        )
+                        builder.setTitle(R.string.app_update_available)
+                            .setMessage(R.string.app_update_text)
+                            .setPositiveButton(android.R.string.yes,
+                                DialogInterface.OnClickListener { dialog, which -> // continue to play store
+                                    val appPackageName =
+                                        context!!.packageName // getPackageName() from Context or Activity object
+                                    try {
+                                        context!!.startActivity(
+                                            Intent(
+                                                Intent.ACTION_VIEW,
+                                                //Uri.parse("market://details?id=$appPackageName")
+                                                Uri.parse("market://details?id=com.uttoron")
+                                            )
+                                        )
+                                    } catch (anfe: ActivityNotFoundException) {
+                                        context!!.startActivity(
+                                            Intent(
+                                                Intent.ACTION_VIEW,
+                                                //Uri.parse("https://play.google.com/store/apps/details?id=$appPackageName")
+                                                Uri.parse("https://play.google.com/store/apps/details?id=com.uttoron")
+                                            )
+                                        )
+                                    }
+                                })
+                            .setNegativeButton(android.R.string.no,
+                                DialogInterface.OnClickListener { dialog, which ->
+                                    // do nothing
+                                })
+                            .setIcon(android.R.drawable.ic_dialog_alert)
+                            .show()
+                    }
+                }
+            }).execute()
+
+    }
+
+
+    abstract class UrlResponce {
+        abstract fun onReceived(resposeStr: String?)
+    }
+
+    class CheckIsUpdateReady(appURL: String, callback: UrlResponce) :
+        AsyncTask<Void?, String?, String?>() {
+        var appURL = ""
+        private val mUrlResponce: UrlResponce
+        override fun doInBackground(vararg params: Void?): String? {
+            var newVersion: String? = null
+            try {
+                val document = Jsoup.connect(appURL)
+                    .timeout(20000)
+                    .userAgent("Mozilla/5.0 (Windows; U; WindowsNT 5.1; en-US; rv1.8.1.6) Gecko/20070725 Firefox/2.0.0.6")
+                    .referrer("http://www.google.com")
+                    .get()
+                if (document != null) {
+                    val element = document.getElementsContainingOwnText("Current Version")
+                    for (ele in element) {
+                        if (ele.siblingElements() != null) {
+                            val sibElemets = ele.siblingElements()
+                            for (sibElemet in sibElemets) {
+                                newVersion = sibElemet.text()
+                            }
+                        }
+                    }
+                }
+            } catch (e: IOException) {
+                e.printStackTrace()
+            }
+            return newVersion
+        }
+
+        override fun onPostExecute(onlineVersion: String?) {
+            super.onPostExecute(onlineVersion)
+            if (onlineVersion != null && !onlineVersion.isEmpty()) {
+                mUrlResponce.onReceived(onlineVersion)
+            }
+            Log.d("update", " playstore App version $onlineVersion")
+        }
+
+        init {
+            this.appURL = appURL
+            mUrlResponce = callback
+        }
+
+
+    }
+
+
 }
 
